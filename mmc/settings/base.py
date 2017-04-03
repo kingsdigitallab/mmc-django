@@ -339,3 +339,5 @@ FABRIC_USER = getpass.getuser()
 
 # Google Analytics ID
 GA_ID = ''
+
+ITEMS_PER_PAGE = 10
