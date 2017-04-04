@@ -1,4 +1,4 @@
-#-r ddhldap/requirements.txt
+-r ddhldap/requirements.txt
 django
 django-compressor
 django-grappelli
