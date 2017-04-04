@@ -17,7 +17,7 @@ import getpass
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 PROJECT_NAME = 'mmc'
-PROJECT_TITLE = 'Change the title in the settings'
+PROJECT_TITLE = 'Mozart and Material Culture'
 
 # -----------------------------------------------------------------------------
 # Core Settings
@@ -164,12 +164,21 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
 
 ROOT_URLCONF = PROJECT_NAME + '.urls'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ''
+
+WAGTAIL_SITE_NAME = PROJECT_TITLE
+
+ITEMS_PER_PAGE = 10
+
 
 TEMPLATES = [
     {
@@ -342,5 +351,3 @@ FABRIC_USER = getpass.getuser()
 
 # Google Analytics ID
 GA_ID = ''
-
-ITEMS_PER_PAGE = 10
