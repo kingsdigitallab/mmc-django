@@ -1,9 +1,95 @@
+
 {% extends "base.html" %}
+
+
+
+
 
 {% block meta_title %}{{ self.title }}{% endblock %}
 {% block title %}
-<header><h2>{{ self.title }}</h2></header>
+
+
+
+
+
+
+
+ <div class="sidenav">
+	<ol>
+		<li class="active">
+			<a href="index1.html">
+				
+				<h2 class="linktitle">
+					The Mozarts as Collectors
+					of Souvenirs
+				</h2>
+			</a>
+		</li>
+		<li>
+			<a href="index2.html">
+				<h2 class="linktitle">
+					The Mozarts as Producers
+					of Souvenirs
+				</h2>
+			</a>
+		</li>
+		<li>
+			<a href="index3.html">
+				<h2 class="linktitle">
+					Eighteenth-century understandings of the word and idea ‘souvenir’
+				</h2>
+			</a>
+		</li>
+		<li>
+			<a href="index4.html">
+				<h2 class="linktitle">
+					Souvenir and expression in Mozart’s music
+				</h2>
+			</a>
+		</li>
+	</ol>
+</div>
+<article>
+	<div class="content">
+		<div class="entities">
+			<h5>
+				Entities
+			</h5>
+			<ul>
+				<li>
+					<div class="person"></div>
+					<a href="">Person</a>
+				</li>
+				<li>
+					<div class="place"></div>
+					<a href="">Place</a>
+				</li>
+				<li>
+					<div class="institution"></div>
+					<a href="">Institution</a>
+				</li>
+				<li>
+					<div class="object"></div>
+					<a href="">Object</a>
+				</li>
+				<li>
+					<div class="musical"></div>
+					<a href="">Musical Work</a>
+				</li>
+				<li>
+					<div class="event"></div>
+					<a href="">Event</a>
+				</li>
+				<li>
+					<div class="source"></div>
+					<a href="">Source</a>
+				</li>
+			</ul>
+		</div>
+</article>		
 {% endblock %}
+
+
 
 {% block main %}
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
