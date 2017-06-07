@@ -1,6 +1,8 @@
 from django import template
 from django.conf import settings
 
+from cms.models import (Entity, ObjectIndexPage)
+
 register = template.Library()
 
 
@@ -42,6 +44,22 @@ def main_menu(context, root, current_page=None):
 
     return {'request': context['request'], 'root': root,
             'current_page': current_page, 'menu_pages': menu_pages}
+
+
+@register.inclusion_tag('cms/tags/entities.html', takes_context=True)
+def get_entities(context):
+    ''' Gets the entity index page and returns its children'''
+    entities = Entity.objects.all()
+
+    return {'request': context['request'], 'entities': entities}
+
+
+@register.inclusion_tag('cms/tags/sidenav.html', takes_context=True)
+def get_sidenav(context):
+    ''' Gets the entity index page and returns its children'''
+    pages = ObjectIndexPage.objects.get(title="Souvenirs").get_children()
+
+    return {'request': context['request'], 'pages': pages}
 
 
 @register.inclusion_tag('cms/tags/footer_menu.html', takes_context=True)

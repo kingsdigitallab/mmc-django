@@ -1,0 +1,16 @@
+<article>
+    <div class="content">
+        <div class="entities">
+            <h5>
+                Entities
+            </h5>
+            <ul>
+                {% for e in entities %}
+                <li>
+                    <div class="{{e.colour}}"></div>
+                    <a href="{% pageurl e %}">{{ e.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+</article>      

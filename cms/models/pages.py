@@ -10,7 +10,7 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel, StreamFieldPanel)
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
@@ -40,7 +40,9 @@ class HomePage(Page, WithStreamField):
         index.SearchField('body'),
     ]
 
-    subpage_types = ['BlogIndexPage', 'IndexPage', 'RichTextPage']
+    subpage_types = ['BlogIndexPage', 'ObjectIndexPage',
+                     'EntityIndexPage', 'IndexPage',
+                     'RichTextPage']
 
 
 HomePage.content_panels = [
@@ -77,6 +79,7 @@ class RichTextPage(Page, WithStreamField):
 
 RichTextPage.content_panels = [
     FieldPanel('title', classname='full title'),
+
     StreamFieldPanel('body'),
 ]
 
@@ -164,3 +167,54 @@ BlogPost.promote_panels = Page.promote_panels + [
     FieldPanel('tags'),
     ImageChooserPanel('feed_image'),
 ]
+
+
+# Entities Index Page
+class EntityIndexPage(Page):
+    subpage_types = ['Entity']
+
+
+# Entity Element
+class Entity(Page, WithStreamField):
+    colour = models.CharField(max_length=128, blank=False)
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+    ]
+
+    subpage_types = []
+
+
+Entity.content_panels = [
+    FieldPanel('title', classname='full title'),
+    FieldPanel('colour', classname='full title'),
+    StreamFieldPanel('body'),
+]
+
+
+class ObjectIndexPage(Page, WithStreamField):
+    subpage_types = ['ObjectPage']
+
+
+ObjectIndexPage.content_panels = [
+    FieldPanel('title', classname='full title'),
+    StreamFieldPanel('body'),
+]
+
+ObjectIndexPage.promote_panels = Page.promote_panels
+
+
+class ObjectPage(Page, WithStreamField):
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+    ]
+
+    subpage_types = ['ObjectPage']
+
+
+ObjectPage.content_panels = [
+    FieldPanel('title', classname='full title'),
+
+    StreamFieldPanel('body'),
+]
+
+ObjectPage.promote_panels = Page.promote_panels
