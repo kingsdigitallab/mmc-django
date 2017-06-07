@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block meta_title %}{% endblock %} | PREOJECT_TITLE</title>
+  <title>{% block meta_title %}{% endblock %} | {{ self.get_site.site_name }}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,6 +27,11 @@
   <nav>
     {% include 'includes/navigation.html' %}
   </nav>
+
+
+  {% block sidenav %}{% endblock %}
+
+  {% block entities %}{% endblock %}
 
   <div class="row">
     <div class="large-12 columns">

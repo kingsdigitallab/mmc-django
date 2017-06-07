@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+
+<div class="sidenav">
+    <ol>
+        {% for p in pages %}
+        <li>
+            <a href="{% pageurl p %}">
+                
+                <h2 class="linktitle">
+                    {{ p.title }}
+                </h2>
+            </a>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
