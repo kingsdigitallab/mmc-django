@@ -1,3 +1,5 @@
+{% load wagtailcore_tags %}
+
 <article>
     <div class="content">
         <div class="entities">
@@ -8,7 +10,7 @@
                 {% for e in entities %}
                 <li>
                     <div class="{{e.colour}}"></div>
-                    <a href="{{e.get_absolute_url}}">{{ e.title }}</a>
+                    <a href="{% pageurl e %}">{{ e.title }}</a>
                 </li>
                 {% endfor %}
             </ul>
