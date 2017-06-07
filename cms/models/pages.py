@@ -204,6 +204,7 @@ ObjectIndexPage.promote_panels = Page.promote_panels
 
 
 class ObjectPage(Page, WithStreamField):
+    entities = models.ManyToManyField(Entity)
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
