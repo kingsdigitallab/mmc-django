@@ -23,17 +23,18 @@ def populate_entity_relationships(request, page):
 
         # Check for new entities
         for block in page.body.stream_data:
+            q = None
             if type(block) is tuple:
                 q = block[1].source
             else:
-                q = block['value']
-
-            print type(q)
-            search = rg.search(q)
-            if search:
-                page_id = int(search.group(1))
-                if page_id not in page_list:
-                    page_list.append(page_id)
+                if block['type'] == 'paragraph':
+                    q = block['value']
+            if q:
+                search = rg.search(q)
+                if search:
+                    page_id = int(search.group(1))
+                    if page_id not in page_list:
+                        page_list.append(page_id)
         # We have our list:
         entities = Entity.objects.filter(id__in=page_list)
         for entity in entities.all():
