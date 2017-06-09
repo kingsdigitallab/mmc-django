@@ -3,7 +3,7 @@
 <div class="sidenav">
     <ol>
         {% for p in pages %}
-        <li>
+        <li  {% if p.id == current_section.id %}class="active" {% endif %}>
             <a href="{% pageurl p %}">
                 
                 <h2 class="linktitle">

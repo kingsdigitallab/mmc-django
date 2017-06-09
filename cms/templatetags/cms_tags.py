@@ -55,11 +55,18 @@ def get_entities(context):
 
 
 @register.inclusion_tag('cms/tags/sidenav.html', takes_context=True)
-def get_sidenav(context):
+def get_sidenav(context, current_page=None):
     ''' Gets the entity index page and returns its children'''
     pages = ObjectIndexPage.objects.get(title="Souvenirs").get_children()
-
-    return {'request': context['request'], 'pages': pages}
+    if current_page:
+        root_nodes = current_page.get_ancestors().type(
+            ObjectIndexPage).first().get_children()
+        all_ancestors = current_page.get_ancestors(inclusive=True)
+        current_section = (root_nodes & all_ancestors).first()
+        return {'request': context['request'], 'pages': pages,
+                'current_section': current_section}
+    else:
+        return {'request': context['request'], 'pages': pages}
 
 
 @register.inclusion_tag('cms/tags/footer_menu.html', takes_context=True)

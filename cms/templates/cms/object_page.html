@@ -3,4 +3,4 @@
 {% load cms_tags %}
 
 {% block entities %}{% get_entities %}{% endblock %}
-{% block sidenav %}{% get_sidenav %}{% endblock %}
+{% block sidenav %}{% get_sidenav current_page=self %}{% endblock %}
