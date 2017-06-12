@@ -11,7 +11,7 @@
     {% endfor %}
     <li>
     	<div class="search-box">
-  <form action="" method="get">
+  <form action="/search" method="get">
     <input type="text" class="search-box-text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} placeholder="Search the site">
 
     <div class="search-button-container">

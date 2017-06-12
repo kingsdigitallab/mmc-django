@@ -1,12 +1,12 @@
-{% load staticfiles cms_tags %}
+{% load staticfiles cms_tags wagtailcore_tags %}
 
 
-<div class="top-bar-left">
-  <h1>{{ self.get_site.site_name }}</h1>
-</div>
+<header>
+  <h1> <a href="/">{{ self.get_site.site_name }}</a></h1>
+</header>
 
-<div class="top-bar-right menu">
-    <h5>Menu</h5>
+<div class="menu">
+    <h3>Menu</h3>
       {% block main_menu %}
         {% get_site_root as site_root %}
         {% main_menu root=site_root current_page=self %}
