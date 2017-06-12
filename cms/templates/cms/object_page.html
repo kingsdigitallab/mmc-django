@@ -1,6 +1,14 @@
-{% extends "cms/base.html" %}
 
+
+{% extends "cms/base.html" %}
 {% load cms_tags %}
 
-{% block entities %}{% get_entities %}{% endblock %}
 {% block sidenav %}{% get_sidenav current_page=self %}{% endblock %}
+{% block entities %}{% get_entities %}{% endblock %}
+
+{% block main %}
+<div class="object-index">
+<header><h2>{{ self.title }}</h2></header>
+{% include "cms/includes/streamfield.html" with blocks=self.body %}
+</div>
+{% endblock %}

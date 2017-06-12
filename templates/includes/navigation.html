@@ -1,26 +1,17 @@
 {% load staticfiles cms_tags %}
 
-<div class="row">
-  <div class="large-12 columns">
-    <div class="top-bar-left">
-      <header><h1>{{ self.get_site.site_name }}</h1></header>
-    </div>
 
-    <div class="top-bar-right">
-      <ul>
-        <li>Menu
-          <ul>
-            {% block main_menu %}
-            {% get_site_root as site_root %}
-            {% main_menu root=site_root current_page=self %}
-            {% endblock %}
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>  
-</div>  
+<div class="top-bar-left">
+  <h1>{{ self.get_site.site_name }}</h1>
+</div>
 
+<div class="top-bar-right menu">
+    <h5>Menu</h5>
+      {% block main_menu %}
+        {% get_site_root as site_root %}
+        {% main_menu root=site_root current_page=self %}
+        {% endblock %}
+</div>
 
 
 

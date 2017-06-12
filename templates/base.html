@@ -20,9 +20,6 @@
   {% endcompress %}
 </head>
 <body>
-  <header>
-    {% include 'includes/header.html' %}
-  </header>
 
   <nav>
     {% include 'includes/navigation.html' %}
@@ -33,15 +30,13 @@
 
   {% block entities %}{% endblock %}
 
-  <div class="row">
-    <div class="large-12 columns">
-      <section class="main">
-        {% block title %}{% endblock %}
-        {% block main %}
-        {% endblock %}
-      </section>
-    </div>
-  </div>
+
+  <section>
+    {% block title %}{% endblock %}
+    {% block main %}
+    {% endblock %}
+  </section>
+
 
   <footer>
     {% block footer %}

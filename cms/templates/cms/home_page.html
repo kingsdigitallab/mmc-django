@@ -1,4 +1,10 @@
 {% extends "cms/base.html" %}
 {% load cms_tags %}
 
-{% block sidenav %}{% get_sidenav current_page=self %}{% endblock %}
+{% block sidenav %}{% get_sidenav %}{% endblock %}
+
+{% block main %}
+<div class="homepage">
+{% include "cms/includes/streamfield.html" with blocks=self.body %}
+</div>
+{% endblock %}
