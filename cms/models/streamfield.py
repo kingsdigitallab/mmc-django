@@ -6,7 +6,7 @@ from wagtail.wagtailcore.blocks import (
     StreamBlock, StructBlock, TextBlock, URLBlock
 )
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
+# from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
@@ -24,7 +24,7 @@ class AlignedHTMLBlock(StructBlock):
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
         ('left', 'Wrap left'), ('right', 'Wrap right'),
-        ('mid', 'Mid width'), ('full-width', 'Full width'),
+        ('mid', 'Centred'), ('full-width', 'Full width'),
         ('hero', 'Hero'),
     ))
 
@@ -58,7 +58,7 @@ class LinkBlock(StructBlock):
 
 class PullQuoteStyleChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
-        ('default', 'Default'), ('with-background', 'With background image'),
+        ('default', 'Default'),
     ))
 
 
@@ -74,18 +74,18 @@ class PullQuoteBlock(StructBlock):
 
 class CMSStreamBlock(StreamBlock):
 
-    h2 = CharBlock(icon='title', classname='title')
-    h3 = CharBlock(icon='title', classname='title')
-    h4 = CharBlock(icon='title', classname='title')
-    h5 = CharBlock(icon='title', classname='title')
+    # h2 = CharBlock(icon='title', classname='title')
+    # h3 = CharBlock(icon='title', classname='title')
+    # h4 = CharBlock(icon='title', classname='title')
+    # h5 = CharBlock(icon='title', classname='title')
 
     intro = RichTextBlock(icon='pilcrow')
     paragraph = RichTextBlock(icon='pilcrow')
     pullquote = PullQuoteBlock(icon='openquote')
 
-    image = ImageBlock(label='Aligned image', icon='image')
+    # image = ImageBlock(label='Aligned image', icon='image')
     document = DocumentChooserBlock(icon='doc-full-inverse')
-    link = LinkBlock(icon='link')
-    embed = EmbedBlock(icon='media')
+    # link = LinkBlock(icon='link')
+    # embed = EmbedBlock(icon='media')
 
-    html = AlignedHTMLBlock(icon='code', label='Raw HTML')
+    # html = AlignedHTMLBlock(icon='code', label='Raw HTML')
