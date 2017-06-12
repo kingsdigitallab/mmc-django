@@ -202,12 +202,15 @@ section{
   h2{
     border-bottom:0.05rem solid;
     margin:0;
+    font-size: 2rem;
   }
 }
 
 /** Homepage**/
 .homepage{
-  margin: 0 0 0 20rem;
+  margin: 10rem 0 0 20rem;
+  padding-left:2rem;
+  text-align:justify;
     h2{
     border-bottom:none;
     }
@@ -512,6 +515,7 @@ footer{
    /** Homepage**/
   .homepage{
     margin: 2rem;
+    padding-left:1rem;
       h2{
       border-bottom:none;
       }
