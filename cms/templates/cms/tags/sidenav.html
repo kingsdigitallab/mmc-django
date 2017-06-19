@@ -1,15 +1,30 @@
 {% load wagtailcore_tags %}
 
 <div class="sidenav">
+<!--<h3>Chapters</h3>-->
     <ol>
         {% for p in pages %}
-        <li  {% if p.id == current_section.id %}class="active" {% endif %}>
+        <li class="linktitle has-sub" {% if p.id == current_section.id %}class="active" {% endif %}>
             <a href="{% pageurl p %}">
-                
-                <h2 class="linktitle">
-                    {{ p.title }}
-                </h2>
+                {{ p.title }}
             </a>
+            <ul>
+                <li>
+                    <a href="">
+                        First Subchapter of Mozart and Sovenirs
+                    </a>
+                </li>
+                <li >
+                    <a href="">
+                        Second Subchapter of Mozart and Sovenirs
+                    </a>
+                </li>
+                <li >
+                    <a href="">
+                        Third Subchapter of Mozart and Sovenirs
+                    </a>
+                </li>
+            </ul>
         </li>
         {% endfor %}
     </ol>
