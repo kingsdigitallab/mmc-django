@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <div class="sidenav">
-<!--<h3>Chapters</h3>-->
+<div class="breadcrumb">Chapter ><span class="number"> 1 </span>><span class="number"> ii</span></div>
     <ol>
         {% for p in pages %}
         <li class="linktitle has-sub" {% if p.id == current_section.id %}class="active" {% endif %}>
