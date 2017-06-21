@@ -21,27 +21,34 @@
 </head>
 <body ontouchstart="">
 
-  <nav>
-    {% include 'includes/navigation.html' %}
-  </nav>
+
+  <div class="wrapper">
+    <nav>
+    <div class="nav-content">
+
+      {% include 'includes/navigation.html' %}
+      </div>
+    </nav>
+
+    {% block sidenav %}{% endblock %}
+
+    {% block entities %}{% endblock %}
 
 
-  {% block sidenav %}{% endblock %}
-
-  {% block entities %}{% endblock %}
-
-
-  <section>
-    {% block title %}{% endblock %}
-    {% block main %}
-    {% endblock %}
-  </section>
-
+    <section>
+      {% block title %}{% endblock %}
+      {% block main %}
+      {% endblock %}
+    </section>
+    <div class="push"></div>
+  </div>
 
   <footer>
+    <div class="footer-content">
     {% block footer %}
     {% include 'includes/footer.html' %}
     {% endblock %}
+    </div>
   </footer>
   
   <!-- define requirejs config settings. -->

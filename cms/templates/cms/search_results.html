@@ -6,9 +6,9 @@
 {# Not a fan of this, but it's the least hacky way to feed the title back. #}
 {% block title %}
 
-<header class="section-header">
-  <h1>Search Results for: {{request.GET.q}}</h1>
-</header>
+<div class="search-results">
+  <h2>Search Results for: <span>{{request.GET.q}}</span></h2>
+
 
 {% endblock %}
 
@@ -17,7 +17,7 @@
 {% if search_results %}
 
 
-<ul class="search-results">
+<ol>
    {% for result in search_results %}
        <li>
            <h4><a href="{% pageurl result.specific %}">{{ result.specific }}</a></h4>
@@ -26,9 +26,9 @@
            {% endif %}
        </li>
    {% endfor %}
-</ul>
+</ol>
 {% else %}
   <p>No results found.</p>
 {% endif %}
-
+</div>
 {% endblock %}
