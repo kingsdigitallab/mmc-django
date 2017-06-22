@@ -90,6 +90,7 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     # your project apps here
     'cms',
+    'activecollab_digger',
 )
 
 INTERNAL_IPS = ('127.0.0.1', )
