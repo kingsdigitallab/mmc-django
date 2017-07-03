@@ -10,7 +10,10 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
-from wagtail.wagtailadmin.edit_handlers import (FieldPanel, StreamFieldPanel)
+from wagtail.wagtailadmin.edit_handlers import (FieldPanel,
+                                                StreamFieldPanel,
+                                                MultiFieldPanel,
+                                                PageChooserPanel)
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
@@ -171,23 +174,95 @@ BlogPost.promote_panels = Page.promote_panels + [
 
 # Entities Index Page
 class EntityIndexPage(Page):
+    subpage_types = ['EntityType']
+
+
+# EntityType
+class EntityType(Page, WithStreamField):
+    colour = models.CharField(max_length=128, blank=False)
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+    ]
+
     subpage_types = ['Entity']
 
 
-# Entity Element
+EntityType.content_panels = [
+    FieldPanel('title', classname='full title'),
+    FieldPanel('colour', classname='full title'),
+    StreamFieldPanel('body'),
+]
+
+
+# Entity
 class Entity(Page, WithStreamField):
-    colour = models.CharField(max_length=128, blank=False)
+    creator = models.ForeignKey('self', null=True,
+                                verbose_name='Creator',
+                                related_name='entity_creator',
+                                on_delete=models.SET_NULL)
+    recipient = models.ForeignKey('self', null=True,
+                                  verbose_name='Recipient',
+                                  related_name='entity_recipient',
+                                  on_delete=models.SET_NULL)
+    subtype = models.CharField(max_length=128, blank=True,
+                               null=True,
+                               verbose_name='Subtype/Role')
+    date_from = models.DateField(blank=True, null=True,
+                                 verbose_name='Start Date')
+    date_to = models.DateField(blank=True, null=True,
+                               verbose_name='End Date')
+
+    # Normally wouldn't use a charfield for this, but
+    # looking at the example data that's what's needed
+    location = models.CharField(max_length=256, null=True,
+                                blank=True,
+                                verbose_name='Location')
+
+    location_purchase = models.CharField(max_length=256, null=True,
+                                         blank=True,
+                                         verbose_name='Place of Purchase')
+
+    bibliog = models.TextField(null=True, blank=True,
+                               verbose_name='Bibliographic Details')
+
+    comments = models.TextField(null=True, blank=True,
+                                verbose_name='Comments')
+
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
 
     subpage_types = []
 
+    class Meta:
+        verbose_name = 'Entity'
+        verbose_name_plural = 'Entities'
+
 
 Entity.content_panels = [
     FieldPanel('title', classname='full title'),
-    FieldPanel('colour', classname='full title'),
+
+    MultiFieldPanel(
+        [
+            PageChooserPanel('creator'),
+            PageChooserPanel('recipient'),
+            FieldPanel('subtype', classname='full'),
+
+            FieldPanel('date_from'),
+            FieldPanel('date_to'),
+
+            FieldPanel('location', classname='full'),
+            FieldPanel('location_purchase', classname='full'),
+        ],
+        heading="Entity Details",
+        classname="collapsible"
+    ),
+
     StreamFieldPanel('body'),
+
+    FieldPanel('comments', classname='full'),
+    FieldPanel('bibliog', classname='full'),
+
 ]
 
 

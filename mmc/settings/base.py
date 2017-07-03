@@ -354,3 +354,12 @@ FABRIC_USER = getpass.getuser()
 GA_ID = ''
 
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'cms/search_results.html'
+
+# ActiveCollab API URL
+AC_BASE_URL = 'https://app.activecollab.com/148987/api/v1/'
+# ActiveCollab API token
+AC_TOKEN = ''
+# ActiveCollab project ID
+AC_PROJECT_ID = 769
+# ActiveCollab user ID to create the issues
+AC_USER = 36
