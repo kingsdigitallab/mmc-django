@@ -4,7 +4,7 @@ CACHE_REDIS_DATABASE = '2'
 CACHES['default']['LOCATION'] = '127.0.0.1:6379:' + CACHE_REDIS_DATABASE
 
 INTERNAL_IPS = INTERNAL_IPS + ('', )
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mmc.cch.kcl.ac.uk', 'mmc.kdl.kcl.ac.uk']
 
 DATABASES = {
     'default': {
