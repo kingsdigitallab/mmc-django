@@ -5,9 +5,8 @@ import re
 def populate_entity_relationships(request, page):
     # I know this shouldn't go here, but it's a bit of
     # trickery
+    from cms.models import (Entity, ObjectPage) # noqa
     try:
-        from cms.models import (Entity, ObjectPage) # noqa
-
         if isinstance(page, ObjectPage):
 
             # Clear existing relations
@@ -40,7 +39,6 @@ def populate_entity_relationships(request, page):
             entities = Entity.objects.filter(id__in=page_list)
             for entity in entities.all():
                 page.entities.add(entity)
-
     except:
         pass
 
