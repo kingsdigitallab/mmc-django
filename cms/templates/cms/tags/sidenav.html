@@ -8,23 +8,17 @@
             <a href="{% pageurl p %}">
                 {{ p.title }}
             </a>
+            {% if p.get_children %}
             <ul>
+                {% for child in p.get_children %}
                 <li>
-                    <a href="">
-                        First Subchapter of Mozart and Sovenirs
+                    <a href="{% pageurl child %}">
+                        {{ child.title }}
                     </a>
                 </li>
-                <li >
-                    <a href="">
-                        Second Subchapter of Mozart and Sovenirs
-                    </a>
-                </li>
-                <li >
-                    <a href="">
-                        Third Subchapter of Mozart and Sovenirs
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
+            {% endif %}
         </li>
         {% endfor %}
     </ol>

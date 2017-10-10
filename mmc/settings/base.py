@@ -194,6 +194,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.template.context_processors.static',
                 'django.contrib.messages.context_processors.messages',
+                'activecollab_digger.context_processors.activecollab_digger',
             ],
             'debug': False,
         },
@@ -356,10 +357,13 @@ GA_ID = ''
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'cms/search_results.html'
 
 # ActiveCollab API URL
-AC_BASE_URL = 'https://app.activecollab.com/148987/api/v1/'
+AC_BASE_URL = 'https://app.activecollab.com/148987'
+AC_API_URL = AC_BASE_URL + '/api/v1/'
 # ActiveCollab API token
 AC_TOKEN = ''
 # ActiveCollab project ID
 AC_PROJECT_ID = 769
 # ActiveCollab user ID to create the issues
 AC_USER = 36
+
+LOGIN_URL = '/wagtail/login/'
