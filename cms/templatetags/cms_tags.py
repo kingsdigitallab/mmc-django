@@ -1,7 +1,7 @@
 from django import template
 from django.conf import settings
 
-from cms.models import (Entity, ObjectIndexPage)
+from cms.models import (EntityType, ObjectIndexPage)
 
 register = template.Library()
 
@@ -49,7 +49,7 @@ def main_menu(context, root, current_page=None):
 @register.inclusion_tag('cms/tags/entities.html', takes_context=True)
 def get_entities(context):
     ''' Gets the entity index page and returns its children'''
-    entities = Entity.objects.all()
+    entities = EntityType.objects.all()
 
     return {'request': context['request'], 'entities': entities}
 
