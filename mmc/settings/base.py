@@ -89,6 +89,7 @@ INSTALLED_APPS = (
 
 INSTALLED_APPS += (
     # your project apps here
+    'ddhldap',
     'cms',
     'activecollab_digger',
 )

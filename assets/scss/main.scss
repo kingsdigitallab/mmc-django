@@ -358,23 +358,29 @@ header{
     }
     .richtext-image{
       &.right{
-        float:right;
-        margin: 0 -5rem 0 0;
-        width: 60%;
         height: auto;
-        padding:1rem 0 1rem 5%;
+        float:right;
+        margin: 0;
+        padding:1%;
+        width: 48%;
       } 
       &.left{
+        height: auto;
         float:left;
         margin: 0;
-        width: 60%;
-        height: auto;
-        padding:1rem 5% 1rem 0;
+        padding:1%;
+        width: 48%;
       } 
       &.full-width{
-        width: 100%;
         height: auto;
-        padding:1rem 0;
+        padding:1% 0;
+        width: 100%;
+      } 
+      &.mid-width{
+        height: auto;
+        padding:1% 0;
+        width: 70%;
+        margin:0 15%;
       } 
     }
 
@@ -538,8 +544,13 @@ footer{
     }
   }
 
+
   /** End Search Results **/
 
+
+.error-page{
+  font-size: 3rem;
+}
 
   /* Reponsive menu code */
   @media all and (max-width:1000px) {  
@@ -578,7 +589,7 @@ footer{
     /** Homepage**/
     .homepage{
       margin: 4rem;
-      padding-bottom: 15rem;
+
       h2{
         border-bottom:none;
       }
