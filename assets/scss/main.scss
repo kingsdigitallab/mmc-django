@@ -374,6 +374,41 @@ header{
       text-align:justify;
       padding-left: 1.5rem;
     }
+    a{
+      text-decoration: none;
+      color: $black;
+      &.purple{
+        border-bottom: 1px solid;
+        border-bottom-color: $purple;
+      }  
+      &.darkgreen{
+        border-bottom: 1px solid;
+        border-bottom-color: $darkgreen;
+      }
+      &.lightgreen{
+        border-bottom: 1px solid;
+        border-bottom-color: $lightgreen; 
+      }  
+      &.orange{
+        border-bottom: 1px solid;
+        border-bottom-color: $orange; 
+      }
+      &.red{
+        border-bottom: 1px solid;
+        border-bottom-color: $red;
+      }
+      &.lightblue{
+        border-bottom: 1px solid;
+        border-bottom-color: $lightblue; 
+      }
+      &.darkblue{
+        border-bottom: 1px solid;
+        border-bottom-color: $darkblue; 
+      }
+      &:hover{
+        opacity:0.5;
+      }     
+    }
     .richtext-image{
       &.right{
         height: auto;
