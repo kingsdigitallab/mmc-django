@@ -67,7 +67,8 @@ def get_sidenav(context, current_page=None):
             current_section = (root_nodes & all_ancestors).first()
 
             return {'request': context['request'], 'pages': pages,
-                    'current_section': current_section}
+                    'current_section': current_section, 'current_page':
+                    current_page}
 
     return {'request': context['request'], 'pages': pages}
 

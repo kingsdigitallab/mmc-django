@@ -3,10 +3,10 @@
 <div class="{{ value.alignment }}">
     <div class="img-wrapper">
         {% if value.alignment == "left" or value.alignment == "right" %}
-        {% image value.image width-600 as theimage %}
+        {% image value.image original as theimage %}
         <img src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}">
         {% else %}
-        {% image value.image width-1024 as theimage %}
+        {% image value.image original as theimage %}
         <img src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}">
         {% endif %}
 
