@@ -170,30 +170,42 @@ header{
     /** End Nav **/
 
     /** Side Nav **/
+  .breadcrumb{
+    font-variant: small-caps;
+    border-bottom: 0.05rem solid;
+    padding-bottom:0.5rem;
+    color:$gray;
+    a{
+      color:$gray;
+      font-weight: bold;
+      font-size:0.8rem;
+    &:last-child{
+      display: block;
+      color:$black;
+      font-size:1.2rem;
+    }
+  }
+    .number{
+      font-family: 'Libre Baskerville', serif;
+      font-variant: normal;
+      font-size:0.8rem;
+      font-weight: normal;
+    }
+  }
+
     .sidenav{
-    width:100%;
-    position: absolute;
+    width:0;
+    float:left;
     left: 0;
     top: 8rem;
     bottom: 8rem;
-      .breadcrumb{
-        font-variant: small-caps;
-        border-bottom: 0.05rem solid;
-        margin-bottom:0;
-        font-weight: bold;
-        .number{
-          font-family: 'Libre Baskerville', serif;
-          font-variant: normal;
-          font-size:0.8rem;
-          font-weight: normal;
-        }
-      }
       h2{
         font-size: 1.3rem;
         font-weight: normal;
       }
       li{
         position: relative; 
+        background:$white;
       }
       ol {
     width: 20rem;
@@ -226,7 +238,7 @@ header{
             }
             a{
               color: $white;
-              opacity: 0.9;
+
             }
             ul li{
              position: relative;
@@ -306,9 +318,9 @@ header{
           vertical-align: top;
           line-height: 5rem;
           font-family: 'Libre Baskerville', serif;
-          width: 10%;
+          width: 7%;
+          padding-left:0.5rem;
           display: inline-block;
-       
         }
         .linktitle{
           font-size:1.2rem;
@@ -329,6 +341,7 @@ header{
         &:before 
         {
           color:$darkred;
+          opacity: 1;
         }
       }
     }
@@ -361,6 +374,8 @@ header{
   .object-index{
     margin: 0 10rem 0 20rem;
     padding-top: 2rem;
+    float: left;
+    border-left:1rem solid;
     h2{
       position:absolute;
       top:-30%;
@@ -562,7 +577,7 @@ header{
 }
 footer{
   height: 8rem;
-  margin-top: 1.5rem;
+
 }
 .footer-content {
   height: 6rem ; /* height + top/bottom paddding + top/bottom border must add up to footer height */
@@ -615,7 +630,7 @@ footer{
             height: 100%;
             border-right: 0.5rem solid;
             >li {
-                padding: 1rem 1.5rem 1.5rem 0.5rem;
+                padding: 1rem 1.5rem 1.5rem 0.3rem;
             }
             &:hover {
                 width: 20rem;
@@ -637,7 +652,8 @@ footer{
     }
 
     .object-index{
-      margin: 0 11rem 0 4.5rem;
+      margin: 0 11rem 0 4rem;
+      border-left:0.5rem solid;
       h2{
         position: inherit;
         padding-left:1rem;
@@ -645,9 +661,6 @@ footer{
       p{
         padding-left:1rem;
       }  
-      .richtext-image.right {
-        margin: 0 -5rem 0 0;
-      }
       .right .img-wrapper{
         margin: 0 -7rem 0 0;
       }
@@ -671,7 +684,7 @@ footer{
 
     header{
       h1{
-        width:10rem;
+        width:11rem;
         font-size:1.2rem;
         padding: 0.5rem 0 0 0.5rem;
       }
@@ -688,10 +701,11 @@ footer{
    }
 
    /** Side Nav **/  
-   .sidenav{ 
-    .breadcrumb{
-      margin:0 0.5rem;
+   .breadcrumb{
+      margin:0;
+      padding-left: 0.5rem;
     }
+   .sidenav{  
     .linktitle a{
       left: -25rem;
       font-size: 1.2rem;
@@ -699,9 +713,9 @@ footer{
     ol{
       width:2rem;
       border-right:0.3rem solid; 
-      margin-left: 0.5rem;
+      margin-left: 0;
       > li{
-        padding: 1rem 1.5rem 1.5rem 0.5rem;
+        padding: 1rem 1.5rem 1.5rem 0rem;
         >a{
           padding:1rem 0 0 0.5rem;
         }
@@ -748,8 +762,9 @@ footer{
   /** Object Index Page **/
 
   .object-index{
-    margin: 3rem 0 0 2.8rem;
+    margin: 0 0 0 1.5rem;
     padding: 0;
+    border-left:0.3rem solid;
     h2{
       padding:1rem 0 0.3rem 0.5rem;
       font-size: 1.4rem;
