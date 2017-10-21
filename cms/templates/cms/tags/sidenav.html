@@ -15,6 +15,7 @@
 
 
     <ol>
+        <h5>Chapter</h5>
         {% for p in pages %}
         <li class="linktitle has-sub {% if p.id == current_section.id %}active {% endif %}">
             <a href="{% pageurl p %}">
@@ -22,6 +23,7 @@
             </a>
             {% if p.get_children %}
             <ul>
+            <h5>Subchapter</h5>
                 {% for child in p.get_children %}
                 <li>
                     <a href="{% pageurl child %}">
