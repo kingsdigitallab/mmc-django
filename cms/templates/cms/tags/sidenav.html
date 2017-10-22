@@ -17,7 +17,7 @@
     <ol>
         <h5>Chapter</h5>
         {% for p in pages %}
-        <li class="linktitle has-sub {% if p.id == current_section.id %}active {% endif %}">
+        <li class="linktitle {% if p.id == current_section.id %}active {% endif %}">
             <a href="{% pageurl p %}">
                 {{ p.title }}
             </a>
