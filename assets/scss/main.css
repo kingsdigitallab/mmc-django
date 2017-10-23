@@ -120,27 +120,41 @@ header h1 {
 
 /** End Nav **/
 /** Side Nav **/
+.breadcrumb {
+  font-variant: small-caps;
+  border-bottom: 0.05rem solid;
+  padding-bottom: 0.5rem;
+  color: #888; }
+  .breadcrumb a {
+    color: #888;
+    font-weight: bold;
+    font-size: 0.8rem; }
+    .breadcrumb a:last-child {
+      display: block;
+      color: #000;
+      font-size: 1.2rem; }
+  .breadcrumb .number {
+    font-family: 'Libre Baskerville', serif;
+    font-variant: normal;
+    font-size: 0.8rem;
+    font-weight: normal; }
+
 .sidenav {
-  width: 100%;
-  position: absolute;
+  width: 0;
+  float: left;
   left: 0;
   top: 8rem;
   bottom: 8rem; }
-  .sidenav .breadcrumb {
-    font-variant: small-caps;
-    border-bottom: 0.05rem solid;
-    margin-bottom: 0;
-    font-weight: bold; }
-    .sidenav .breadcrumb .number {
-      font-family: 'Libre Baskerville', serif;
-      font-variant: normal;
-      font-size: 0.8rem;
-      font-weight: normal; }
   .sidenav h2 {
     font-size: 1.3rem;
     font-weight: normal; }
+  .sidenav h5 {
+    font-variant: small-caps;
+    margin: 0;
+    padding: 0.5rem 0; }
   .sidenav li {
-    position: relative; }
+    position: relative;
+    background: #fff; }
   .sidenav ol {
     width: 20rem;
     background: #fff;
@@ -150,15 +164,6 @@ header h1 {
     margin: 0;
     counter-reset: li;
     list-style-type: none; }
-    .sidenav ol ul {
-      visibility: hidden;
-      position: absolute;
-      top: 0;
-      left: 99%;
-      z-index: 2;
-      width: 100%;
-      background: #fff;
-      opacity: 1; }
     .sidenav ol > li {
       border-bottom: 0.05rem solid #000; }
       .sidenav ol > li:hover {
@@ -166,10 +171,10 @@ header h1 {
         background: #000; }
         .sidenav ol > li:hover:before {
           color: #c11609;
-          opacity: 1; }
+          opacity: 0.7; }
         .sidenav ol > li:hover a {
           color: #fff;
-          opacity: 0.9; }
+          opacity: 0.7; }
         .sidenav ol > li:hover ul li {
           position: relative; }
           .sidenav ol > li:hover ul li:first-child {
@@ -191,10 +196,22 @@ header h1 {
             width: 70%;
             padding: 0 0 2rem 0; }
       .sidenav ol > li > ul {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 99%;
+        z-index: 2;
+        width: 100%;
+        background: #000;
+        opacity: 1;
         counter-reset: li;
         list-style-type: none;
         margin-left: 0.2rem;
         width: 15rem; }
+        .sidenav ol > li > ul h5 {
+          margin-left: -1.2rem;
+          padding-bottom: 0.7rem;
+          color: #c11609; }
         .sidenav ol > li > ul > li {
           margin-left: -40px;
           background: #000;
@@ -230,7 +247,8 @@ header h1 {
         vertical-align: top;
         line-height: 5rem;
         font-family: 'Libre Baskerville', serif;
-        width: 10%;
+        width: 7%;
+        padding-left: 0.5rem;
         display: inline-block; }
       .sidenav ol > li .linktitle {
         font-size: 1.2rem;
@@ -244,7 +262,8 @@ header h1 {
       .sidenav ol .active a {
         color: #fff; }
       .sidenav ol .active:before {
-        color: #c11609; }
+        color: #c11609;
+        opacity: 1; }
 
 /** Section **/
 section {
@@ -267,7 +286,9 @@ section {
 /** Object Index Page **/
 .object-index {
   margin: 0 10rem 0 20rem;
-  padding-top: 2rem; }
+  padding-top: 2rem;
+  float: left;
+  border-left: 1rem solid; }
   .object-index h2 {
     position: absolute;
     top: -30%;
@@ -278,6 +299,32 @@ section {
   .object-index p {
     text-align: justify;
     padding-left: 1.5rem; }
+  .object-index a {
+    text-decoration: none;
+    color: #000; }
+    .object-index a.purple {
+      border-bottom: 1px solid;
+      border-bottom-color: #B50AA8; }
+    .object-index a.darkgreen {
+      border-bottom: 1px solid;
+      border-bottom-color: #047657; }
+    .object-index a.lightgreen {
+      border-bottom: 1px solid;
+      border-bottom-color: #9cdb76; }
+    .object-index a.orange {
+      border-bottom: 1px solid;
+      border-bottom-color: #FF7F00; }
+    .object-index a.red {
+      border-bottom: 1px solid;
+      border-bottom-color: #FF0000; }
+    .object-index a.lightblue {
+      border-bottom: 1px solid;
+      border-bottom-color: #00BAFF; }
+    .object-index a.darkblue {
+      border-bottom: 1px solid;
+      border-bottom-color: #192BB7; }
+    .object-index a:hover {
+      opacity: 0.5; }
   .object-index .richtext-image.right {
     height: auto;
     float: right;
@@ -393,8 +440,7 @@ section {
   clear: both; }
 
 footer {
-  height: 8rem;
-  margin-top: 1.5rem; }
+  height: 8rem; }
 
 .footer-content {
   height: 6rem;
@@ -433,7 +479,7 @@ footer {
     height: 100%;
     border-right: 0.5rem solid; }
     .sidenav ol > li {
-      padding: 1rem 1.5rem 1.5rem 0.5rem; }
+      padding: 1rem 1.5rem 1.5rem 0.3rem; }
     .sidenav ol:hover {
       width: 20rem; }
       .sidenav ol:hover li.linktitle a {
@@ -447,14 +493,13 @@ footer {
       border-bottom: none; }
 
   .object-index {
-    margin: 0 11rem 0 4.5rem; }
+    margin: 0 11rem 0 4rem;
+    border-left: 0.5rem solid; }
     .object-index h2 {
       position: inherit;
       padding-left: 1rem; }
     .object-index p {
       padding-left: 1rem; }
-    .object-index .richtext-image.right {
-      margin: 0 -5rem 0 0; }
     .object-index .right .img-wrapper {
       margin: 0 -7rem 0 0; } }
 @media all and (max-width: 650px) {
@@ -467,7 +512,7 @@ footer {
       margin-left: 0; }
 
   header h1 {
-    width: 10rem;
+    width: 11rem;
     font-size: 1.2rem;
     padding: 0.5rem 0 0 0.5rem; }
 
@@ -478,19 +523,25 @@ footer {
       top: 2.2rem; }
 
   /** Side Nav **/
-  .sidenav .breadcrumb {
-    margin: 0 0.5rem; }
+  .breadcrumb {
+    margin: 0;
+    padding-left: 0.5rem; }
+
   .sidenav .linktitle a {
     left: -25rem;
     font-size: 1.2rem; }
   .sidenav ol {
     width: 2rem;
     border-right: 0.3rem solid;
-    margin-left: 0.5rem; }
+    margin-left: 0; }
     .sidenav ol > li {
-      padding: 1rem 1.5rem 1.5rem 0.5rem; }
+      padding: 1rem 1.5rem 1.5rem 0rem; }
       .sidenav ol > li > a {
         padding: 1rem 0 0 0.5rem; }
+      .sidenav ol > li ul {
+        margin-left: 0.8rem; }
+        .sidenav ol > li ul h5 {
+          margin-left: -2.5rem; }
       .sidenav ol > li:before {
         font-size: 2rem;
         line-height: 4rem; }
@@ -516,8 +567,9 @@ footer {
       section .homepage h2 {
         border-bottom: none; }
     section .object-index {
-      margin: 3rem 0 0 2.8rem;
-      padding: 0; }
+      margin: 0 0 0 1.5rem;
+      padding: 0;
+      border-left: 0.3rem solid; }
       section .object-index h2 {
         padding: 1rem 0 0.3rem 0.5rem;
         font-size: 1.4rem;

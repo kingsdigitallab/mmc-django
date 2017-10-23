@@ -1,7 +1,4 @@
 {% load wagtailcore_tags %}
-
-<div class="sidenav">
-
 <div class="breadcrumb">
     {% for p in current_page.get_ancestors %} 
         {% if p.title != 'Root' %}
@@ -9,19 +6,24 @@
         {% endif %}
     {% endfor %}
 
-    <a href="{% pageurl current_page %}">{{ current_page.title }}</a>
+    <a href="">{{ current_page.title }}</a>
 
 </div>
+<div class="sidenav">
+
+
 
 
     <ol>
+        <h5>Chapter</h5>
         {% for p in pages %}
-        <li class="linktitle has-sub {% if p.id == current_section.id %}active {% endif %}">
+        <li class="linktitle {% if p.id == current_section.id %}active {% endif %}">
             <a href="{% pageurl p %}">
                 {{ p.title }}
             </a>
             {% if p.get_children %}
             <ul>
+            <h5>Subchapter</h5>
                 {% for child in p.get_children %}
                 <li>
                     <a href="{% pageurl child %}">
