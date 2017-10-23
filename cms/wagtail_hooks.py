@@ -1,4 +1,8 @@
+from django.conf import settings
+from django.utils.html import format_html, format_html_join
 from wagtail.wagtailcore import hooks
+from wagtail.wagtailcore.whitelist import attribute_rule, check_url
+
 import re
 
 
@@ -45,3 +49,42 @@ def populate_entity_relationships(request, page):
 
 hooks.register('after_create_page', populate_entity_relationships)
 hooks.register('after_edit_page', populate_entity_relationships)
+
+
+def editor_js():
+    js_files = [
+        'js/hallo_plugin_caption_image.js',
+    ]
+
+    js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
+                                   ((settings.STATIC_URL, filename)
+                                    for filename in js_files)
+                                   )
+
+    return js_includes + format_html("""
+        <script>
+            registerHalloPlugin('imageCaptionButton');
+        </script>
+        """)
+
+
+hooks.register('insert_editor_js', editor_js)
+
+
+def whitelister_element_rules():
+    return {
+        'p': attribute_rule({'class': True}),
+        'a': attribute_rule({'href': check_url, 'id': True, 'class': True,
+                             'target': True}),
+        'span': attribute_rule({'class': True}),
+        'i': attribute_rule({'class': True}),
+        'iframe': attribute_rule(
+            {'id': True, 'class': True, 'src': True, 'style': True,
+             'frameborder': True, 'allowfullscreen': True, 'width': True,
+             'height': True}),
+        'small': attribute_rule({'class': True})
+    }
+
+
+hooks.register('construct_whitelister_element_rules',
+               whitelister_element_rules)
