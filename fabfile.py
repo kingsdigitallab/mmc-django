@@ -36,6 +36,7 @@ env.django_root_path = '/vol/{}/webroot/'.format(PROJECT_NAME)
 # Absolute filesystem path to Python virtualenv for this project
 env.envs_path = os.path.join(env.root_path, 'envs')
 # -------------------------------
+env.gateway = 'ssh.cch.kcl.ac.uk'
 
 django.project(PROJECT_NAME)
 
