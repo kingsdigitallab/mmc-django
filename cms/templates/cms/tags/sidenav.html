@@ -10,20 +10,14 @@
 
 </div>
 <div class="sidenav">
-
-
-
-
     <ol>
-        <h5>Chapter</h5>
         {% for p in pages %}
         <li class="linktitle {% if p.id == current_section.id %}active {% endif %}">
-            <a href="{% pageurl p %}">
-                {{ p.title }}
-            </a>
             {% if p.get_children %}
             <ul>
-            <h5>Subchapter</h5>
+                <a class="linktitle" href="{% pageurl p %}">
+                {{ p.title }}
+                </a>
                 {% for child in p.get_children %}
                 <li>
                     <a href="{% pageurl child %}">

@@ -1,9 +1,13 @@
 @import 'settings';
 
+
+
 /*  copy the _settings file from the vendor scss
 folder to the project one */
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Sorts+Mill+Goudy');
+
+
 
 
 /** Your custom scss here **/
@@ -31,6 +35,8 @@ body {
     height: 100%;
     font-family: 'Sorts Mill Goudy', serif;
 }
+
+
 
 
 /*body{
@@ -69,6 +75,8 @@ a {
     text-decoration: none;
     color: $black;
 }
+
+
 
 
 
@@ -178,6 +186,8 @@ header {
 }
 
 
+
+
 /** End Nav **/
 
 
@@ -206,6 +216,9 @@ header {
     }
 }
 
+
+
+/* Old 
 .sidenav {
     width: 0;
     float: left;
@@ -216,13 +229,6 @@ header {
     h2 {
         font-size: 1.3rem;
         font-weight: normal;
-    }
-    h5 {
-        font-variant: small-caps;
-        margin: 0;
-        background: $black;
-        padding: 0.2rem 0 0.1rem 0.3rem;
-        color: rgba(255, 255, 255, 0.8)
     }
     li {
         position: relative;
@@ -393,7 +399,248 @@ header {
             }
         }
     }
+}*/
+
+.sidenav {
+    width: 0;
+    float: left;
+    left: 0;
+    top: 8rem;
+    bottom: 8rem;
+    height: 100vh;
+    h2 {
+        font-size: 1.3rem;
+        font-weight: normal;
+    }
+    li {
+        position: relative;
+        background: $white;
+    }
+    ol {
+        background: #fff;
+        border-right: 0.5rem solid $black;
+        padding: 0;
+        margin: 0;
+        counter-reset: li;
+        list-style-type: none;
+        width: 4rem;
+        height: 100%;
+        >li {
+            border-bottom: 0.05rem solid $black;
+            padding: 1rem 1.5rem 1.5rem 0.3rem;
+            &:hover {
+                color: $white;
+                background: $black;
+                opacity: 1;
+                &:before {
+                    color: $white;
+                    opacity: 0.7;
+
+                }
+                a {
+                    color: $white;
+                    opacity: 1;
+                   
+                }
+                ul li {
+                    position: relative;
+                    &:first-child {
+                        padding-top: 1.5rem;
+                    }
+                    a {
+                        color: $white;
+                        //width: 90%;
+                        opacity: 0.7;
+                    }
+                }
+            }
+            >a {
+                font-size: 1.3rem;
+                display: inline-block;
+                //width: 80%;
+                padding: 1.5rem 0 1.5rem 1rem;
+                opacity: 0.5;
+                background: yellow;
+            }
+
+            &:hover {
+                //width: 4rem;
+                >ul {
+                    visibility: visible;
+
+                    >li {
+                        visibility: visible;
+                        a {
+                            width: 70%;
+                            padding: 0 0 2rem 0;
+                        }
+                    }
+                }
+            }
+            >ul {
+                visibility: hidden;
+                position: absolute;
+                top: 0;
+                left: 99%;
+                z-index: 2;
+                background: $black;
+                opacity: 1;
+                counter-reset: li;
+                list-style-type: none;
+                width: 15rem;
+                h5 {
+                    margin-left: -1.4rem;
+                    padding-top: 0.2rem;
+                    padding-bottom: 1.5rem;
+                    color: rgba(255, 255, 255, 0.7);
+                }
+                >li {
+                    margin-left: -40px;
+                    background: $black;
+                    color: $white;
+
+                    &:hover {
+                        background: $black;
+                        opacity: 1;
+                        &:before {
+                            color: $white;
+                            opacity: 1;
+                        }
+                        a {
+                            opacity: 1;
+                        }
+                    }
+                    >a {
+                        display: inline-block;
+                        color: $white;
+                    }
+
+                    &:before {
+                        counter-increment: li;
+                        content: counter(li, lower-roman);
+                        font-size: 1.5rem;
+                        opacity: 0.7;
+                        vertical-align: top;
+                        line-height: 1rem;
+                        font-family: 'Libre Baskerville', serif;
+                        color: $white;
+                        font-size: 1rem;
+                        margin-left: 1.5rem;
+                        width: 2rem;
+                        display: inline-block;
+                    }
+                }
+            }
+            &:before {
+                counter-increment: li;
+                content: counter(li);
+                font-size: 3.5rem;
+                opacity: 0.4;
+                vertical-align: top;
+                line-height: 5rem;
+                font-family: 'Libre Baskerville', serif;
+                //width: 7%;
+                padding-left: 0.5rem;
+                //display: inline-block;
+            }
+            .linktitle {
+                font-size: 1.5rem;
+                margin: 1.6rem 1rem 2rem -1.2rem;
+                display: block;
+                &:hover {
+                    opacity: 0.5;
+                }
+                &:first-child {
+                    border-top: none;
+                }
+            }
+        }
+        .active {
+            background: $white;
+            a {
+                color: $black;
+                opacity: 1;
+            }
+            &:before {
+                color: $darkred;
+                opacity: 1;
+            }
+            &:hover {
+                &:before {
+                    color: $darkred;
+                }
+            }
+            >li {
+                border-bottom: 0.05rem solid $black;
+            }
+            >ul {
+                >li {
+                    &:hover {
+                        background: $black;
+                        opacity: 1;
+                        &:before {
+                            color: $darkred;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+/* .sidenav {
+        .linktitle a {
+            left: -25rem;
+            font-size: 1.2rem;
+        }
+        h5 {
+            display: none;
+            padding: 0;
+        }
+        ol {
+            width: 2rem;
+            border-right: 0.3rem solid;
+            margin-left: 0;
+            >li {
+                padding: 1rem 1.5rem 1.5rem 0rem;
+                >a {
+                    padding: 1rem 0 0 0.5rem;
+                }
+                ul {
+                    margin-left: 0.8rem;
+                    h5 {
+                        margin-left: -2.5rem;
+                    }
+                }
+                &:before {
+                    font-size: 2rem;
+                    line-height: 4rem;
+                }
+                &:hover {
+
+                    >ul {
+                        left: 0;
+                        position: relative;
+                        width: 11.3rem;
+                        margin-top: 2rem;
+                        >li {
+                            padding: 0;
+                            &:before {
+                                margin-left: 0;
+                                width: 1rem;
+                            }
+                            >a {
+                                font-size: 1rem;
+                                width: 85%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }*/
 
 
 /** Section **/
@@ -411,6 +658,8 @@ section {
 }
 
 
+
+
 /** Homepage**/
 
 .homepage {
@@ -423,10 +672,12 @@ section {
 }
 
 
+
+
 /** Object Index Page **/
 
 .object-index {
-    margin: 0 10rem 0 20rem;
+    margin: 0 10rem 0 4rem;
     padding-top: 2rem;
     float: left;
     border-left: 0.5rem solid $black;
@@ -566,6 +817,8 @@ section {
 }
 
 
+
+
 /** Entities **/
 
 .entities {
@@ -625,6 +878,8 @@ section {
 
 
 
+
+
 /** Footer **/
 
 .push {
@@ -643,6 +898,8 @@ footer {
     border-top: 0.05rem solid $black;
     font-size: 0.7rem;
 }
+
+
 
 
 /** End Footer **/
@@ -672,6 +929,8 @@ footer {
 
 
 
+
+
 /** End Search Results **/
 
 .error-page {
@@ -679,34 +938,13 @@ footer {
 }
 
 
+
+
 /* Reponsive menu code */
 
 @media all and (max-width:1000px) {
 
     /** Side Nav **/
-    .sidenav {
-        height: 100%;
-        .linktitle a {
-            position: absolute;
-            left: -25rem;
-        }
-        ol {
-            width: 4rem;
-            height: 100%;
-            border-right: 0.5rem solid;
-            height: 100%;
-            >li {
-                padding: 1rem 1.5rem 1.5rem 0.3rem;
-            }
-            &:hover {
-                width: 20rem;
-                li.linktitle a {
-                    left: 0.5rem;
-                    position: relative;
-                }
-            }
-        }
-    }
 
     /** Homepage**/
     .homepage {
@@ -770,7 +1008,7 @@ footer {
         margin: 0;
         padding-left: 0.5rem;
     }
-    .sidenav {
+/*    .sidenav {
         .linktitle a {
             left: -25rem;
             font-size: 1.2rem;
@@ -819,7 +1057,27 @@ footer {
                 }
             }
         }
+    }*/
+.sidenav {
+        ol {
+            width: 2rem;
+            border-right: 0.3rem solid;
+            margin-left: 0;
+            >li {
+                padding: 1rem 1.5rem 1.5rem 0rem;
+                &:before {
+                    font-size: 2rem;
+                    line-height: 4rem;
+                }
+                .linktitle {
+                font-size: 1.3rem;
+                }
+            }
+        }
     }
+
+
+
 
     section {
         padding: 0 0.5rem;

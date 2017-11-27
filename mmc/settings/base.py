@@ -91,7 +91,7 @@ INSTALLED_APPS += (
     # your project apps here
     'ddhldap',
     'cms',
-    'activecollab_digger',
+    # 'activecollab_digger',
 )
 
 INTERNAL_IPS = ('127.0.0.1', )
@@ -195,7 +195,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.template.context_processors.static',
                 'django.contrib.messages.context_processors.messages',
-                'activecollab_digger.context_processors.activecollab_digger',
+                # 'activecollab_digger.context_processors.activecollab_digger',
             ],
             'debug': False,
         },
