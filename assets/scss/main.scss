@@ -697,6 +697,7 @@ section {
     a {
         text-decoration: none;
         color: $black;
+        word-break: break-all;
         &.purple {
             border-bottom: 1px solid;
             border-bottom-color: $purple;
