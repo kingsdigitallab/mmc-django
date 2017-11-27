@@ -729,6 +729,9 @@ section {
             opacity: 0.5;
         }
     }
+    .rich-text{
+        float: left;
+    }
     .richtext-image {
         &.right {
             height: auto;
