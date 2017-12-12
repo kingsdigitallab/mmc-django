@@ -197,10 +197,12 @@ EntityType.content_panels = [
 # Entity
 class Entity(Page, WithStreamField):
     creator = models.ForeignKey('self', null=True,
+                                blank=True,
                                 verbose_name='Creator',
                                 related_name='entity_creator',
                                 on_delete=models.SET_NULL)
     recipient = models.ForeignKey('self', null=True,
+                                  blank=True,
                                   verbose_name='Recipient',
                                   related_name='entity_recipient',
                                   on_delete=models.SET_NULL)
