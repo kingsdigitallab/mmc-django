@@ -8,7 +8,7 @@ from wagtail.wagtailcore.blocks import (
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 # from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
-
+from wagtail.contrib.table_block.blocks import TableBlock
 
 class HTMLAlignmentChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
@@ -82,6 +82,7 @@ class CMSStreamBlock(StreamBlock):
     intro = RichTextBlock(icon='pilcrow')
     paragraph = RichTextBlock(icon='pilcrow')
     pullquote = PullQuoteBlock(icon='openquote')
+    table = TableBlock()
 
     # image = ImageBlock(label='Aligned image', icon='image')
     document = DocumentChooserBlock(icon='doc-full-inverse')
