@@ -732,19 +732,20 @@ section {
     }
     .rich-text{
         float: left;
+        width:100%;
     }
     .richtext-image {
         &.right {
             height: auto;
             float: right;
-            padding: 1%;
+            padding: 1% 0 1% 3%;
             width: 48%;
         }
         &.left {
             height: auto;
             float: left;
             margin: 0;
-            padding: 1%;
+            padding: 1% 3% 1% 0;
             width: 48%;
         }
         &.full-width {
@@ -880,7 +881,11 @@ section {
 }
 
 
-
+/* Table */
+td{
+    text-align: justify;
+    padding:0 1rem;
+}
 
 
 
@@ -1117,16 +1122,16 @@ footer {
             .mid .img-wrapper {
                 width: 100%;
                 margin: 0;
-                padding: 0;
+                padding: 1% 0;
             }
             .richtext-image {
                 &.left {
                     width: 100%;
-                    padding: 0;
+                    padding: 1% 0;
                 }
                 &.right {
                     width: 100%;
-                    padding: 0;
+                    padding: 1% 0;
                     margin: 0;
                 }
             }
