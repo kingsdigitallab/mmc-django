@@ -5,7 +5,7 @@ import logging
 from django.conf import settings
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
@@ -18,7 +18,7 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from .behaviours import WithFeedImage, WithStreamField
+from .behaviours import WithFeedImage, WithStreamField, int_to_roman
 
 logger = logging.getLogger(__name__)
 
@@ -179,7 +179,11 @@ class EntityIndexPage(Page):
 
 # EntityType
 class EntityType(Page, WithStreamField):
-    colour = models.CharField(max_length=128, blank=False)
+    colour = models.CharField(max_length=128, blank=False, help_text="You\
+            can use the following colours:\
+            lightgreen, darkgreen, lightpurple,\
+            dark, purple, yellow, orange, red, lightblue,\
+            darkblue, lightbrown, darkbrown and lightgray.")
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
@@ -271,6 +275,9 @@ Entity.content_panels = [
 class ObjectIndexPage(Page, WithStreamField):
     subpage_types = ['ObjectPage']
 
+    def serve(self, request):
+        return redirect('/', permanent=False)
+
 
 ObjectIndexPage.content_panels = [
     FieldPanel('title', classname='full title'),
@@ -287,6 +294,14 @@ class ObjectPage(Page, WithStreamField):
     ]
 
     subpage_types = ['ObjectPage']
+
+    def get_numeral(self):
+        page = Page.objects.get(pk=self.pk)
+        num = list(self.get_parent().get_children()).index(page) + 1
+        if type(self.get_parent().specific) == ObjectPage:
+            return int_to_roman(num)
+        else:
+            return num
 
 
 ObjectPage.content_panels = [

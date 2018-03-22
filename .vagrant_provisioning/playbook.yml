@@ -75,32 +75,42 @@
     - vars.yml
   gather_facts: false
   tasks:
-  - name: pip | setup virtualenv
-    file: path={{ python.virtualenv_location }} state=directory
-  - command: virtualenv {{ python.virtualenv_location }}
-    tags:
-      - python
-
-  - name: pip | Installing fix for setuptools (requirements-setuptools-fix.txt)
-    pip:
-      requirements: "{{ project_root }}/requirements-setuptools-fix.txt"
-      virtualenv: "{{ python.virtualenv_location }}"
-    tags:
-      - python
-
-  - name: pip | update setuptools
-    pip:
-      name: setuptools
-      virtualenv: "{{ python.virtualenv_location }}"
-      state: latest
+  - name: python | easy install pip
+    become: yes
+    command: "easy_install -f https://pypi.python.org/simple/pip pip-8.1.0"
     tags:
       - python
 
   - name: pip | update pip
+    become: yes
     pip:
       name: pip
-      virtualenv: "{{ python.virtualenv_location }}"
       state: latest
+    tags:
+      - python
+
+
+  - name: pip | update setuptools
+    become: yes
+    pip:
+      name: setuptools
+      state: latest
+    tags:
+      - python
+
+  - name: pip | install venv
+    become: yes
+    pip:
+      name: virtualenv
+      state: latest
+    tags:
+      - python
+
+  - name: pip | setup virtualenv
+    file: path={{ python.virtualenv_location }} state=directory
+
+  - name: pip | setup virtualenv 2
+    command: virtualenv {{ python.virtualenv_location }}
     tags:
       - python
 
