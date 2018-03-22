@@ -303,6 +303,39 @@ class ObjectPage(Page, WithStreamField):
         else:
             return num
 
+    def get_next(self):
+        page = Page.objects.get(pk=self.pk)
+        num = list(self.get_parent().get_children()).index(page) + 1
+
+        if num < self.get_parent().get_children().count():
+            return self.get_parent().get_children()[num]
+        else:
+            parent_page = self.get_parent()
+            parent_num = list(parent_page.get_parent().get_children()).index(
+                parent_page) + 1
+
+            if parent_num < parent_page.get_parent().get_children().count():
+                return parent_page.get_parent().get_children()[parent_num]
+            else:
+                return None
+
+    def get_prev(self):
+        page = Page.objects.get(pk=self.pk)
+        num = list(self.get_parent().get_children()).index(page) - 1
+
+        if num >= 0:
+            return self.get_parent().get_children()[num]
+        else:
+            parent_page = self.get_parent()
+            parent_num = list(parent_page.get_parent().get_children()).index(
+                parent_page) - 1
+
+            if parent_num >= 0:
+                return parent_page.get_parent().get_children()[parent_num]
+
+            else:
+                return None
+
 
 ObjectPage.content_panels = [
     FieldPanel('title', classname='full title'),

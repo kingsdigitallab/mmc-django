@@ -15,9 +15,17 @@
         <li class="linktitle {% if p.id == current_section.id %}active {% endif %}">
             {% if p.get_children %}
             <ul>
-                <a class="linktitle" href="{% pageurl p %}">
+                <span class="linktitle">
                 {{ p.title }}
-                </a>
+                </span>
+
+                <li>
+                    <a href="{% pageurl p %}">
+                        Introduction
+                    </a>
+                </li>
+
+
                 {% for child in p.get_children %}
                 <li>
                     <a href="{% pageurl child %}">
