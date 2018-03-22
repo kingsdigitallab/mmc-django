@@ -14,6 +14,10 @@
             <div class="gray-bg intro">{{ block }}</div>
         {% elif block.block_type == 'paragraph' %}
             {{ block.value|richtext }}
+        {% elif block.block_type == 'pullquote' %}
+            <div class="pullquote">
+            {{ block.value|richtext }}
+            </div>
         {% elif block.block_type == 'html' %}
             <div class="iframe-container block.value.alignment">
                 {{ block.value.bound_blocks.html.render }}

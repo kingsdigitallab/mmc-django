@@ -10,6 +10,7 @@ from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
 
+
 class HTMLAlignmentChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
         ('default', 'Default'), ('full', 'Full width'),
@@ -81,7 +82,8 @@ class CMSStreamBlock(StreamBlock):
 
     intro = RichTextBlock(icon='pilcrow')
     paragraph = RichTextBlock(icon='pilcrow')
-    pullquote = PullQuoteBlock(icon='openquote')
+    pullquote = RichTextBlock(icon='openquote', classname='pullquote')
+    # pullquote = PullQuoteBlock(icon='openquote')
     table = TableBlock()
 
     # image = ImageBlock(label='Aligned image', icon='image')
