@@ -9,7 +9,11 @@
 {% block main %}
 <div class="object-index">
 <!--<header><h2>{{ self.title }}</h2></header>-->
+
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
+
+{% include "cms/includes/streamfield_footnotes.html" with blocks=self.body %}
+
 	<div class="bottom-nav">
 
 		{% with prev=self.get_prev %}

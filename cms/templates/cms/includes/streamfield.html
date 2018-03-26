@@ -22,6 +22,7 @@
             <div class="iframe-container block.value.alignment">
                 {{ block.value.bound_blocks.html.render }}
             </div>
+        {% elif block.block_type == 'footnote' %}
         {% else %}
             {% include_block block %}
         {% endif %}
