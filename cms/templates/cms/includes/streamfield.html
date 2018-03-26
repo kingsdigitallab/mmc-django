@@ -16,7 +16,7 @@
             {{ block.value|richtext }}
         {% elif block.block_type == 'pullquote' %}
             <div class="pullquote">
-            {{ block.value|richtext }}
+            {{ block.value }}
             </div>
         {% elif block.block_type == 'html' %}
             <div class="iframe-container block.value.alignment">
