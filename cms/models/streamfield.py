@@ -22,12 +22,21 @@ class AlignedHTMLBlock(StructBlock):
     alignment = HTMLAlignmentChoiceBlock()
 
 
+class FootnoteBlock(StructBlock):
+    numeral = TextBlock()
+    reference = TextBlock()
+
+    class Meta:
+        template = 'cms/blocks/footnote_block.html'
+
+
 class ImageFormatChoiceBlock(FieldBlock):
     field = forms.ChoiceField(choices=(
         ('left', 'Wrap left'), ('right', 'Wrap right'),
         ('mid', 'Centred'), ('full-width', 'Full width'),
         ('hero', 'Hero'),
     ))
+
 
 
 class ImageBlock(StructBlock):
@@ -85,6 +94,7 @@ class CMSStreamBlock(StreamBlock):
     pullquote = RichTextBlock(icon='openquote', classname='pullquote')
     # pullquote = PullQuoteBlock(icon='openquote')
     table = TableBlock()
+    footnote = FootnoteBlock()
 
     # image = ImageBlock(label='Aligned image', icon='image')
     document = DocumentChooserBlock(icon='doc-full-inverse')

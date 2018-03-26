@@ -11,12 +11,9 @@
 
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
 
-{% if self.objectpage_set.all %}
-<div class="page-content">
-    {% for page in self.objectpage_set.all %}
-        <p><a href="{% pageurl page %}">{{page.title}}</a></p>
-    {% endfor %}
-</div>
-{% endif %}
-
+<ul>
+{% for e in self.get_children %}
+	<li><a href="{% pageurl e%}">{{ e.title }}</a></li>
+{% endfor %}
+</ul>
 {% endblock %}

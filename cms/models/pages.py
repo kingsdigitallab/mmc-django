@@ -202,7 +202,7 @@ EntityType.content_panels = [
 class Entity(Page, WithStreamField):
     creator = models.ForeignKey('self', null=True,
                                 blank=True,
-                                verbose_name='Creator',
+                                verbose_name='Author/Creator',
                                 related_name='entity_creator',
                                 on_delete=models.SET_NULL)
     recipient = models.ForeignKey('self', null=True,
@@ -213,16 +213,30 @@ class Entity(Page, WithStreamField):
     subtype = models.CharField(max_length=128, blank=True,
                                null=True,
                                verbose_name='Subtype/Role')
-    date_from = models.DateField(blank=True, null=True,
+    date_from = models.CharField(max_length=128, blank=True, null=True,
                                  verbose_name='Start Date')
-    date_to = models.DateField(blank=True, null=True,
+    date_to = models.CharField(max_length=128, blank=True, null=True,
                                verbose_name='End Date')
+
+    date_mozart = models.CharField(max_length=128, blank=True, null=True,
+                               verbose_name='Date related to mozart')
 
     # Normally wouldn't use a charfield for this, but
     # looking at the example data that's what's needed
     location = models.CharField(max_length=256, null=True,
                                 blank=True,
                                 verbose_name='Location')
+    sublocation = models.CharField(max_length=256, null=True,
+                                blank=True,
+                                verbose_name='Sublocation')
+    location_mozart = models.CharField(max_length=256, null=True,
+                                blank=True,
+                                verbose_name='Location Related to Mozart')
+
+
+    mozart_relevence = models.TextField(null=True, blank=True,
+                               verbose_name='Mozart Relevence')
+
 
     location_purchase = models.CharField(max_length=256, null=True,
                                          blank=True,
@@ -236,6 +250,11 @@ class Entity(Page, WithStreamField):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
+        index.SearchField('title'),
+        index.SearchField('subtype'),
+        index.SearchField('mozart_relevence'),
+        index.SearchField('comments'),
+
     ]
 
     subpage_types = []
@@ -244,27 +263,38 @@ class Entity(Page, WithStreamField):
         verbose_name = 'Entity'
         verbose_name_plural = 'Entities'
 
+    def get_entities(self):
+        e = EntityThrough.objects.filter(entity=self)
+        return e.all()
+
 
 Entity.content_panels = [
     FieldPanel('title', classname='full title'),
 
+    StreamFieldPanel('body'),
+
     MultiFieldPanel(
         [
+            FieldPanel('subtype', classname='full'),
             PageChooserPanel('creator'),
             PageChooserPanel('recipient'),
-            FieldPanel('subtype', classname='full'),
 
             FieldPanel('date_from'),
             FieldPanel('date_to'),
 
             FieldPanel('location', classname='full'),
+            FieldPanel('sublocation', classname='full'),
+            FieldPanel('location_mozart', classname='full'),
+
+            FieldPanel('date_mozart', classname='full'),
+            FieldPanel('mozart_relevence', classname='full'),
+            
             FieldPanel('location_purchase', classname='full'),
         ],
         heading="Entity Details",
         classname="collapsible"
     ),
 
-    StreamFieldPanel('body'),
 
     FieldPanel('comments', classname='full'),
     FieldPanel('bibliog', classname='full'),
@@ -288,7 +318,6 @@ ObjectIndexPage.promote_panels = Page.promote_panels
 
 
 class ObjectPage(Page, WithStreamField):
-    entities = models.ManyToManyField(Entity)
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
@@ -344,3 +373,7 @@ ObjectPage.content_panels = [
 ]
 
 ObjectPage.promote_panels = Page.promote_panels
+
+class EntityThrough(models.Model):
+    entity = models.ForeignKey(Entity, related_name="throughentity")
+    page = models.ForeignKey(Page, related_name="throughpage")
