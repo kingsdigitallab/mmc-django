@@ -14,7 +14,7 @@
             <div class="gray-bg intro">{{ block }}</div>
         {% elif block.block_type == 'paragraph' %}
             {{ block.value|richtext }}
-        {% elif block.block_type == 'pullquote' %}
+        {% elif block.block_type == 'pull_quote' %}
             <div class="pullquote">
             {{ block.value }}
             </div>

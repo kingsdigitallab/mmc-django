@@ -91,7 +91,7 @@ class CMSStreamBlock(StreamBlock):
 
     intro = RichTextBlock(icon='pilcrow')
     paragraph = RichTextBlock(icon='pilcrow')
-    pullquote = RichTextBlock(icon='openquote', classname='pullquote')
+    pull_quote = RichTextBlock(icon='openquote')
     # pullquote = PullQuoteBlock(icon='openquote')
     table = TableBlock()
     footnote = FootnoteBlock()
