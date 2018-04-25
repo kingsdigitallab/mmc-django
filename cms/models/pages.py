@@ -19,6 +19,9 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
 from .behaviours import WithFeedImage, WithStreamField, int_to_roman
+from .streamfield import CMSStreamBlock
+from wagtail.wagtailcore.fields import StreamField
+
 
 logger = logging.getLogger(__name__)
 
@@ -190,6 +193,10 @@ class EntityType(Page, WithStreamField):
 
     subpage_types = ['Entity']
 
+    @property
+    def entities(self):
+        return self.get_children().order_by('title')
+
 
 EntityType.content_panels = [
     FieldPanel('title', classname='full title'),
@@ -199,7 +206,8 @@ EntityType.content_panels = [
 
 
 # Entity
-class Entity(Page, WithStreamField):
+class Entity(Page):
+    body = StreamField(CMSStreamBlock(), verbose_name="Description")
     creator = models.ForeignKey('self', null=True,
                                 blank=True,
                                 verbose_name='Author/Creator',
@@ -214,12 +222,12 @@ class Entity(Page, WithStreamField):
                                null=True,
                                verbose_name='Subtype/Role')
     date_from = models.CharField(max_length=128, blank=True, null=True,
-                                 verbose_name='Start Date')
+                                 verbose_name='Date 1')
     date_to = models.CharField(max_length=128, blank=True, null=True,
-                               verbose_name='End Date')
+                               verbose_name='Date 2')
 
     date_mozart = models.CharField(max_length=128, blank=True, null=True,
-                               verbose_name='Date related to mozart')
+                                   verbose_name='Date related to mozart')
 
     # Normally wouldn't use a charfield for this, but
     # looking at the example data that's what's needed
@@ -227,23 +235,22 @@ class Entity(Page, WithStreamField):
                                 blank=True,
                                 verbose_name='Location')
     sublocation = models.CharField(max_length=256, null=True,
-                                blank=True,
-                                verbose_name='Sublocation')
+                                   blank=True,
+                                   verbose_name='Sublocation')
     location_mozart = models.CharField(max_length=256, null=True,
-                                blank=True,
-                                verbose_name='Location Related to Mozart')
-
+                                       blank=True,
+                                       verbose_name='Location\
+                                       Related to Mozart')
 
     mozart_relevence = models.TextField(null=True, blank=True,
-                               verbose_name='Mozart Relevence')
-
+                                        verbose_name='Mozart Relevence')
 
     location_purchase = models.CharField(max_length=256, null=True,
                                          blank=True,
                                          verbose_name='Place of Purchase')
 
     bibliog = models.TextField(null=True, blank=True,
-                               verbose_name='Bibliographic Details')
+                               verbose_name='Bibliographic Reference')
 
     comments = models.TextField(null=True, blank=True,
                                 verbose_name='Comments')
@@ -254,7 +261,6 @@ class Entity(Page, WithStreamField):
         index.SearchField('subtype'),
         index.SearchField('mozart_relevence'),
         index.SearchField('comments'),
-
     ]
 
     subpage_types = []
@@ -262,6 +268,7 @@ class Entity(Page, WithStreamField):
     class Meta:
         verbose_name = 'Entity'
         verbose_name_plural = 'Entities'
+        ordering = ['title', ]
 
     def get_entities(self):
         e = EntityThrough.objects.filter(entity=self)
@@ -269,7 +276,12 @@ class Entity(Page, WithStreamField):
 
 
 Entity.content_panels = [
-    FieldPanel('title', classname='full title'),
+    MultiFieldPanel(
+        [
+            FieldPanel('title', classname='full title',),
+        ],
+        heading="Title/Name",
+    ),
 
     StreamFieldPanel('body'),
 
@@ -288,7 +300,7 @@ Entity.content_panels = [
 
             FieldPanel('date_mozart', classname='full'),
             FieldPanel('mozart_relevence', classname='full'),
-            
+
             FieldPanel('location_purchase', classname='full'),
         ],
         heading="Entity Details",
@@ -344,16 +356,18 @@ class ObjectPage(Page, WithStreamField):
                     return self.get_parent().get_children()[num]
                 else:
                     parent_page = self.get_parent()
-                    parent_num = list(parent_page.get_parent().get_children()).index(
+                    parent_num = list(parent_page.get_parent()
+                                      .get_children()).index(
                         parent_page) + 1
 
-                    if parent_num < parent_page.get_parent().get_children().count():
-                        return parent_page.get_parent().get_children()[parent_num]
+                    if parent_num < parent_page.get_parent()\
+                            .get_children().count():
+                        return parent_page.get_parent()\
+                            .get_children()[parent_num]
                     else:
                         return None
-        except:
+        except: # noqa
             return None
-
 
     def get_prev(self):
         try:
@@ -361,24 +375,28 @@ class ObjectPage(Page, WithStreamField):
             num = list(self.get_parent().get_children()).index(page)
 
             if isinstance(self.get_parent().specific, ObjectIndexPage):
-                return self.get_parent().get_children()[num-1].get_children().last()
+                return self.get_parent().get_children()[num - 1]\
+                    .get_children().last()
             else:
                 if num > 0:
-                    return self.get_parent().get_children()[num-1]
+                    return self.get_parent().get_children()[num - 1]
                 elif num == 0:
                     return self.get_parent()
                 else:
                     parent_page = self.get_parent()
-                    parent_num = list(parent_page.get_parent().get_children()).index(
+                    parent_num = list(parent_page.get_parent()
+                                      .get_children()).index(
                         parent_page) - 1
 
                     if parent_num >= 0:
-                        return parent_page.get_parent().get_children()[parent_num]
+                        return parent_page.get_parent()\
+                            .get_children()[parent_num]
 
                     else:
                         return None
-        except:
+        except: # noqa
             return None
+
 
 ObjectPage.content_panels = [
     FieldPanel('title', classname='full title'),
@@ -387,6 +405,7 @@ ObjectPage.content_panels = [
 ]
 
 ObjectPage.promote_panels = Page.promote_panels
+
 
 class EntityThrough(models.Model):
     entity = models.ForeignKey(Entity, related_name="throughentity")

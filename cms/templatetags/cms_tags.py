@@ -1,8 +1,5 @@
 from django import template
 from django.conf import settings
-
-import re
-
 from cms.models import (EntityType, ObjectIndexPage)
 
 register = template.Library()
@@ -29,23 +26,6 @@ def has_view_restrictions(page):
     """Returns True if the page has view restrictions set up, False
     otherwise."""
     return page.view_restrictions.count() > 0
-
-
-@register.filter
-def colours(inp):
-    text = "{}".format(inp)
-    pattern = re.compile(r"<a href=\"/entities/([a-zA-Z0-9\-]+)/\">")
-
-    for slug in re.findall(pattern, text):
-        et = EntityType.objects.get(slug=slug)
-
-        if et:
-            text = text.replace(
-                "<a href=\"/entities/{}/\">".format(slug),
-                "<a href=\"/entities/{}/\" class=\"{}\">".format(slug, et.colour)
-                )
-
-    return text
 
 
 @register.inclusion_tag('cms/tags/main_menu.html', takes_context=True)

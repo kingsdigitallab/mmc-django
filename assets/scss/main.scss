@@ -84,13 +84,31 @@ a {
 
     a
     {
+        color: rgba(255,255,255, 1) !important;
+        background: rgba(0,0,0,0.8);
+        display: inline-block;
         font-size: 0.8rem;
+        padding: 4px 10px;
     }
 }
 
 .pullquote
 {
     padding-left: 50px;
+}
+
+
+dl
+{
+    dt
+    {  
+        font-weight: bold;
+    }
+
+    dd
+    {
+        width: 75%;
+    }
 }
 
 /** Nav **/
