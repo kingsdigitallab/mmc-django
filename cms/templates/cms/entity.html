@@ -11,6 +11,69 @@
 
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
 
+<div class="page-content">
+	<dl>
+		{% if self.subtype %}
+		<dt>Subtype/Role</dt>
+		<dd>{{ self.subtype }}</dd>
+		{% endif %}
+
+		{% if self.creator %}
+		<dt>Author/Creator</dt>
+		<dd>{{ self.creator }}</dd>
+		{% endif %}
+
+		{% if self.recipient %}
+		<dt>Recipient</dt>
+		<dd>{{ self.recipient }}</dd>
+		{% endif %}
+
+		{% if self.date_from %}
+		<dt>Date 1</dt>
+		<dd>{{ self.date_from }}</dd>
+		{% endif %}
+
+		{% if self.date_to %}
+		<dt>Date 2</dt>
+		<dd>{{ self.date_to }}</dd>
+		{% endif %}
+
+		{% if self.location %}
+		<dt>Location</dt>
+		<dd>{{ self.location }}</dd>
+		{% endif %}
+
+		{% if self.sublocation %}
+		<dt>Sub-location</dt>
+		<dd>{{ self.sublocation }}</dd>
+		{% endif %}
+
+		{% if self.date_mozart %}
+		<dt>Date (Mozart)</dt>
+		<dd>{{ self.date_mozart }}</dd>
+		{% endif %}
+
+		{% if self.location_mozart %}
+		<dt>Location (Mozart)</dt>
+		<dd>{{ self.location_mozart }}</dd>
+		{% endif %}
+
+		{% if self.mozart_relevence %}
+		<dt>Mozart Relevence</dt>
+		<dd>{{ self.mozart_relevence }}</dd>
+		{% endif %}
+
+		{% if self.comments %}
+		<dt>Comments</dt>
+		<dd>{{ self.comments }}</dd>
+		{% endif %}
+
+		{% if self.bibliog %}
+		<dt>Bibloigraphic Reference</dt>
+		<dd>{{ self.bibliog }}</dd>
+		{% endif %}
+	</dl>
+</div>
 
 {% if self.get_entities %}
 <div class="page-content">

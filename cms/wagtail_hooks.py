@@ -13,7 +13,7 @@ def populate_entity_relationships(request, page):
     try:
         if isinstance(page, ObjectPage):
 
-            et = EntityThrough.objects.filter(page=page).delete()
+            EntityThrough.objects.filter(page=page).delete()
 
             # Our list of new potential entities:
             page_list = []
@@ -38,9 +38,7 @@ def populate_entity_relationships(request, page):
                             if page_id not in page_list:
                                 page_list.append(page_id)
 
-                  
             # We have our list:
-
             entities = Entity.objects.filter(id__in=page_list)
             for entity in entities.all():
                 e = EntityThrough()
@@ -52,9 +50,10 @@ def populate_entity_relationships(request, page):
         print e
 
 
-
-hooks.register('after_create_page', populate_entity_relationships)
-hooks.register('after_edit_page', populate_entity_relationships)
+hooks.register('after_create_page',
+               populate_entity_relationships)
+hooks.register('after_edit_page',
+               populate_entity_relationships)
 
 
 def editor_js():
