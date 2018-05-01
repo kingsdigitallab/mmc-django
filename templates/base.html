@@ -1,4 +1,4 @@
-{% load staticfiles compress require %}
+{% load staticfiles compress require cms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,20 @@
     to point to the project ones rather than to the vendor folder
   #}
   <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
-  {% endcompress %}
-</head>
+  {% endcompress  %}
+
+    {% get_entity_types as et %}
+    <script>
+      var CLASSES = {
+
+        {% for e in et %}
+    '{{ e.slug }}': '{{ e.colour }}'{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    }
+    </script>
+
+
+  </head>
 <body ontouchstart="">
 
 
