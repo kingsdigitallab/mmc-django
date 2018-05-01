@@ -295,6 +295,7 @@ Entity.content_panels = [
         [
             FieldPanel('subtype', classname='full'),
             PageChooserPanel('creator'),
+            FieldPanel('creator_text')
             PageChooserPanel('recipient'),
 
             FieldPanel('date_from'),
@@ -305,7 +306,7 @@ Entity.content_panels = [
             FieldPanel('location_mozart', classname='full'),
 
             FieldPanel('date_mozart', classname='full'),
-            FieldPanel('mozart_relevence', classname='full'),
+            StreamFieldPanel('mozart_relevence', classname='full'),
 
             FieldPanel('location_purchase', classname='full'),
         ],
