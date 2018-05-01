@@ -88,15 +88,15 @@ class CMSStreamBlock(StreamBlock):
     # h4 = CharBlock(icon='title', classname='title')
     # h5 = CharBlock(icon='title', classname='title')
 
-    intro = RichTextBlock(icon='pilcrow')
-    paragraph = RichTextBlock(icon='pilcrow')
-    pull_quote = RichTextBlock(icon='openquote')
+    intro = RichTextBlock(icon='pilcrow', required=False)
+    paragraph = RichTextBlock(icon='pilcrow', required=False)
+    pull_quote = RichTextBlock(icon='openquote', required=False)
     # pullquote = PullQuoteBlock(icon='openquote')
-    table = TableBlock()
-    footnote = FootnoteBlock()
+    table = TableBlock(required=False)
+    footnote = FootnoteBlock(required=False)
 
     # image = ImageBlock(label='Aligned image', icon='image')
-    document = DocumentChooserBlock(icon='doc-full-inverse')
+    document = DocumentChooserBlock(icon='doc-full-inverse', required=False)
     # link = LinkBlock(icon='link')
     # embed = EmbedBlock(icon='media')
 
