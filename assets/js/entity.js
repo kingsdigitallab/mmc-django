@@ -1,12 +1,3 @@
-var CLASSES = {
-	'person': 'darkgreen',
-	'place': 'purple',
-	'institution': 'lightgreen',
-	'object': 'orange',
-	'musical-work': 'red',
-	'event': 'lightblue',
-	'source': 'darkblue'
-}
 
 $(document).ready(function() {
 	// Entity links

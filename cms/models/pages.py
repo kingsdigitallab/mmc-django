@@ -185,7 +185,7 @@ class EntityType(Page, WithStreamField):
     colour = models.CharField(max_length=128, blank=False, help_text="You\
             can use the following colours:\
             lightgreen, darkgreen, lightpurple,\
-            dark, purple, yellow, orange, red, lightblue,\
+            darkpurple, yellow, orange, red, lightblue,\
             darkblue, lightbrown, darkbrown and lightgray.")
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -218,9 +218,14 @@ class Entity(Page):
                                   verbose_name='Recipient',
                                   related_name='entity_recipient',
                                   on_delete=models.SET_NULL)
+
+    creator_text = models.CharField(max_length=128, blank=True,
+                                    null=True,
+                                    verbose_name='Author/Creator (Text)')
+
     subtype = models.CharField(max_length=128, blank=True,
                                null=True,
-                               verbose_name='Subtype/Role')
+                               verbose_name='Category/Role')
     date_from = models.CharField(max_length=128, blank=True, null=True,
                                  verbose_name='Date 1')
     date_to = models.CharField(max_length=128, blank=True, null=True,
@@ -242,8 +247,9 @@ class Entity(Page):
                                        verbose_name='Location\
                                        Related to Mozart')
 
-    mozart_relevence = models.TextField(null=True, blank=True,
-                                        verbose_name='Mozart Relevence')
+    mozart_relevence = StreamField(CMSStreamBlock(),
+                                   verbose_name="Mozart Relevence",
+                                   null=True, blank=True)
 
     location_purchase = models.CharField(max_length=256, null=True,
                                          blank=True,

@@ -14,13 +14,18 @@
 <div class="page-content">
 	<dl>
 		{% if self.subtype %}
-		<dt>Subtype/Role</dt>
+		<dt>Category/Role</dt>
 		<dd>{{ self.subtype }}</dd>
 		{% endif %}
 
 		{% if self.creator %}
 		<dt>Author/Creator</dt>
 		<dd>{{ self.creator }}</dd>
+		{% endif %}
+
+		{% if self.creator_text %}
+		<dt>Author/Creator</dt>
+		<dd>{{ self.creator_text }}</dd>
 		{% endif %}
 
 		{% if self.recipient %}
@@ -58,11 +63,6 @@
 		<dd>{{ self.location_mozart }}</dd>
 		{% endif %}
 
-		{% if self.mozart_relevence %}
-		<dt>Mozart Relevence</dt>
-		<dd>{{ self.mozart_relevence }}</dd>
-		{% endif %}
-
 		{% if self.comments %}
 		<dt>Comments</dt>
 		<dd>{{ self.comments }}</dd>
@@ -73,6 +73,11 @@
 		<dd>{{ self.bibliog }}</dd>
 		{% endif %}
 	</dl>
+
+{% if self.mozart_relevence %}
+<dt>Mozart Relevence</dt>
+{% include "cms/includes/streamfield.html" with blocks=self.mozart_relevence %}
+{% endif %}
 </div>
 
 {% if self.get_entities %}
