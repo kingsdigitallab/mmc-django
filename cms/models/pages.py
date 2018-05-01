@@ -295,7 +295,7 @@ Entity.content_panels = [
         [
             FieldPanel('subtype', classname='full'),
             PageChooserPanel('creator'),
-            FieldPanel('creator_text')
+            FieldPanel('creator_text'),
             PageChooserPanel('recipient'),
 
             FieldPanel('date_from'),
