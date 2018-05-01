@@ -247,7 +247,7 @@ class Entity(Page):
                                        verbose_name='Location\
                                        Related to Mozart')
 
-    mozart_relevence = StreamField(CMSStreamBlock(),
+    mozart_relevence = StreamField(CMSStreamBlock(required=False),
                                    verbose_name="Mozart Relevence",
                                    null=True, blank=True)
 
