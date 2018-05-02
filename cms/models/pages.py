@@ -306,14 +306,13 @@ Entity.content_panels = [
             FieldPanel('location_mozart', classname='full'),
 
             FieldPanel('date_mozart', classname='full'),
-            StreamFieldPanel('mozart_relevence', classname='full'),
 
             FieldPanel('location_purchase', classname='full'),
         ],
         heading="Entity Details",
         classname="collapsible"
     ),
-
+    StreamFieldPanel('mozart_relevence'),
 
     FieldPanel('comments', classname='full'),
     FieldPanel('bibliog', classname='full'),
