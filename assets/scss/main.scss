@@ -12,6 +12,42 @@ folder to the project one */
 
 /** Your custom scss here **/
 
+/************
+MENU
+
+// Mixins
+// Colours
+// General
+// Grid
+// Header
+*************/
+
+
+/***** Mixins  *****/
+
+@mixin calc($prop,
+$val) {
+    @each $pre in -webkit-,
+    -moz-,
+    -o- {
+        #{$prop}: $pre+calc(#{$val});
+    }
+
+    #{$prop}: calc(#{$val});
+}
+
+@mixin translate3d($x,
+$y,
+$z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+    -o-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+}
+
+
+/***** Colours *****/
+
 $black:#1a1a1a;
 $white:#fff;
 $gray:#888;
@@ -27,16 +63,24 @@ $lightblue:#00BAFF;
 $darkblue:#192BB7;
 
 
+
+
+/***** General *****/
+
 html,
 body {
-    margin: 0 1rem;
-    padding: 0px;
+    margin: 0 auto;
+    padding: 0;
     min-height: 100%;
     height: 100%;
     font-family: 'Sorts Mill Goudy', serif;
+    font-size:1.15rem;
+    width:100%;
 }
 
-
+* {
+  box-sizing: border-box;
+}
 
 
 /*body{
@@ -64,7 +108,7 @@ transition:0.3s;
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -8rem;
+    margin: 0 auto -8rem ;
     /* the bottom margin is the negative value of the footer's height */
     position: relative
 }
@@ -76,42 +120,681 @@ a {
     color: $black;
 }
 
+/***** Grid *****/
 
+.row {
+    width: 94%;
+    max-width:800px;
+    margin: 0 auto;
+}
 
-.bottom-nav
-{
-    padding: 20px;
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+}
 
-    a
-    {
-        color: rgba(255,255,255, 1) !important;
-        background: rgba(0,0,0,0.8);
-        display: inline-block;
-        font-size: 0.8rem;
-        padding: 4px 10px;
+.row:after {
+    clear: both;
+}
+
+.row .row {
+    width: auto;
+    max-width: none;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
     }
 }
 
-.pullquote
-{
-    padding-left: 50px;
+[class*="col-"],
+.bgrid {
+    float: left;
+}
+
+[class*="col-"]+[class*="col-"]:last-child {
+    float: right;
+}
+
+[class*="col-"] {
+    padding: 0 20px;
+}
+
+.col-one {
+    width: 8.33333%;
+}
+
+.col-two,
+.col-1-6 {
+    width: 16.66667%;
+}
+
+.col-three,
+.col-1-4 {
+    width: 25%;
+}
+
+.col-four,
+.col-1-3 {
+    width: 33.33333%;
+}
+
+.col-five {
+    width: 41.66667%;
+}
+
+.col-six,
+.col-1-2 {
+    width: 50%;
+}
+
+.col-seven {
+    width: 58.33333%;
+}
+
+.col-eight,
+.col-2-3 {
+    width: 66.66667%;
+}
+
+.col-nine,
+.col-3-4 {
+    width: 75%;
+}
+
+.col-ten,
+.col-5-6 {
+    width: 83.33333%;
+}
+
+.col-eleven {
+    width: 91.66667%;
+}
+
+.col-twelve,
+.col-full {
+    width: 100%;
 }
 
 
-dl
-{
-    dt
-    {  
-        font-weight: bold;
+@media screen and (max-width:1024px) {
+    .row .row {
+        //margin-left: -18px;
+        //margin-right: -18px;
     }
+    [class*="col-"] {
+        padding: 0 18px;
+    }
+}
 
-    dd
-    {
+
+@media screen and (max-width:768px) {
+    .row {
+        width: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .row .row {
+        padding-left: 0;
+        padding-right: 0; //margin-left: -15px;
+        //margin-right: -15px;
+    }
+    [class*="col-"] {
+        padding: 0 15px;
+    }
+    .tab-1-4 {
+        width: 25%;
+    }
+    .tab-1-3 {
+        width: 33.33333%;
+    }
+    .tab-1-2 {
+        width: 50%;
+    }
+    .tab-2-3 {
+        width: 66.66667%;
+    }
+    .tab-3-4 {
         width: 75%;
     }
+    .tab-full {
+        width: 100%;
+    }
 }
 
-/** Nav **/
+
+@media screen and (max-width:600px) {
+    .row {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .row .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    [class*="col-"] {
+        padding: 0 10px;
+    }
+    .mob-1-4 {
+        width: 25%;
+    }
+    .mob-1-2 {
+        width: 50%;
+    }
+    .mob-3-4 {
+        width: 75%;
+    }
+    .mob-full {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width:400px) {
+    .row {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row .row {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    [class*="col-"] {
+        width: 100% !important;
+        float: none !important;
+        clear: both !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    [class*="col-"]+[class*="col-"]:last-child {
+        float: none;
+    }
+}
+
+
+
+@media screen and (min-width: 1824px) {
+
+.row {
+    max-width:none;
+}
+}
+
+
+/***** Header *****/
+header {
+    margin:2rem 0 4rem 3rem;
+    width:50%;
+    float: left;
+    >h1 {
+        font-size: 1.7rem;
+        font-variant: small-caps;
+        margin: 0 0 -0.5rem 0;
+        padding: 0;
+        line-height: 1.5rem;
+    }
+    >h2 {
+        font-size: 2.5rem;
+        color:#aaa;
+        margin: 0;
+        padding: 0;
+        font-variant: small-caps;
+        //font-family: 'Libre Baskerville', serif;
+    }
+}
+
+
+
+/***** Navigation *****/
+
+/* Accordion Menu*/
+/**
+ * Hidden fallback
+ */
+[hidden] {
+  display: none;
+  visibility: hidden;
+}
+
+#nav {
+margin: 0 auto;
+text-align: left;
+font-size: 0.8rem;
+    >a {
+    display: none;
+    }
+    li {
+        h2{
+            margin:0;
+            font-size:1.5rem;
+            font-weight:normal;
+        }
+        a {
+        color: $white;
+        display: block;
+        }
+    }
+    /* Numbered lists and radio accordion */
+    ol.nav-wrapper{
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    right:0;
+    margin: 0;
+    background:black;
+    font-size:1.2rem;
+    width:22rem;
+    padding: 3rem 0 0 3rem;
+    color: $white;
+    counter-reset: li;
+    list-style-type: none;
+
+        input { 
+        display: none; 
+        }
+        input:checked + label { 
+        }
+        label { 
+        cursor: pointer; 
+        display: block; 
+        display: block;
+        color: #fff;
+        transition: all .25s ease-in;
+        float: right;
+        width: 90%;
+            &:focus,
+            &:hover {
+            color: rgba(255,255,255,.5);
+            background: darken(#151515, 7%);
+            }
+            &:last-child { 
+            margin-right: 0; 
+            }
+        }  
+        >li{
+            counter-increment: step-counter;
+            list-style-type: none;
+            &:before {
+            content: counter(step-counter);
+            font-size:1.5rem;
+            font-family: 'Libre Baskerville', serif;
+            }
+        /* TO - Need to fix last-child, not working */
+            &:last-child{ 
+            background: red;
+            margin-bottom:15rem;
+            }
+            
+            >ol { 
+            max-height: 0; 
+            overflow: hidden; 
+            position: relative; 
+            opacity: 1;
+            transition: max-height 0.5s ease-in-out;
+            margin: 0.5rem 0 1rem -40px;
+            padding-right:3rem;
+            counter-reset: li;
+            list-style-type: none;
+                >li{
+                font-size:0.95rem;
+                background: #252525;
+                box-shadow: inset 0 -1px lighten(#252525, 7%);
+                padding: 0.5rem;
+                counter-increment: step-counter;
+                list-style-type: lower-roman;
+                float: right;
+                width: 90%;
+                counter-reset: li;
+                    &:before {
+                    counter-reset: li;
+                    content: counter(step-counter);
+
+                }
+                    &:focus,
+                    &:hover{            
+                    color: rgba(255,255,255,.5);
+                    background: darken(#252525, 7%);
+                    }
+                }
+            }
+        }
+        li > input:checked ~ ol { 
+        max-height: 900px; /*auto*/
+        }
+    }
+
+    /* Unnumbered lists and radio accordion */
+    /* TO - Might remove radio accordion if not used */
+    ul.nav-wrapper{
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    right:0;
+    margin: 0;
+    background:black;
+    font-size:1.2rem;
+    width:22rem;
+    padding: 3rem 0 0 3rem;
+    list-style-type: none;
+        input { 
+        display: none; 
+        }
+        input:checked + label { 
+        }
+        label { 
+        cursor: pointer; 
+        display: block; 
+        display: block;
+        color: #fff;
+        transition: all .25s ease-in;
+            &:focus,
+            &:hover {
+            color: rgba(255,255,255,.5);
+            background: darken(#151515, 7%);
+            }
+            &:last-child { 
+            margin-right: 0; 
+            }
+        }
+        >li{
+        /* TO - Need to fix last-child, not working */
+            &:last-child{ 
+            background: red;
+            margin-bottom:15rem;
+            }
+            >ul { 
+            max-height: 0; 
+            overflow: hidden; 
+            position: relative; 
+            opacity: 1;
+            transition: max-height 0.5s ease-in-out;
+            margin: 0.5rem 0 1rem -40px;
+            padding-right:3rem;
+                li{
+                font-size:0.95rem;
+                background: #252525;
+                box-shadow: inset 0 -1px lighten(#252525, 7%);
+                padding: 0.5rem;
+                    &:focus,
+                    &:hover{            
+                    color: rgba(255,255,255,.5);
+                    background: darken(#252525, 7%);
+                    }
+                }
+            }
+        }
+        li > input:checked ~ ul { 
+        max-height: 900px; /*auto*/
+        }
+    }
+    /*ul.nav-list{
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    right:0;
+    margin: 0;
+    background:black;
+    list-style: none;
+    font-size:1.2rem;
+    width:20rem;
+    padding: 3rem 0 0 3rem;
+    list-style-type: none;
+        a, label {
+        display: block;
+        color: #fff;
+        transition: all .25s ease-in;
+            &:focus,
+            &:hover {
+            color: rgba(255,255,255,.5);
+            background: darken(#353535, 7%);
+            }
+        }
+        label {
+        cursor: pointer;
+        padding-right: 3rem
+        }
+        input[type=checkbox]:checked + label + ul {
+            /* reset the height when checkbox is checked */
+          /*max-height: 100%;
+        }
+
+        >li{
+        position: relative;
+        color: $white;
+        list-style-type: none;
+        padding: 1rem 0;
+        transition: transform 2s ease;
+            .sublevel-1 a,
+            .sublevel-1 label {
+              padding: 0 0.5rem;
+              &:focus,
+              &:hover {background: darken(#252525, 7%);}
+            }
+            .sublevel-2 a,
+            .sublevel-2 label {
+              padding: 0 1rem;
+              &:focus,
+              &:hover {background: darken(#353535, 7%);}
+            }
+            /**
+             * Hide nested lists
+             */
+            /*.sublevel-1,
+            .sublevel-2{
+              height: 100%;
+              max-height: 0;
+              overflow: hidden;
+              transition: transform 2s ease;
+                li{
+                background: #252525;
+                box-shadow: inset 0 -1px lighten(#252525, 7%);
+                list-style-type: none;
+                padding: 1rem 0;
+                margin-left: -40px;
+              }
+            }
+            span{
+                font-family: 'Libre Baskerville', serif;
+                font-size:2rem;
+            }
+            &:last-child{
+            background:black;
+            padding-bottom:150px;
+            }     
+        }
+
+        /* Plus icon */
+        /*input[type=checkbox] + label.has-sub{
+        position: relative;
+            &:before, &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            background-color:white;
+            top: 50%;
+            transition: transform .65s ease;
+            }
+            &:after{
+            width:10px;
+            height: 8px;
+            margin-top: -4px;
+            right: 23px;
+            width: 2px;
+            }
+            &:before{
+            height: 2px;
+            margin-top: -1px;
+            right: 20px;
+            width: 8px;
+            }  
+        }
+        /* Minus icon */
+       /* input[type=checkbox]:checked + label.has-sub{
+            &:before, &:after{
+            transform: rotate(90deg);
+            }
+            &:before{
+            display:none;
+            }  
+        }
+        h2{
+            color: $white;
+        }
+    }*/
+}
+
+
+/* Entity type legend */
+.entity-types{
+position: fixed;
+bottom: 0;
+background: rgba(255,255,255,0.95);
+width: 18rem;
+margin: 0 0 0 -2rem;
+padding:0;
+    >ul{
+        margin-left:-40px;
+        >li{
+            padding: 0 2rem;
+            list-style-type: none;
+        }
+    }
+    h3{
+    padding: 1rem 2rem 0.5rem 2rem;
+    text-decoration: underline;
+    margin: 0;
+    }
+}
+
+/* Entity Switch */
+
+
+.switch-wrapper{
+position: fixed;
+bottom: 0;
+right: 2rem;
+background: black;
+padding: 0.75rem 0 0 0;
+z-index: 9;
+border-top: 1px solid white;
+width: 18rem;
+height:11rem;
+font-size: 1.1rem;
+  .switch {
+  position:absolute;
+  display: inline-block;
+  font-size: 100%;
+  line-height: 1.5;
+  height: 34px;
+  right:5rem;
+  }
+  .switch__input {
+  display: none;
+  }
+  label.switch__label {
+  background:none;
+  box-shadow:none;
+  }
+  .switch__label {
+  display: block;
+  width: 58px;
+  height: 34px;
+  white-space: nowrap;
+    &:hover{
+       .switch__text {
+        color: rgba(255,255,255,1);
+        }
+    }
+  }
+
+  .switch__text {
+  position: absolute;
+  display: block;
+  margin-top: 5px;
+  left: -9rem;
+  }
+
+  .switch__label{
+    left: -110px;
+    &:before,&:after{
+    content: "";
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    }
+    &:before{
+    width: 100%;
+    height: 100%;
+    background: #999;
+    border-radius: 20px;
+    }
+    &:after{
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $white;
+    box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.6);  
+    transition: all 400ms ease
+    }    
+  }
+
+  .switch__input:checked{   
+    + .switch{
+      position:absolute;
+      top:-50px;
+    }
+    + .switch__label{
+      &:after {
+      left: 27px;
+      }
+      &:before {
+      background: #ddd;
+      } 
+    }  
+  }
+  .legend{
+    margin: 2.5rem 0;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    display: block;
+    height: 6.5rem;
+    border-radius: 0.7rem;
+    ul{
+    margin-left: -40px;
+    display: block;
+    padding: 0.5rem 0 0 3rem;
+    margin-left:-40px;
+    li{
+    list-style: none;
+    width:50%;
+    float: left;
+    }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/**
 
 nav {
     height: 8rem;
@@ -119,17 +802,11 @@ nav {
 
 .nav-content {
     height: 7rem;
-    /* height + top/bottom paddding + top/bottom border must add up to footer height */
+    height + top/bottom paddding + top/bottom border must add up to footer height 
     padding: 0.5rem 0;
 }
 
-header {
-    h1 {
-        font-size: 1.7rem;
-        font-variant: small-caps;
-        margin: 0;
-    }
-}
+
 
 
 .menu {
@@ -187,7 +864,7 @@ header {
         }
         li {
             .search-box {
-                /** Search **/
+                
                 padding: 0.4rem;
                 margin: 0;
                 input {
@@ -210,7 +887,7 @@ header {
                     outline: 0;
                 }
             }
-            /** End Search **/
+          
         }
     }
 }
@@ -221,7 +898,7 @@ header {
 /** End Nav **/
 
 
-/** Side Nav **/
+/** 
 
 .breadcrumb {
     font-variant: small-caps;
@@ -248,7 +925,7 @@ header {
 
 
 
-/* Old 
+
 .sidenav {
     width: 0;
     float: left;
@@ -431,7 +1108,7 @@ header {
     }
 }*/
 
-.sidenav {
+/*.sidenav {
     width: 0;
     float: left;
     left: 0;
@@ -673,10 +1350,12 @@ header {
     }*/
 
 
-/** Section **/
+/** Content **/
 
 section {
     height: 100%;
+    width:100%;
+    margin-left:3rem;
     h2 {
         border-bottom: 0.05rem solid;
         margin: 0;
@@ -688,29 +1367,46 @@ section {
 }
 
 
+.bottom-nav
+{
+    padding: 20px;
+
+    a
+    {
+        color: rgba(255,255,255, 1) !important;
+        background: rgba(0,0,0,0.8);
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+}
+
+.pullquote
+{
+    padding-left: 50px;
+}
 
 
-/** Homepage**/
+dl
+{
+    dt
+    {  
+        font-weight: bold;
+    }
 
-.homepage {
-    margin: 10rem 0 0 20rem;
-    padding-left: 2rem;
-    text-align: justify;
-    h2 {
-        border-bottom: none;
+    dd
+    {
+        width: 75%;
     }
 }
 
 
 
-
 /** Object Index Page **/
 
-.object-index {
-    margin: 0 10rem 0 4rem;
-    padding-top: 2rem;
-    float: left;
-    border-left: 0.5rem solid $black;
+.page-content {
+    width:100%;
+    max-width:1000px;
     h2 {
         position: absolute;
         top: -30%;
@@ -722,7 +1418,6 @@ section {
     }
     p {
         text-align: justify;
-        padding-left: 1.5rem;
     }
     a {
         text-decoration: none;
@@ -1195,3 +1890,74 @@ footer {
         }
     }
 }
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+       
+    }
+
+    /*html {
+        font-size: 75%;
+    }*/
+
+    #nav {
+        top: 0;
+        z-index: 2;
+        width: 100%;
+        .logo {
+            position: relative;
+            width: 13rem;
+            margin:0;
+            padding:0;
+            h1 {
+                text-align: left;
+                padding: 0;
+                font-size: 1.2rem;
+            }
+
+        }
+
+        >a {
+            width: 100%;
+            //height: 4.125rem;
+            text-align: right;
+            position: absolute;
+            color: white;
+            font-size: 1.5rem;
+            top: 0;
+            right: 0;
+            width: 10%;
+            padding: 0.8rem 1rem 0 0;
+            transition: 1.6s ease;
+        }
+    }
+
+    #nav:not(:target)>a:first-of-type,
+    #nav:target>a:last-of-type {
+        display: block;
+        color: $black;
+        z-index:1;
+        transition: 1s ease;
+    } 
+
+    #nav:not(:target)>ul {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: 2.5s ease;
+        right: -20rem;
+    }
+   #nav:target>a.hide-nav {
+        padding:18px 15px 0 0;
+    } 
+    #nav:target>ul {
+        display: block;
+        background-color: rgba(0, 0, 0, 1);
+        transition: 1s ease;
+    }
+}
+
+

@@ -1,20 +1,10 @@
 {% load staticfiles cms_tags wagtailcore_tags %}
 
-
-<header>
-  <h1> <a href="/">Mozart <span style="color:#c11609;">&amp;</span> Material Culture</a></h1>
-</header>
-
-<div class="menu">
-    <h3>Menu</h3>
-      {% block main_menu %}
+<nav id="nav">
+  <a href="#nav" title="Show navigation">☰</a>
+    <a class="hide-nav" href="#" title="Hide navigation">✕</a>
+         {% block main_menu %}
         {% get_site_root as site_root %}
         {% main_menu root=site_root current_page=self %}
         {% endblock %}
-</div>
-
-
-
-
-
-
+</nav>

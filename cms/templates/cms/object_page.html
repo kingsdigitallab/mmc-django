@@ -7,28 +7,26 @@
 {% block entities %}{% get_entities %}{% endblock %}
 
 {% block main %}
-<div class="object-index">
 <!--<header><h2>{{ self.title }}</h2></header>-->
 
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
 
 {% include "cms/includes/streamfield_footnotes.html" with blocks=self.body %}
 
-	<div class="bottom-nav">
+<div class="bottom-nav">
 
-		{% with prev=self.get_prev %}
-		{% if prev %}
-		<a href="{% pageurl prev %}">&lt; &nbsp; {{prev.specific.get_numeral}} {{ prev }}</a>
-		{% endif %}
-		{% endwith %}
+	{% with prev=self.get_prev %}
+	{% if prev %}
+	<a href="{% pageurl prev %}">&lt; &nbsp; {{prev.specific.get_numeral}} {{ prev }}</a>
+	{% endif %}
+	{% endwith %}
 
-		{% with next=self.get_next %}
-		{% if next %}
-		<a class="pull-right" href="{% pageurl next %}">{{next.specific.get_numeral}} {{ next }} &nbsp; &gt;</a>
-		{% endif %}
-		{% endwith %}
+	{% with next=self.get_next %}
+	{% if next %}
+	<a class="pull-right" href="{% pageurl next %}">{{next.specific.get_numeral}} {{ next }} &nbsp; &gt;</a>
+	{% endif %}
+	{% endwith %}
 
-	</div>
 </div>
 
 {% endblock %}

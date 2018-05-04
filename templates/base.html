@@ -33,17 +33,13 @@
   </head>
 <body ontouchstart="">
 
-
   <div class="wrapper">
-    <nav>
-    <div class="nav-content">
 
+      {% include 'includes/header.html' %}
       {% include 'includes/navigation.html' %}
-      </div>
-    </nav>
   
 
-    {% block sidenav %}{% endblock %}
+    <!--{% block sidenav %}{% endblock %}-->
 
     {% block entities %}{% endblock %}
 
