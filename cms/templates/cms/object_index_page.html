@@ -5,8 +5,5 @@
 {% block entities %}{% get_entities %}{% endblock %}
 
 {% block main %}
-<div class="object-index">
-<!--<header><h2>{{ self.title }}</h2></header>-->
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
-</div>
 {% endblock %}
