@@ -1,10 +1,41 @@
 {% load wagtailcore_tags %}
 
-
-
-
-<ol class="nav-wrapper"> 
+<!-- *** BM - This is the main menu - Chapters and Entities are currently static *** 
+<ul class="nav-wrapper"> 
+  <li{% if root.active %} class="active" {% endif %}>
+    <h2>
+      <a href="{% pageurl root %}">{{ root.title }}</a>
+    </h2>
+    </li>
+    {% for page in menu_pages %}
+    <li{% if page.active %} class="active" {% endif %}>
+      <h2>
+        <a href="{% pageurl page %}">{{ page.title }}</a>
+      </h2>
+    </li>
+    {% endfor %}
+    <li><h2><a href="">Chapters</a></h2></li>
+    <li><h2><a href="">Entities</a></h2></li>
     <li>
+      <div class="search-box">
+      <form action="/search" method="get">
+        <input type="text" class="search-box-text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} placeholder="Search the site">
+        <div class="search-button-container">
+          <button type="submit" class="search-button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  <li>
+</ul>
+-->
+
+
+<!-- *** BM - This is an example of the static Chapters menu ***-->
+<ol class="nav-wrapper">   
+  <h2>Chapters </h2>
+  <li>
     <input type="radio" name="menu" id="chapter-1" checked="checked" /> 
     <label for="chapter-1">What Mozart Saw</label>
         <ol>
@@ -35,26 +66,26 @@
     <li>
     <input type="radio" name="menu" id="chapter-3" />     
     <label for="chapter-3">The Mozarts as Producers of Souvenirs</label>
-      <ol>
-          <li><a href="#">1770, Italy : Watermelon</a></li>
-          <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-          <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-          <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-      </ol>
-    </li>
-    <li>   
-    <input type="radio" name="menu" id=4chapter-4" />     
-    <label for="chapter-4">Eighteenth-century understandings of the word and idea ‘souvenir’</label>
-       <ol>
-          <li><a href="#">1770, Italy : Watermelon</a></li>
-          <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-          <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-          <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-      </ol>
-    </li>
-  
+    <ol>
+        <li><a href="#">1770, Italy : Watermelon</a></li>
+        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+    </ol>
+  </li>
+  <li>   
+  <input type="radio" name="menu" id=4chapter-4" />     
+  <label for="chapter-4">Eighteenth-century understandings of the word and idea ‘souvenir’</label>
+     <ol>
+        <li><a href="#">1770, Italy : Watermelon</a></li>
+        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+    </ol>
+  </li>
+
   <div class="switch-wrapper"> 
-      <div class="switch">
+    <div class="switch">
       <input id="switch-1" type="checkbox" class="switch__input">
       <label for="switch-1" class="switch__label">
       <span class="switch__text">Entity types</span>
@@ -71,155 +102,5 @@
           </ul>                
       </label>
       </div>
-  </ol>
-
-
-
-
-
-  <!--  <li{% if root.active %} class="active" {% endif %}>
-      <h2>
-        <a href="{% pageurl root %}">{{ root.title }}</a>
-      </h2>
-    </li>
-    {% for page in menu_pages %}
-    <li{% if page.active %} class="active" {% endif %}>
-      <h2>
-        <a href="{% pageurl page %}">{{ page.title }}</a>
-      </h2>
-    </li>
-    {% endfor %}
-    <li><h2><a href="">Chapters</a></h2></li>
-    <li><h2><a href="">Entities</a></h2></li>
-    <li>
-      <div class="search-box">
-      <form action="/search" method="get">
-        <input type="text" class="search-box-text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} placeholder="Search the site">
-        <div class="search-button-container">
-          <button type="submit" class="search-button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
     </div>
-    </li>
-
-    <h2>Chapters</h2>
-    <li>
-      <input id="group-1" type="radio" hidden  checked="checked"/>
-      <label for="group-1" class="has-sub"><span>1 </span> What Mozart Saw</label>
-      <ul class="sublevel-1">
-        <li><a href="#">Introduction</a></li>
-        <li><a href="#">1763, Mannheim : city planning</a></li>
-        <li><a href="#">1764, Paris : Place de Grève [now Place de l'Hôtel de Ville]</a></li>
-        <li><a href="#">1764 or 1765, London : Zebra</a></li>
-        <li><a href="#">1770, Italy : Watermelon</a></li>
-        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-        <li><a href="#">1770, Italy : Watermelon</a></li>
-        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-      </ul>
-    </li>
-    <li>
-      <input id="group-2" type="radio" hidden />
-      <label for="group-2" class="has-sub"><span>2 </span> The Mozarts as Collectors of Souvenirs</label>
-      <ul class="sublevel-1">
-        <li>
-          <li><a href="#">1st level item</a></li>
-          <li><a href="#">1st level item</a></li>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <input id="group-3" type="radio" hidden />
-      <label for="group-3" class="has-sub"><span>3 </span> The Mozarts as Producers of Souvenirs</label>
-      <ul class="sublevel-1">
-        <li>
-          <li><a href="#">1st level item</a></li>
-        <li><a href="#">1st level item</a></li>
-          <input id="sub-group-3" type="checkbox" hidden />
-          <label for="sub-group-3" class="has-sub"> Second level</label>
-          <ul class="sublevel-2">
-            <li><a href="#">2nd level nav item</a></li>
-            <li><a href="#">2nd level nav item</a></li>
-            <li><a href="#">2nd level nav item</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <input id="group-4" type="radio" hidden />
-      <label for="group-4" class="has-sub"><span>4 </span> Eighteenth-century understandings of the word and idea ‘souvenir’</label>
-      <ul class="sublevel-1">
-        <li>
-          <li><a href="#">1st level item</a></li>
-          <input id="sub-group-4" type="checkbox" hidden />
-          <label for="sub-group-4" class="has-sub"> Second level</label>
-          <ul class="sublevel-2">
-            <li><a href="#">2nd level nav item</a></li>
-            <li><a href="#">2nd level nav item</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <input id="group-4" type="radio" hidden />
-      <label for="group-4" class="has-sub"><span>5 </span> Souvenir and expression in Mozart’s music</label>
-      <ul class="sublevel-1">
-        <li>
-          <li><a href="#">1st level item</a></li>
-          <input id="sub-group-4" type="checkbox" hidden />
-          <label for="sub-group-4" class="has-sub"> Second level</label>
-          <ul class="sublevel-2">
-            <li><a href="#">2nd level nav item</a></li>
-            <li><a href="#">2nd level nav item</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-
-    <h2>Entities</h2>
-    <li><a href="">Chapters</a></li>
-    <li><a href="">Entities</a></li>
-
-
-    <div class="switch-wrapper"> 
-      <div class="switch">
-      <input id="switch-1" type="checkbox" class="switch__input">
-      <label for="switch-1" class="switch__label">
-       
-        <ul>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#047657;">Person</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#B50AA8;">Place</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#9cdb76;">Institution</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#FF7F00;">Object</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#FF0000;">Musical Work</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#00BAFF;">Event</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#192BB7;">Source</li>               
-          </ul>         
-          </span>        
-      </label>
-
-</div>
-</div>
-    <div class="entity-types">
-    <h3>Entity types</h3>
-    <ul>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#047657;">Person</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#B50AA8;">Place</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#9cdb76;">Institution</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#FF7F00;">Object</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#FF0000;">Musical Work</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#00BAFF;">Event</li>
-        <li class="col-1-2 tab-1-2 mob-full" style="color:#192BB7;">Source</li>        
-      </ul> 
-    </div>-->
-
-</ul>
-
-
-
-
+</ol>
