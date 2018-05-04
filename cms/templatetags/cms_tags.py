@@ -16,6 +16,11 @@ def get_entity_types():
     return EntityType.objects.all()
 
 
+@register.simple_tag
+def get_first_item():
+    return ObjectIndexPage.objects.first().get_children().first().url
+
+
 @register.simple_tag(takes_context=True)
 def get_site_root(context):
     """Returns the site root Page, not the implementation-specific model used.
