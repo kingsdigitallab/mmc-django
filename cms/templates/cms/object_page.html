@@ -4,8 +4,7 @@
 {% load cms_tags wagtailcore_tags %}
 
 {% block sidenav %}{% get_sidenav current_page=self %}{% endblock %}
-{% block entities %}{% get_entities %}{% endblock %}
-
+{% block chapters_menu %}{% chapters_menu %}{% endblock %}
 {% block main %}
 <!--<header><h2>{{ self.title }}</h2></header>-->
 

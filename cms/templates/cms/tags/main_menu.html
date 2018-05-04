@@ -1,4 +1,4 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags cms_tags %}
 
 <!-- *** BM - This is the main menu - Chapters and Entities are currently static *** 
 <ul class="nav-wrapper"> 
@@ -14,8 +14,7 @@
       </h2>
     </li>
     {% endfor %}
-    <li><h2><a href="">Chapters</a></h2></li>
-    <li><h2><a href="">Entities</a></h2></li>
+    <li><h2><a href="{% get_first_item %}">Chapters</a></h2></li>
     <li>
       <div class="search-box">
       <form action="/search" method="get">
@@ -30,7 +29,6 @@
   <li>
 </ul>
 -->
-
 
 <!-- *** BM - This is an example of the static Chapters menu ***-->
 <ol class="nav-wrapper">   
