@@ -78,8 +78,14 @@ body {
     width:100%;
 }
 
+
 * {
   box-sizing: border-box;
+}
+
+strong.title
+{
+    display: block;
 }
 
 
@@ -424,9 +430,11 @@ font-size: 0.8rem;
             counter-increment: step-counter;
             list-style-type: none;
             &:before {
-            content: counter(step-counter);
+            //content: counter(step-counter);
             font-size:1.5rem;
             font-family: 'Libre Baskerville', serif;
+            counter-increment: item;
+            content: counters(item, ".")" ";
             }
         /* TO - Need to fix last-child, not working */
             &:last-child{ 
