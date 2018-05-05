@@ -1,6 +1,97 @@
 {% load wagtailcore_tags cms_tags %}
 
-<!-- *** BM - This is the main menu - Chapters and Entities are currently static *** 
+<div class="nav-wrapper">
+  <h1>
+      <input type="radio" name="main" id="home"/> 
+      <label for="home">Home</label>
+  </h1>
+
+  <h1>
+    <input type="radio" name="main" id="chapters"/> 
+    <label for="chapters">Chapters</label>
+    <ul>
+      <li>
+        <input type="radio" name="menu" id="item1" checked="checked"/> 
+        <label for="item1">Chapter 1</label>
+          <ol>
+            <li>Subchapter</li>        
+            <li>Subchapter</li>
+            <li>Subchapter</li>
+          </ol>
+      </li>
+      <li>
+        <input type="radio" name="menu" id="item2"/> 
+        <label for="item2">Chapter 2</label>
+          <ol>
+            <li>Subchapter</li>        
+            <li>Subchapter</li>
+            <li>Subchapter</li>
+          </ol>
+      </li>
+      <li>
+        <input type="radio" name="menu" id="item3"/> 
+        <label for="item3">Chapter 3</label>
+          <ol>
+            <li>Subchapter</li>        
+            <li>Subchapter</li>
+            <li>Subchapter</li>
+          </ol>
+      </li>
+    </ul>
+  </h1>
+
+  <h1>
+        <input type="radio" name="main" id="entities"/> 
+      <label for="entities">Entities</label>
+  <ul>
+    <li>
+      <label>Person</label>
+    </li>
+      <li>
+      <label>Place</label>
+    </li>
+  </ul>
+  </h1>
+  <h1>
+      <label>Bibliography</label>
+  </h1>
+  <h1>
+      <label>About</label>
+  </h1>
+
+  <div class="search-box">
+    <form action="/search" method="get">
+      <input type="text" class="search-box-text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} placeholder="Search the site">
+      <div class="search-button-container">
+        <button type="submit" class="search-button">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="switch-wrapper"> 
+    <div class="switch">
+      <input id="switch-1" type="checkbox" class="switch__input">
+      <label for="switch-1" class="switch__label">
+      <span class="switch__text">Entity types</span>
+      </label>
+  </div>
+  <div class="legend">
+    <ul>
+    <li style="color:#047657;">Person</li>
+    <li style="color:#B50AA8;">Place</li>
+    <li style="color:#9cdb76;">Institution</li>
+    <li style="color:#FF7F00;">Object</li>
+    <li style="color:#FF0000;">Musical Work</li>
+    <li style="color:#00BAFF;">Event</li>
+    <li style="color:#192BB7;">Source</li>               
+    </ul>                
+  </div>
+</div>
+
+
+<!-- ***** BM - Delete all this - just leaving in case you need some template tags *****
+
 <ul class="nav-wrapper"> 
   <li{% if root.active %} class="active" {% endif %}>
     <h2>
@@ -14,91 +105,66 @@
       </h2>
     </li>
     {% endfor %}
-    <li><h2><a href="{% get_first_item %}">Chapters</a></h2></li>
     <li>
-      <div class="search-box">
-      <form action="/search" method="get">
-        <input type="text" class="search-box-text" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} placeholder="Search the site">
-        <div class="search-button-container">
-          <button type="submit" class="search-button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
-    </div>
-  <li>
-</ul>
--->
-
-<!-- *** BM - This is an example of the static Chapters menu ***-->
-<ol class="nav-wrapper">   
-  <h2>Chapters </h2>
-  <li>
-    <input type="radio" name="menu" id="chapter-1" checked="checked" /> 
-    <label for="chapter-1">What Mozart Saw</label>
-        <ol>
-          <li><a href="#">Introduction</a></li>
-          <li><a href="#">1763, Mannheim : city planning</a></li>
-          <li><a href="#">1764, Paris : Place de Grève [now Place de l'Hôtel de Ville]</a></li>
-          <li><a href="#">1764 or 1765, London : Zebra</a></li>
-          <li><a href="#">1770, Italy : Watermelon</a></li>
-          <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-          <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-          <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-          <li><a href="#">1770, Italy : Watermelon</a></li>
-          <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-          <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-          <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-      </ol>
+      <h2>
+        <a href="{% get_first_item %}">Chapters</a>
+      </h2>    
     </li>
     <li>
-    <input type="radio" name="menu" id="chapter-2" />     
-    <label for="chapter-2">The Mozarts as Collectors of Souvenirs</label>
-        <ol>
-          <li><a href="#">1770, Italy : Watermelon</a></li>
-          <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-          <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-          <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-        </ol> 
+      <input type="radio" name="menu" id="chapters" /> 
+        <h2><label for="chapters">Chapters</label></h2>
+      <ul>
+        <li>
+          <input type="radio" name="menu" id="chapter-1" checked="checked" /> 
+          <label for="chapter-1">What Mozart Saw</label>
+          <ul>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">1763, Mannheim : city planning</a></li>
+            <li><a href="#">1764, Paris : Place de Grève [now Place de l'Hôtel de Ville]</a></li>
+            <li><a href="#">1764 or 1765, London : Zebra</a></li>
+            <li><a href="#">1770, Italy : Watermelon</a></li>
+            <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+            <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+            <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+            <li><a href="#">1770, Italy : Watermelon</a></li>
+            <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+            <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+            <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+          </ul>
+        </li>
+        <li>
+          <input type="radio" name="menu" id="chapter-2"/> 
+          <label for="chapter-2">What Mozart Saw</label>
+          <ul>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">1763, Mannheim : city planning</a></li>
+            <li><a href="#">1764, Paris : Place de Grève [now Place de l'Hôtel de Ville]</a></li>
+            <li><a href="#">1764 or 1765, London : Zebra</a></li>
+            <li><a href="#">1770, Italy : Watermelon</a></li>
+            <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+            <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+            <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+            <li><a href="#">1770, Italy : Watermelon</a></li>
+            <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
+            <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
+            <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
+          </ul>
+        </li>
+      </ul>  
     </li>
     <li>
-    <input type="radio" name="menu" id="chapter-3" />     
-    <label for="chapter-3">The Mozarts as Producers of Souvenirs</label>
-    <ol>
-        <li><a href="#">1770, Italy : Watermelon</a></li>
-        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-    </ol>
-  </li>
-  <li>   
-  <input type="radio" name="menu" id=4chapter-4" />     
-  <label for="chapter-4">Eighteenth-century understandings of the word and idea ‘souvenir’</label>
-     <ol>
-        <li><a href="#">1770, Italy : Watermelon</a></li>
-        <li><a href="#">1770, Mannheim : Mannheim Observatory</a></li>
-        <li><a href="#">1781, Salzburg and Vienna : Ribbons and Aprons</a></li>
-        <li><a href="#">1791, Vienna : Pierre Blanchard's hot-air balloon</a></li>
-    </ol>
-  </li>
+      <input type="radio" name="menu" id="entites" checked="checked" /> 
+        <h2><label for="entities">Entities</label></h2> 
+              <ul>
+        <li>
+          Person
+        </li>
+        <li>
+          Place
+        </li>
+      </ul>  
+    </li>
+  <li>
+</ul>-->
 
-  <div class="switch-wrapper"> 
-    <div class="switch">
-      <input id="switch-1" type="checkbox" class="switch__input">
-      <label for="switch-1" class="switch__label">
-      <span class="switch__text">Entity types</span>
-      </div>
-      <div class="legend">
-        <ul>
-        <li style="color:#047657;">Person</li>
-        <li style="color:#B50AA8;">Place</li>
-        <li style="color:#9cdb76;">Institution</li>
-        <li style="color:#FF7F00;">Object</li>
-        <li style="color:#FF0000;">Musical Work</li>
-        <li style="color:#00BAFF;">Event</li>
-        <li style="color:#192BB7;">Source</li>               
-          </ul>                
-      </label>
-      </div>
-    </div>
-</ol>
+

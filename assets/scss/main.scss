@@ -89,16 +89,7 @@ strong.title
 }
 
 
-/*body{
-  min-height:100%;
-  position:relative;
-  padding-bottom:3rem;
-  font-family: 'Sorts Mill Goudy', serif;
-  margin: 1rem 2rem 0 2rem;
-}*/
-
-
-/* *, *:before, *:after {
+ *, *:before, *:after {
   outline:none;
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
@@ -108,7 +99,12 @@ strong.title
 -ms-transition:0.3s;
 -o-transition:0.3s;
 transition:0.3s;
-  }*/
+  }
+
+a {
+    text-decoration: none;
+    color: $black;
+}
 
 .wrapper {
     min-height: 100%;
@@ -117,13 +113,6 @@ transition:0.3s;
     margin: 0 auto -8rem ;
     /* the bottom margin is the negative value of the footer's height */
     position: relative
-}
-
-
-
-a {
-    text-decoration: none;
-    color: $black;
 }
 
 /***** Grid *****/
@@ -371,7 +360,84 @@ header {
   visibility: hidden;
 }
 
+
 #nav {
+margin: 0 auto;
+text-align: left;
+font-size: 0.8rem;
+    >a {
+    display: none;
+    }
+    .nav-wrapper{
+    position: fixed;
+    overflow-y: scroll;
+    height: 50%;
+    right: 0;
+    top: O;
+    margin: 0;
+    background: black;
+    font-size: 1.2rem;
+    width: 22rem;
+    padding: 3rem 0 60% 3rem;
+    color: white;
+      h1{ /* first level */
+        input{  /* default close second level */
+        display: none; 
+          &:checked + label{
+          }
+        }
+        label { 
+        cursor: pointer; 
+        display: block; 
+        line-height: 40px; 
+        }
+        ul{
+        margin-top:0;
+
+          >li{ /* second level */
+          max-height: 0; 
+          overflow: hidden; 
+          position: relative; 
+          opacity: 1;
+            input { /* default close third level */
+            display: none; 
+              &:checked + label{
+              background:gray;
+              }
+            }
+            label { 
+            cursor: pointer; 
+            display: block; 
+            line-height: 40px; 
+            }
+            >ol { 
+            max-height: 0; 
+            overflow: hidden; 
+            position: relative; 
+            opacity: 1;
+            margin-left:20px;
+            }
+            > input:checked ~ ol { /* opens third level */
+            max-height: 900px; /*auto*/   
+            transition: max-height 2s ease-in-out;
+            }
+          }
+        }
+        > input:checked ~ ul>li { /* opens second level */ 
+        max-height: 900px; /*auto*/   
+        transition: max-height 2s ease-in-out;
+        }
+      } 
+    }
+}
+
+
+
+
+
+
+
+/*#nav {
 margin: 0 auto;
 text-align: left;
 font-size: 0.8rem;
@@ -389,8 +455,102 @@ font-size: 0.8rem;
         display: block;
         }
     }
+    /* Main menu - Unnumbered lists and radio accordion */
+    /*ul.nav-wrapper{
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    right:0;
+    margin: 0;
+    background:black;
+    font-size:1.2rem;
+    width:22rem;
+    padding: 3rem 0 0 3rem;
+    list-style-type: none;
+        input { 
+        display: none; 
+        }
+        input:checked + label { 
+        }
+        label { 
+        cursor: pointer; 
+        display: block; 
+        display: block;
+        color: #fff;
+        transition: all .25s ease-in;
+            &:focus,
+            &:hover {
+            color: rgba(255,255,255,.5);
+            background: darken(#151515, 7%);
+            }
+            &:last-child { 
+            margin-right: 0; 
+            }
+        }
+        >li{
+            .search-box{
+                input{
+                    display:block;
+                }
+            }
+            >ul { /* Nested Chapters/Entities first level */
+            /*max-height: 0; 
+            overflow: hidden; 
+            position: relative; 
+            opacity: 1;
+            transition: max-height 0.5s ease-in-out;
+            margin: 0.5rem 0 1rem -40px;
+            padding-right:3rem;
+                li{
+                font-size:0.95rem;
+                background: #252525;
+                box-shadow: inset 0 -1px lighten(#252525, 7%);
+                padding: 0.5rem;
+                    &:focus,
+                    &:hover{            
+                    color: rgba(255,255,255,.5);
+                    background: darken(#252525, 7%);
+                    }
+                    >ul { /* Nested Chapters/Entities second level */
+                    /*max-height: 0; 
+                    overflow: hidden; 
+                    position: relative; 
+                    opacity: 1;
+                    transition: max-height 0.5s ease-in-out;
+                    margin: 0.5rem 0 1rem -40px;
+                    padding-right:3rem;
+                        >li{
+                        font-size:0.95rem;
+                        background: #252525;
+                        box-shadow: inset 0 -1px lighten(#252525, 7%);
+                        padding: 0.5rem;
+                            &:focus,
+                            &:hover{            
+                            color: rgba(255,255,255,.5);
+                            background: darken(#252525, 7%);
+                            }
+                        }
+                    }
+                }
+                li > input:checked ~ ul { 
+                max-height: 900px; /*auto*/
+                /*}
+            }
+        }
+        li > input:checked ~ ul { 
+        max-height: 900px; /*auto*/
+        /*}
+
+        
+        
+
+
+    }
+
+
+
     /* Numbered lists and radio accordion */
-    ol.nav-wrapper{
+    /*ol{
     position: fixed;
     overflow-y: scroll;
     height: 100%;
@@ -403,7 +563,6 @@ font-size: 0.8rem;
     color: $white;
     counter-reset: li;
     list-style-type: none;
-
         input { 
         display: none; 
         }
@@ -437,7 +596,7 @@ font-size: 0.8rem;
             content: counter(step-counter);
             }
         /* TO - Need to fix last-child, not working */
-            &:last-child{ 
+            /*&:last-child{ 
             margin-bottom:15rem;
             }
             
@@ -476,74 +635,20 @@ font-size: 0.8rem;
         }
         li > input:checked ~ ol { 
         max-height: 900px; /*auto*/
-        }
+        /*}
     }
 
-    /* Unnumbered lists and radio accordion */
-    /* TO - Might remove radio accordion if not used */
-    ul.nav-wrapper{
-    position: fixed;
-    overflow-y: scroll;
-    height: 100%;
-    right:0;
-    margin: 0;
-    background:black;
-    font-size:1.2rem;
-    width:22rem;
-    padding: 3rem 0 0 3rem;
-    list-style-type: none;
-        input { 
-        display: none; 
-        }
-        input:checked + label { 
-        }
-        label { 
-        cursor: pointer; 
-        display: block; 
-        display: block;
-        color: #fff;
-        transition: all .25s ease-in;
-            &:focus,
-            &:hover {
-            color: rgba(255,255,255,.5);
-            background: darken(#151515, 7%);
-            }
-            &:last-child { 
-            margin-right: 0; 
-            }
-        }
-        >li{
-            .search-box{
-                input{
-                    display:block;
-                }
-            }
-        /* TO - Need to fix last-child, not working */
-            >ul { 
-            max-height: 0; 
-            overflow: hidden; 
-            position: relative; 
-            opacity: 1;
-            transition: max-height 0.5s ease-in-out;
-            margin: 0.5rem 0 1rem -40px;
-            padding-right:3rem;
-                li{
-                font-size:0.95rem;
-                background: #252525;
-                box-shadow: inset 0 -1px lighten(#252525, 7%);
-                padding: 0.5rem;
-                    &:focus,
-                    &:hover{            
-                    color: rgba(255,255,255,.5);
-                    background: darken(#252525, 7%);
-                    }
-                }
-            }
-        }
-        li > input:checked ~ ul { 
-        max-height: 900px; /*auto*/
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 /* Entity Switch */
@@ -590,7 +695,7 @@ font-size: 1.1rem;
   position: absolute;
   display: block;
   margin-top: 5px;
-  left: -12rem;
+  left: -8.8rem;
   }
 
   .switch__label{
@@ -1245,7 +1350,7 @@ nav {
 
 section {
     height: 100%;
-    width:100%;
+    max-width: 800px;
     margin-left:3rem;
     h2 {
         border-bottom: 0.05rem solid;
@@ -1569,7 +1674,6 @@ footer {
 
 @media all and (max-width:1000px) {
 
-    /** Side Nav **/
 
     /** Homepage**/
     .homepage {
@@ -1682,7 +1786,7 @@ footer {
                 }
             }
         }
-    }*/
+    }
 .sidenav {
         ol {
             width: 2rem;
@@ -1699,7 +1803,7 @@ footer {
                 }
             }
         }
-    }
+    }*/
 
 
 
@@ -1719,43 +1823,40 @@ footer {
 
 
         /** Object Index Page **/
-        .object-index {
-            margin: 0 0 0 1.5rem;
-            padding: 0;
-            border-left: 0.3rem solid;
-            h2 {
-                padding: 1rem 0 0.3rem 0.5rem;
-                font-size: 1.4rem;
-                margin-right: 0.5rem;
-                line-height: 1.5rem;
-            }
-            p {
-                padding: 0 0 0.3rem 0.5rem;
-                margin-right: 0.5rem;
-            }
-            .right .img-wrapper,
-            .left .img-wrapper,
-            .mid .img-wrapper {
+
+        h2 {
+            padding: 1rem 0 0.3rem 0.5rem;
+            font-size: 1.4rem;
+            margin-right: 0.5rem;
+            line-height: 1.5rem;
+        }
+        p {
+            padding: 0 0 0.3rem 0.5rem;
+            margin-right: 0.5rem;
+        }
+        .right .img-wrapper,
+        .left .img-wrapper,
+        .mid .img-wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 1% 0;
+        }
+        .richtext-image {
+            &.left {
                 width: 100%;
-                margin: 0;
                 padding: 1% 0;
             }
-            .richtext-image {
-                &.left {
-                    width: 100%;
-                    padding: 1% 0;
-                }
-                &.right {
-                    width: 100%;
-                    padding: 1% 0;
-                    margin: 0;
-                }
-            }
-            blockquote {
-                margin: 0 0.5rem;
+            &.right {
+                width: 100%;
+                padding: 1% 0;
+                margin: 0;
             }
         }
+        blockquote {
+            margin: 0 0.5rem;
+        }
     }
+    
     /** Entities **/
     .entities {
         right: -5rem;
