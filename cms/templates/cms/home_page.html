@@ -1,7 +1,12 @@
 {% extends "cms/base.html" %}
 {% load cms_tags %}
 
-{% block sidenav %}{% get_sidenav current_page=self%}{% endblock %}
+
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ self.get_url }}"> {{ self.title }}</a>
+</div>
+{% endblock %}
 
 {% block main %}
 {% include "cms/includes/streamfield.html" with blocks=self.body %}

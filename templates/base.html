@@ -43,122 +43,37 @@
       <div class="container" role="main">
       {% include 'includes/header.html' %}
        <article>
-        <div class="breadcrumb">
-
-
-
-
+  
+         {% block breadcrumb %}
+         <div class="breadcrumb">
           <a href="/"> Home</a> &gt;
-
-
-
-          <a href="/souvenirs/"> Chapter</a> &gt;
-
-
-
-          <a href="#">1 What Mozart Saw</a>
-
+          <a href="{{ self.get_url }}"> {{ self.title }}</a>
         </div>
-        
-        <div class="rich-text">
-          <p>Eduard Mörike’s 1856
-            novella <i>Mozart on the way to Prague</i>
-            begins with a revelation. Mozart and his wife Constanze stop their coach and
-            venture into the Bohemian forest:</p>
+         {% endblock %}
 
-            <p>They stepped arm in arm over the roadside ditch, and
-              so at once deep into the gloom of the fir-wood, which soon deepened into a
-              darkness pierced only here and there by a shaft of sunshine striking vividly
-              down on the carpet of velvet moss. . .&nbsp;
-              ‘Good God! How glorious!’ he cried, gazing up at the lofty boles. ‘One
-              might be in a church! I feel as though I had never been in a forest, and now I
-              see for the first time what manner of thing it really is – this whole
-              population of trees ranged side by side! No human hand planted them, they grew
-              up all of their own accord, and here they stay for the simple reason that it is
-              fun to be alive and carry on the business of life together. . . How many
-              strange and beautiful things there are in the great world beyond, and how many
-              here at home, of which I know simply nothing yet, in the shape of natural
-              wonders, sciences, arts and useful crafts. . .’<sup><sup><a>[1]</a></sup><a></a></sup></p><p><sup><sup><br></sup></sup></p><p><sup><sup><img class="richtext-image full-width" src="https://mmc-stg.kdl.kcl.ac.uk/static/media/images/001.width-800.jpg" width="797" height="803" alt="Eduard Mörike, Mozart on the way to Prague (Stuttgart and Augsburg, 1856)"><br></sup></sup></p>
+          {% block main %}
+          {% endblock %}
+        </article>
+        <footer>
+          {% block footer %}
+          {% include 'includes/footer.html' %}
+          {% endblock %}
+        </footer>
+      </div>
 
-              <p><br>
-
-              </p><hr>
+    </div>
+    <!-- <div class="push"></div> -->
+  </div>
 
 
 
-              <p>
+  <!-- define requirejs config settings. -->
+  <script type="text/javascript">
+    {% include 'includes/config.js' %}
+  </script>
+  {% require_module 'config' %}
 
-              </p><p><a>[1]</a> Eduard Mörike, <i>Mozart on the way to Prague</i>, trans.
-              Walter and Catherine Alison Phillips (London, 1946), 17-19.</p>
-
-              <p></p>
-
-              <p></p>
-            </div>
-
-
-
-            <div class="rich-text">
-              <p>The point of this
-                passage seems clear enough: Mozart’s awakening to the world around him signals
-                his emergence as a proto-Romantic, a common-enough view in the early
-                nineteenth-century. It also harbours a fundamental contradiction that has
-                informed Mozart biography from at least the last years of the eighteenth
-                century and early years of the nineteenth century until today: the life Mörike describes is
-                set in pre-revolutionary 1787, in the so-called Age of Enlightenment, yet his
-                Mozart — at least to this point — is distinctly ‘unenlightened’, unacquainted
-                with the world around him, uncritical and disengaged. In short, he belongs
-                nowhere:&nbsp; he is neither fully Romantic nor, what might be typical
-                of his time, enlightened.</p>
-                
-                <div class="pullquote">
-                <div class="rich-text"><p>As a result of what I’ve told you about the wet weather, I must add that the Seine was so amazingly high about 2 weeks ago that the people here had to cross the Place de Grève in boats, and many parts of the city, towards the river, were impassable.</p></div>
-                </div>
-
-                <p>This Mozartean trope
-                  not only justified what was incorrectly seen as Mozart’s failure to, practically
-                  speaking, make his way in the world, but also gave rise to the idea —also
-                  current by the early years of the nineteenth century — that his music exists in
-                  some rarefied domain different from other composers. And this implies,
-                  biographically speaking, that what was singularly and overwhelmingly important
-                  for Mozart was what he <i>heard</i> — his
-                  was a more or less exclusively musical life, whether his own or others’. What
-                  he experienced, what he <i>saw</i> is
-                  secondary: it is as if the details of his life — who he met, where he
-                  travelled, what he experienced — are a kind of travelogue of little importance
-                  to how we fundamentally understand the man and his music.</p><p>The evidence of the family letters, however, overwhelmingly contradicts the idea that the Mozart family was disengaged from the world around them. And if that is the case, then material culture studies may offer an entrée into their understanding and experience of everyday life that may be directly reflected in Mozart's compositional output. At the very least it represents a novel point of departure that may cast his life and works, and how we understand them, in a new light. The point of departure for this project is not what Mozart heard, but, in a sense, what Mozart saw and what he experienced: the beauties and vagaries of urban planning, whether the regular grid of streets in Mannheim or flooding in the Place de Grève in Paris, both in 1763; exotic animals, including zebras, in London in 1764 or 1765; fruits and vegetables not known in his native Salzburg, including watermelons, which he tasted for the first time in Italy in 1770; fashion, such as suits and coats, hats and accessories for women, such as ribbons; and science and technology, including his visit to the Mannheim Observatory in 1778 and his interest in the first Viennese hot-air balloon flight of Blanchard in 1791.<br></p>
-                </div>
-
-                <div class="bottom-nav">
-                  <a href="/souvenirs/what-mozart-saw/1764-paris-place-de-gr%C3%A8ve-now-place-de-lh%C3%B4tel-de-ville/">&lt; &nbsp; II 1764, Paris : Place de Grève [now Place de l'Hôtel de Ville]</a>
-                  <a class="pull-right" href="/souvenirs/what-mozart-saw/1770-italy-watermelon/">IV 1770, Italy : Watermelon &nbsp; &gt;</a>
-                </div>
-
-
-                {% block title %}{% endblock %}
-                {% block main %}
-                {% endblock %}
-              </article>
-              <footer>
-                {% block footer %}
-                {% include 'includes/footer.html' %}
-                {% endblock %}
-              </footer>
-            </div>
-
-          </div>
-          <!-- <div class="push"></div> -->
-        </div>
-
-
-
-        <!-- define requirejs config settings. -->
-        <script type="text/javascript">
-          {% include 'includes/config.js' %}
-        </script>
-        {% require_module 'config' %}
-
-        <script src="{% static 'js/entity.js' %}"></script>
-        {% block footer_scripts %}{% endblock %}
-      </body>
-      </html>
+  <script src="{% static 'js/entity.js' %}"></script>
+  {% block footer_scripts %}{% endblock %}
+</body>
+</html>

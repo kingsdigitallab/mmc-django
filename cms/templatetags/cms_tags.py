@@ -1,6 +1,6 @@
 from django import template
 from django.conf import settings
-from cms.models import (EntityType, ObjectIndexPage)
+from cms.models import (HomePage, EntityType, ObjectIndexPage)
 
 register = template.Library()
 
@@ -14,6 +14,17 @@ def are_comments_allowed():
 @register.assignment_tag
 def get_entity_types():
     return EntityType.objects.all()
+
+
+@register.assignment_tag
+def get_menu_pages():
+    root = HomePage.objects.first()
+    return root.get_children().live().in_menu()
+
+
+@register.assignment_tag
+def get_chapters():
+    return ObjectIndexPage.objects.live()
 
 
 @register.simple_tag

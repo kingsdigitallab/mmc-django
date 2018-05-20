@@ -3,8 +3,15 @@
 {% extends "cms/base.html" %}
 {% load cms_tags wagtailcore_tags %}
 
-{% block sidenav %}{% get_sidenav current_page=self %}{% endblock %}
-{% block chapters_menu %}{% chapters_menu %}{% endblock %}
+
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="/"> Home</a> &gt;
+<a href="{{ self.get_parent.get_url }}"> {{self.get_parent.title}}</a> &gt;
+<a href="{{ self.get_url }}"> {{ self.title }}</a>
+</div>
+{% endblock %}
+
 {% block main %}
 <!--<header><h2>{{ self.title }}</h2></header>-->
 
