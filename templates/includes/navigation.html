@@ -53,6 +53,7 @@
 				</form>
 			</div>
 		</li>  
+		{% if self.get_verbose_name == 'Object page' %}
 		<div class="switch-wrapper"> 
 			<div class="switch">
 				<input id="switch-1" type="checkbox"  checked class="switch__input">
@@ -70,5 +71,6 @@
 				</ul>                
 			</div>
 		</div>
+		{% endif %}
 	</ul>
 </nav>
