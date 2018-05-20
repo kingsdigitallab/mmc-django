@@ -99,7 +99,7 @@ strong.title
 a {
     text-decoration: none;
     color: $black;
-    display:block;
+    /*display:block; BM: Why are all <a>s block?! */
     &:hover{
         opacity: 0.7;
     }
@@ -937,7 +937,6 @@ dl
         }
     }
     .rich-text{
-        float: left;
         width:100%;
     }
     .richtext-image {
@@ -1086,6 +1085,10 @@ dl
     }
 }
 
+a.force_black
+{
+  border-bottom: 1px solid #a1a1a1!important;
+}
 
 /* Table */
 td{

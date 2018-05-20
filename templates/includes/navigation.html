@@ -1,64 +1,48 @@
 {% load staticfiles cms_tags wagtailcore_tags %}
 
-
+{% get_entity_types as et %}
+{% get_chapters as chapters %}
 
 <input id="menu-switch" type="checkbox" checked/>
 <nav id="menu" role="navigation">        
 
 	<ul>
 		<li>
-			<a href="#">Home</a>
+			<a href="/">Home</a>
 		</li>  
 		<li>
+			{% get_menu_pages as menu_pages %}
 			<input id="chapters" type="checkbox" hidden/>
 			<label for="chapters" class="check">Chapters</label>
 			<ol class="level1-list">
+				{% for chapter in chapters %}
 				<li>
 					<input id="chapter1" type="checkbox" hidden />
-					<label for="chapter1" class="check">What Mozart saw</label>
+					<label for="chapter1" class="check">{{ chapter.title }}</label>
 					<ol class="level2-list">
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
+						{% for child in chapter.get_children %}
+						<li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
+						{% endfor %}
 					</ol>
 				</li>
-				<li>
-					<input id="chapter2" type="checkbox" hidden />
-					<label for="chapter2" class="check">What Mozart saw</label>
-					<ol class="level2-list">
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
-					</ol>
-				</li>
-				<li>
-					<input id="chapter3" type="checkbox" hidden />
-					<label for="chapter3" class="check">What Mozart saw</label>
-					<ol class="level2-list">
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
-						<li><a href="#">Subchapter</a></li>
-					</ol>
-				</li>         
+				{% endfor %}
 			</ol>
 		</li>
 		<li>
 			<input id="entities" type="checkbox" hidden />
 			<label for="entities" class="check"> Entities</label>
 			<ul class="level1-list">
-				<li class="purple"><a href="#">Person</a></li>
-				<li class="darkgreen"><a href="#">Place</a></li>
-				<li class="lightgreen"><a href="#">Person</a></li>
-				<li class="orange"><a href="#">Place</a></li>
+
+				{% for e in et %}
+				<li class="{{ e.colour }}"><a href="{{ e.get_url }}">{{ e.title }}</a></li>
+				{% endfor %}
 			</ul>
 		</li>
+		{% for page in menu_pages %}
 		<li>
-			<a href="#">Bibliography</a>
+			<a href="{{ page.get_url }}">{{ page.title }}</a>
 		</li>  
-		<li>
-			<a href="#">About</a>
-		</li> 
-
+		{% endfor %}
 		<li>
 			<div class="search-box">
 				<form action="/search" method="get">
@@ -71,20 +55,18 @@
 		</li>  
 		<div class="switch-wrapper"> 
 			<div class="switch">
-				<input id="switch-1" type="checkbox" class="switch__input">
+				<input id="switch-1" type="checkbox"  checked class="switch__input">
 				<label for="switch-1" class="switch__label">
 					<span class="switch__text">Entity types</span>
 				</label>
 			</div>
 			<div class="legend">
 				<ul>
-					<li class="darkgreen">Person</li>
-					<li class="orange">Place</li>
-					<li class="lightgreen">Institution</li>
-					<li class="red">Object</li>
-					<li class="purple">Musical Work</li>
-					<li class="lightblue">Event</li>
-					<li class="darkblue">Source</li>               
+					
+					{% for e in et %}
+					<li class="{{e.colour}}">{{e.title}}</li>
+					{% endfor %}
+					             
 				</ul>                
 			</div>
 		</div>
