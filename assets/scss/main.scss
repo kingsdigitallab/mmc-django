@@ -1,13 +1,9 @@
 @import 'settings';
-
+@import 'fonts';
 
 
 /*  copy the _settings file from the vendor scss
 folder to the project one */
-
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Sorts+Mill+Goudy');
-
-
 
 
 /** Your custom scss here **/
@@ -54,14 +50,16 @@ $gray:#888;
 $darkred:#c11609;
 
 //Entity colours
-$purple:#B50AA8;
+$purple:#861fa5;
 $darkgreen: #047657;
 $lightgreen:#9cdb76;
-$orange:#FF7F00;
-$red:#FF0000;
-$lightblue:#00BAFF;
+$orange:#ef9705;
+$lightblue:#009bd5;
 $darkblue:#192BB7;
-
+$teal:#26a5b1;
+$yellow:#f0e707;
+$lightgray:#aab1b1;
+$pink: #dc909e;
 
 
 
@@ -98,7 +96,6 @@ strong.title
 a {
     text-decoration: none;
     color: $black;
-    /*display:block; BM: Why are all <a>s block?! */
     &:hover{
         opacity: 0.7;
     }
@@ -182,25 +179,17 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-transition: all .3s ease-in;
-    -moz-transition: all .3s ease-in;
-    -o-transition: all .3s ease-in;
-    transition: all .3s ease-in;
     background-color: #000;
     overflow:scroll;
     font-size:1.6rem;
     z-index: 2;
   >ul{  /* level1 */
-      margin: 0 0 0 -40px;
+      margin: 0 0 15rem -40px;
       list-style: none;
       >li{
         margin-top: 0;
         >a { 
           display: block;
-          -webkit-transition: all .3s ease;
-          -moz-transition: all .3s ease;
-          -o-transition: all .3s ease;
-          transition: all .3s ease;
           text-decoration: none;
       }
       >ul{
@@ -209,23 +198,18 @@ body {
         counter-reset: li;
         >li{
             margin-top: -1.5rem;
-            background: #252525;
-            //box-shadow: inset 0 -1px lighten(#252525, 7%);
-                //&:hover{
-                //opacity: 0.8;
-                //}
-                &.purple, &.darkgreen, &.lightgreen, &.orange, &.red, &.lightblue, &.darkblue {
+                &.purple, &.darkgreen, &.lightgreen, &.orange, &.darkred, &.lightblue, &.darkblue {
                     &:before{
-                        content: counter(li);
-                        font-size: 2.4rem;
-                        vertical-align: top;
-                        position: relative;
-                        line-height: 0;
-                        top: 3.1rem;
-                        left: 0rem;
-                        font-family: 'Libre Baskerville', serif;
-                        z-index: 1;
-                        color: transparent;
+                    content: counter(li);
+                    font-size: 2.85rem;
+                    vertical-align: middle;
+                    position: relative;
+                    line-height: 0;
+                    top: 3rem;
+                    left: 0rem;
+                    font-family: 'Libre Baskerville', serif;
+                    z-index: 1;
+                    color: transparent;
 
                     }
                 }
@@ -249,9 +233,9 @@ body {
                         border-left: 0.5rem solid $orange;
                     }
                 }
-                &.red {
+                &.darkred {
                     &:before{
-                        border-left: 0.5rem solid $red;
+                        border-left: 0.5rem solid $darkred;
                     }
                 }
                 &.lightblue {
@@ -259,9 +243,24 @@ body {
                         border-left: 0.5rem solid $lightblue;
                     }
                 }
-                &.darkblue {
+                &.teal {
                     &:before{
-                        border-left: 0.5rem solid $darkblue;
+                        border-left: 0.5rem solid $teal;
+                    }
+                }
+                &.yellow {
+                    &:before{
+                        border-left: 0.5rem solid $yellow;
+                    }
+                }
+                &.lightgray {
+                    &:before{
+                        border-left: 0.5rem solid $lightgray;
+                    }
+                }
+                &.pink {
+                    &:before{
+                        border-left: 0.5rem solid $pink;
                     }
                 }
             }
@@ -272,9 +271,9 @@ body {
         counter-reset: li;
         >li{
           margin-top: -1.5rem;
-          &:hover{
-            opacity: 0.8;
-        }
+          //&:hover{
+          //  opacity: 0.8;
+          //}
         &:before{
           counter-increment: li;
           content: counter(li);
@@ -364,7 +363,6 @@ a,label {
   display: block;
   padding: .85rem;
   color: #fff;
-  transition: all .25s ease-in;
   cursor: pointer;
   //&:focus,
   //&:hover {opacity:0.7;}
@@ -561,7 +559,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 .switch__text {
   position: absolute;
   display: block;
-  left: -9.5rem;
+  left: -11.8rem;
   top: 0.2rem;
   color: black;
 }
@@ -657,9 +655,9 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
                 }  
             }
             &.red {
-                border-left: 0.5rem solid $red;
+                border-left: 0.5rem solid $darkred;
                 &:hover{
-                    color: $red;
+                    color: $darkred;
                     text-decoration: underline;
                 }  
             }
@@ -677,6 +675,34 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
                     text-decoration: underline;
                 }  
             } 
+            &.teal {
+                border-left: 0.5rem solid $teal;
+                &:hover{
+                    color: $teal;
+                    text-decoration: underline;
+                }  
+            } 
+            &.yellow {
+                border-left: 0.5rem solid $yellow;
+                &:hover{
+                    color: $yellow;
+                    text-decoration: underline;
+                }  
+            } 
+            &.lightgray {
+                border-left: 0.5rem solid $lightgray;
+                &:hover{
+                    color: $lightgray;
+                    text-decoration: underline;
+                }  
+            } 
+            &.pink {
+                border-left: 0.5rem solid $pink;
+                &:hover{
+                    color: $pink;
+                    text-decoration: underline;
+                }  
+            } 
             &:hover{
                 cursor: pointer;
             }  
@@ -684,118 +710,6 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
     }
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-/**
-
-nav {
-    height: 8rem;
-}
-
-.nav-content {
-    height: 7rem;
-    height + top/bottom paddding + top/bottom border must add up to footer height 
-    padding: 0.5rem 0;
-}
-
-
-
-
-.menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    h3 {
-        font-variant: small-caps;
-        margin: 1rem 0;
-    }
-    ul {
-        position: absolute;
-        top: -50rem;
-        right: 0;
-        padding-left: 0;
-        a {
-            display: block;
-            color: $black;
-        }
-    } // initial li:hover
-    &:hover {
-        cursor: pointer; // secondary ul visibility change
-        ul {
-            display: block;
-            width: 10rem;
-            right: 0;
-            top: 2rem;
-            position: absolute;
-            z-index: 1;
-            font-variant: normal;
-            background: $white; // secondary li
-            li {
-                position: relative;
-                z-index: 1;
-                display: block;
-                padding: 0.8rem;
-                border-bottom: 0.05rem solid $black;
-                &:last-child {
-                    padding: 0.3rem 1rem 0.3rem 0.3rem;
-                }
-                &.active {
-                    background: $black;
-                    a {
-                        color: $white;
-                        background: none;
-                        font-weight: bold;
-                    }
-                }
-                &:hover {
-                    a {
-                        opacity: 0.5;
-                    }
-                }
-            }
-        }
-        li {
-            .search-box {
-                
-                padding: 0.4rem;
-                margin: 0;
-                input {
-                    box-shadow: none;
-                    border: none;
-                    font-family: 'Sorts Mill Goudy', serif;
-                    font-size: 1rem;
-                    width: 7rem;
-                    outline: 0;
-                    &:focus {
-                        box-shadow: none;
-                    }
-                }
-                .search-button-container button {
-                    position: absolute;
-                    top: 0.9rem;
-                    right: 0.5rem;
-                    border: none;
-                    background: none;
-                    outline: 0;
-                }
-            }
-          
-        }
-    }
-}
-
-
-
-
 /** End Nav **/
 
 
@@ -867,7 +781,7 @@ a {
     }
     &.red {
         border-bottom: 1px solid;
-        border-bottom-color: $red;
+        border-bottom-color: $darkred;
     }
     &.lightblue {
         border-bottom: 1px solid;
@@ -877,6 +791,22 @@ a {
         border-bottom: 1px solid;
         border-bottom-color: $darkblue;
     }
+    &.teal {
+        border-bottom: 1px solid;
+        border-bottom-color: $teal;
+    } 
+    &.yellow {
+        border-bottom: 1px solid;
+        border-bottom-color: $yellow; 
+    } 
+    &.lightgray {
+        border-bottom: 1px solid;
+        border-bottom-color: $lightgray;
+    } 
+    &.pink {
+        border-bottom: 1px solid;
+        border-bottom-color: $pink;
+    } 
     &:hover {
         opacity: 0.5;
     }
@@ -1054,7 +984,7 @@ dl
         }
         &.red {
             border-bottom: 1px solid;
-            border-bottom-color: $red;
+            border-bottom-color: $darkred;
         }
         &.lightblue {
             border-bottom: 1px solid;
@@ -1202,7 +1132,7 @@ dl
                 color: $orange;
             }
             &.red {
-                color: $red;
+                color: $darkred;
             }
             &.lightblue {
                 color: $lightblue;
@@ -1210,10 +1140,32 @@ dl
             &.darkblue {
                 color: $darkblue;
             }
+            &.teal {
+                color: $teal;
+            }
+            &.yellow {
+                color: $yellow;
+            }
+            &.lightgray {
+                color: $lightgray;
+            }
+            &.pink {
+                color: $pink;
+            }
             &:hover {
                 opacity: 0.5;
             }
         }
+    }
+}
+
+ul.entityul{
+    margin-left:-18px;
+    li{
+        color: $darkred;
+        list-style-type: square;
+        font-size: 1.1rem;
+        line-height: 1.3;
     }
 }
 
