@@ -6,7 +6,7 @@
 {% block main %}
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
 
-<ul>
+<ul class="entities">
 {% for e in self.entities %}
 	<li><a href="{% pageurl e%}">{{ e.title }}</a></li>
 {% endfor %}

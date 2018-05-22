@@ -1,0 +1,35 @@
+/** Importing Fonts **/
+
+/** Sorts Mill Goudy **/
+
+@font-face {
+  font-family: 'Sorts Mill Goudy';
+  src: url('/static/fonts/Sorts-Mill-Goudy/GoudyStM-webfont.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Sorts Mill Goudy';
+  src: url('/static/fonts/Sorts-Mill-Goudy/GoudyStM-Italic-webfont.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-style: italic;
+}
+
+/** Libre Baskerville **/
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/static/fonts/Libre-Baskerville/LibreBaskerville-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/static/fonts/Libre-Baskerville/LibreBaskerville-Italic.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/static/fonts/Libre-Baskerville/LibreBaskerville-Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+}
