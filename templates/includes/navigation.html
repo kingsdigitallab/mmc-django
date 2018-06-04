@@ -17,8 +17,8 @@
 			<ol class="level1-list">
 				{% for chapter in chapters %}
 				<li>
-					<input id="chapter1" type="checkbox" {% if self.get_parent.title == chapter.title %} checked {% endif %} hidden />
-					<label for="chapter1" class="check">{{ chapter.title }} </label>
+					<input id="chapter-{{chapter.id}}" type="checkbox" {% if self.get_parent.title == chapter.title %} checked {% endif %} hidden />
+					<label for="chapter-{{chapter.id}}" class="check">{{ chapter.title }} </label>
 					<ol class="level2-list">
 						{% for child in chapter.get_children %}
 						<li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
