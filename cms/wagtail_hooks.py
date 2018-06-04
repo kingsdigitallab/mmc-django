@@ -59,6 +59,7 @@ hooks.register('after_edit_page',
 def editor_js():
     js_files = [
         'js/hallo_plugin_caption_image.js',
+        'js/hallo_plugin_references.js',
     ]
 
     js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
@@ -69,6 +70,7 @@ def editor_js():
     return js_includes + format_html("""
         <script>
             registerHalloPlugin('imageCaptionButton');
+            registerHalloPlugin('referenceButton');
         </script>
         """)
 
