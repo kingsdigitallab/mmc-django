@@ -184,10 +184,9 @@ class EntityIndexPage(Page):
 class EntityType(Page, WithStreamField):
     colour = models.CharField(max_length=128, blank=False, help_text="You\
             can use the following colours:\
-            lightgreen, darkgreen, lightpurple,\
-            darkpurple, yellow, orange, red, lightblue,\
-            darkblue, lightbrown, darkbrown, lightgray,\
-            pink and teal.")
+            purple, lightgreen, darkgreen, orange,\
+            lightblue, darkblue, teal, yellow, lightgray\
+            pink, red.")
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
