@@ -528,7 +528,6 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 .switch-wrapper{
     position: fixed;
     bottom: 0;
-    left: 0;
     background: white;
     padding: 0.5rem 1rem 0 3rem;
     border-top: 1px solid white;
@@ -537,6 +536,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
     font-size: 1.1rem;
     color: $black;
     z-index: 2;
+    margin-left: -30px;
     .switch {
       position:absolute;
       display: inline-block;
