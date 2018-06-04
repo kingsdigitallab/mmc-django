@@ -186,7 +186,8 @@ class EntityType(Page, WithStreamField):
             can use the following colours:\
             lightgreen, darkgreen, lightpurple,\
             darkpurple, yellow, orange, red, lightblue,\
-            darkblue, lightbrown, darkbrown and lightgray.")
+            darkblue, lightbrown, darkbrown, lightgray,\
+            pink and teal.")
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]

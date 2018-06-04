@@ -354,7 +354,7 @@ FABRIC_USER = getpass.getuser()
 # -----------------------------------------------------------------------------
 
 # Google Analytics ID
-GA_ID = ''
+GA_ID = 'UA-67707155-5'
 
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'cms/search_results.html'
 

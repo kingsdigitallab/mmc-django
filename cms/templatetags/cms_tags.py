@@ -24,7 +24,7 @@ def get_menu_pages():
 
 @register.assignment_tag
 def get_chapters():
-    return ObjectIndexPage.objects.live()
+    return ObjectIndexPage.objects.live().first().get_children().live()
 
 
 @register.simple_tag

@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 	// Entity links
-	$('.page-content a').each(function()
+	$('.rich-text').find('a').each(function()
 	{
 		var href = $(this).attr('href');
 		if (href)
@@ -24,7 +24,7 @@ $(document).ready(function() {
 			$('a.force_black').removeClass('force_black');
 		} else
 		{
-			$('.page-content a').addClass('force_black');
+			$('.rich-text').find('a').addClass('force_black');
 		}
 	});
 });
