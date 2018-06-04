@@ -4,10 +4,11 @@ window.GOOGLE_ANALYTICS = {
 };
 
 
-// BM - Please check 
 window.addEventListener('resize', function() {
-    if (window.matchMedia('(min-width: 400px)').matches) {
+    if (window.innerWidth < 768) {
         document.getElementById('menu-switch').checked = false;
+    } else
+    {
+    	document.getElementById('menu-switch').checked = true;
     }
 }, true);
-
