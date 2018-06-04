@@ -127,7 +127,6 @@ header {
         margin: 0;
         padding: 0;
         line-height: 1.8rem;
-        width: 18.5rem;
         display:inline-block;
         span{
             color: $red;
@@ -934,9 +933,8 @@ article {
 .pullquote
 {
     margin: 2rem 10% 2rem 10%;
-    border-right:0.3rem solid #eee;
-    border-left:0.3rem solid #eee;
-    padding: 0 1rem;
+    border-left:1.3rem solid #eee;
+    padding: 0.5rem 1rem;
 }
 
 
