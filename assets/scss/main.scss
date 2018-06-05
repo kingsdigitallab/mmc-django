@@ -147,6 +147,36 @@ header {
     }
 }
 
+/***** Privacy Policy *****/
+#privacy-alert
+{
+    background: rgba(90, 100, 105, 0.9);
+    bottom: 0;
+    color: #fff;
+    display: none;
+    padding: 40px 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+
+    a
+    {
+        color: #aaa;
+        border-bottom: 1px solid #aaa;
+
+        &#privacy-alert-agree
+        {
+            border: 1px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0 auto;
+            padding: 5px 0;
+            width: 100px;
+        }
+    }
+}
 
 
 /***** Navigation *****/
