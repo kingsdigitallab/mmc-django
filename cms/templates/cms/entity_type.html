@@ -3,6 +3,14 @@
 
 
 
+{% block breadcrumb %}
+<div class="breadcrumb">
+  <a href="/"> Home</a> &gt;
+  <a href="{{ self.get_url }}">Entity: {{ self.title }}</a>
+</div>
+{% endblock %}
+
+
 {% block main %}
 {% include "cms/includes/streamfield.html" with blocks=self.body %}
 
