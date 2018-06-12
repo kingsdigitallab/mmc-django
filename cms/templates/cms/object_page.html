@@ -7,8 +7,16 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
 <a href="/"> Home</a> &gt;
+{% if self.specific.parent_is_object_page %}
+<a href="{{ self.get_parent.get_parent.get_url }}"> {{self.get_parent.get_parent.title}}</a> &gt;
 <a href="{{ self.get_parent.get_url }}"> {{self.get_parent.title}}</a> &gt;
 <a href="{{ self.get_url }}"> {{ self.title }}</a>
+{% else %}
+<a href="{{ self.get_parent.get_url }}"> {{self.get_parent.title}}</a> &gt;
+<a href="{{ self.get_url }}"> {{ self.title }}</a>
+<a href="{{ self.get_url }}">Introduction</a>
+
+{% endif %}
 </div>
 {% endblock %}
 

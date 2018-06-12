@@ -4,7 +4,7 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
   <a href="/"> Home</a> &gt;
-  <a href="{{ self.get_parent.get_url }}"> {{ self.get_parent.title}}</a> &gt;
+  <a href="{{ self.get_parent.get_url }}">Entity: {{ self.get_parent.title}}</a> &gt;
   <a href="{{ self.get_url }}"> {{ self.title }}</a>
 </div>
 {% endblock %}
