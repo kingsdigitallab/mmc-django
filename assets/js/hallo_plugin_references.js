@@ -54,7 +54,7 @@ dy-body"></div></div>\n        </div><!-- /.modal-content -->\n    </div><!-- /.
                         var link = document.createElement('a');
                         var reference = $('#footnote-list').find("option:selected").attr('data-numeral');
                         $(link).attr('href', '#footnote-' + reference);
-                        $(link).attr('id', '#footnote-link-' + reference);
+                        $(link).attr('id', 'footnote-link-' + reference);
                         $(link).text('[' + reference + ']');
                         lastSelection.insertNode(link);
                         widget.options.editable.setModified();
