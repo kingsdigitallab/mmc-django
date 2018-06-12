@@ -335,6 +335,12 @@ ObjectIndexPage.promote_panels = Page.promote_panels
 
 
 class ObjectPage(Page, WithStreamField):
+    homepage_image = models.ForeignKey(
+        'wagtailimages.Image', null=True, blank=True,
+        on_delete=models.SET_NULL, related_name='+'
+    )
+
+    homepage_text = models.TextField(blank=True, null=True)
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
@@ -414,6 +420,14 @@ ObjectPage.content_panels = [
     FieldPanel('title', classname='full title'),
 
     StreamFieldPanel('body'),
+
+    MultiFieldPanel(
+        [
+            FieldPanel('homepage_text'),
+            ImageChooserPanel('homepage_image'),
+        ],
+        heading="Homepage Promo Details",
+    ),
 ]
 
 ObjectPage.promote_panels = Page.promote_panels
