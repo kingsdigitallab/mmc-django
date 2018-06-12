@@ -84,7 +84,7 @@
 
 {% if self.get_entities %}
 
-	<header><h3>Pages referencing {{self.title}}:</h3></header>
+	<h3>Pages referencing {{self.title}}:</h3>
 
     {% for e in self.get_entities %}
         <p><a href="{% pageurl e.page %}">{{e.page.title}}</a></p>
