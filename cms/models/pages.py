@@ -263,7 +263,6 @@ class Entity(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
-        index.SearchField('title'),
         index.SearchField('subtype'),
         index.SearchField('mozart_relevence'),
         index.SearchField('comments'),
