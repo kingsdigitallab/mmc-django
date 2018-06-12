@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
 <p class="footnote">
-	<a id="footnote-{{value.numeral}}"></a>
-[{{ value.numeral }}] {{ value.reference }}
+	<a href="#footnote-link-{{value.numeral}}" id="footnote-{{value.numeral}}">
+[{{ value.numeral }}]</a> {{ value.reference }}
 </p>
