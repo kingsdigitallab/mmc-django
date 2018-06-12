@@ -3,19 +3,21 @@
 
 {% block meta_title %}Search Results{% endblock %}
 
-{# Not a fan of this, but it's the least hacky way to feed the title back. #}
-{% block title %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+  <a href="/"> Home</a> &gt;
+  
+  <a href="#">Search Results {% if request.GET.q %} for: <span>{{request.GET.q}}</span>  {% endif %}</a>
 
-<div class="search-results">
-  <h2>Search Results for: <span>{{request.GET.q}}</span></h2>
-
-
+</div>
 {% endblock %}
+
 
 {% block main %}
 
 {% if search_results %}
 
+<p>{{search_results.paginator.count }} Results.</p>
 
 <ol>
    {% for result in search_results %}
@@ -27,6 +29,24 @@
        </li>
    {% endfor %}
 </ol>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if search_results.has_previous %}
+            <a href="?q={{ request.GET.q}}&page={{ search_results.previous_page_number }}">&laquo; Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}.
+        </span>
+
+        {% if search_results.has_next %}
+              <a href="?q={{ request.GET.q}}&page={{ search_results.next_page_number }}">Next &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% else %}
   <p>No results found.</p>
 {% endif %}
