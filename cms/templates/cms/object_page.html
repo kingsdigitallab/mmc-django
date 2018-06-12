@@ -23,13 +23,13 @@
 
 	{% with prev=self.get_prev %}
 	{% if prev %}
-	<a href="{% pageurl prev %}">&lt; &nbsp; {{prev.specific.get_numeral}} {{ prev }} {% if prev.get_children %} - Introduction {% endif %}</a>
+	<a href="{% pageurl prev %}">&lt; &nbsp; {{prev.specific.get_numeral}} {{ prev }} {% if not prev.specific.parent_is_object_page %} - Introduction {% endif %}</a>
 	{% endif %}
 	{% endwith %}
 
 	{% with next=self.get_next %}
 	{% if next %}
-	<a class="pull-right" href="{% pageurl next %}">{{next.specific.get_numeral}} {{ next }} {% if next.get_children %} - Introduction {% endif %} &nbsp; &gt;</a>
+	<a class="pull-right" href="{% pageurl next %}">{{next.specific.get_numeral}} {{ next }} {% if not next.specific.parent_is_object_page %} - Introduction {% endif %} &nbsp; &gt;</a>
 	{% endif %}
 	{% endwith %}
 

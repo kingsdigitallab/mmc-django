@@ -350,6 +350,13 @@ class ObjectPage(Page, WithStreamField):
         else:
             return num
 
+    def parent_is_object_page(self):
+        if type(self.get_parent().specific) == ObjectPage:
+
+            return True
+        else:
+            return False
+
     def get_next(self):
         try:
             page = Page.objects.get(pk=self.pk)
