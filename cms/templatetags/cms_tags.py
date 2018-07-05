@@ -5,6 +5,13 @@ from cms.models import (HomePage, EntityType, ObjectIndexPage)
 register = template.Library()
 
 
+@register.filter
+def get_first_search_result_index(page):
+    """ Calculates the start value for an OL containing
+        search results based on the page number """
+    return (int(settings.ITEMS_PER_PAGE) * (int(page) - 1)) + 1
+
+
 @register.simple_tag
 def are_comments_allowed():
     """Returns True if commenting on the site is allowed, False otherwise."""
