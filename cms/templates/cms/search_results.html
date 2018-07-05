@@ -1,5 +1,5 @@
 {% extends "cms/base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags cms_tags %}
 
 {% block meta_title %}Search Results{% endblock %}
 
@@ -19,7 +19,7 @@
 
 <p>{{search_results.paginator.count }} Results.</p>
 
-<ol>
+<ol start="{{ search_results.number|get_first_search_result_index }}">
    {% for result in search_results %}
        <li>
            <h4><a href="{% pageurl result.specific %}">{{ result.specific }}</a></h4>
