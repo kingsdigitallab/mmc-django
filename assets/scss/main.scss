@@ -50,12 +50,12 @@ $gray:#888;
 $red:#c11609;
 
 //Entity colours
-$purple:#861fa5;
+$purple:#670b8b;
 $darkgreen: #047657;
 $lightgreen:#9cdb76;
 $orange:#ef9705;
-$lightblue:#009bd5;
-$darkblue:#192BB7;
+$lightblue:#49c1ff;
+$darkblue:#044daf;
 $teal:#26a5b1;
 $yellow:#f0e707;
 $lightgray:#aab1b1;
@@ -142,8 +142,7 @@ header {
 }
 
 /***** Privacy Policy *****/
-#privacy-alert
-{
+#privacy-alert{
     background: rgba(90, 100, 105, 0.9);
     bottom: 0;
     color: #fff;
@@ -154,13 +153,11 @@ header {
     width: 100%;
     z-index: 100;
 
-    a
-    {
+    a{
         color: #aaa;
         border-bottom: 1px solid #aaa;
 
-        &#privacy-alert-agree
-        {
+        &#privacy-alert-agree{
             border: 1px solid #fff;
             color: #fff;
             cursor: pointer;
@@ -186,10 +183,8 @@ body {
 }
 
 
-@media screen and (min-width: 768px)
-{
-    #menu-toggle
-    {
+@media screen and (min-width: 768px){
+    #menu-toggle{
         display: none!important;
     }
 }
@@ -471,7 +466,6 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 }
 
 }
-
 
 
 /* MAIN PAGE */
@@ -759,7 +753,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
             display: inline-block;
             width:20%;
             height: auto;
-            margin-top:-3rem;
+
         }
         p{
             display: inline-block;
@@ -768,9 +762,9 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
             vertical-align: top;
         }
         h2{
-            margin:1rem 0 1rem 25%;
+            
             border-bottom: none;
-            padding-top:1rem;
+            padding: 1rem 0;
         }
     }
 }
@@ -809,12 +803,12 @@ article {
                 font-variant: normal;
             }
         }
-    .number {
-        font-family: 'Libre Baskerville', serif;
-        font-variant: normal;
-        font-size: 0.8rem;
-        font-weight: normal;
-    }
+        .number {
+            font-family: 'Libre Baskerville', serif;
+            font-variant: normal;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
     border-bottom: 1px solid black;
     position: -webkit-sticky;
     position: sticky;
@@ -1398,11 +1392,30 @@ footer {
         }
     }
 
-
-
-
-
-
+    .homepage{
+        section{
+            padding:0.5rem 0 2rem 0;
+            img{
+                width:100%;
+            }
+            p{
+                width:100%;
+                margin:0;
+                padding-top:0.5rem;
+            }
+            h2{
+                margin:0;
+                border-bottom: none;
+                padding:1rem 0 0 0;
+            }
+        }
+    }
+    footer{
+        width:90%;
+        ul li{
+            margin-bottom: 0.5rem;
+        }
+    }
 }
 
 @media screen and (max-width: 400px) {
