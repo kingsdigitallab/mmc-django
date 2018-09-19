@@ -639,99 +639,81 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 }
 .legend{
     margin: 2.3rem 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     display: block;
     height: 6.5rem;
     border-radius: 0.7rem;
     width: 93%;
     ul{
         display: block;
-        height: 100%;
+        height: 145%;
         border-top: 1px solid #1a1a1a;
-        padding: 1rem 0 0 0;
-        margin:1.1rem 0 0 -15px;
+        padding: 0.6rem 0 0 0.8rem;
+        margin: 1.1rem 0 0 -15px;
+        background: black;
         li{
             list-style: none;
-            width:50%;
-            float: left;   
-            padding-left:0.2rem; 
-            margin-bottom:0.2rem;
+            width: 50%;
+            float: left;
+            padding-left: 0.3rem;
+            margin-bottom: 0.3rem;
+            color: $white;
 
             &.purple {
-                border-left: 0.5rem solid $purple;
+                border-left: 0.4rem solid $purple;
                 &:hover{
-                    //color: $purple;
-                    //text-decoration: underline;
+
                 }  
             }
             &.darkgreen {
-                border-left: 0.5rem solid $darkgreen;
+                border-left: 0.4rem solid $darkgreen;
                 &:hover{
-                    //color: $darkgreen;
-                    //text-decoration: underline;
                 }  
             }
             &.lightgreen {
-                border-left: 0.5rem solid $lightgreen;
+                border-left: 0.4rem solid $lightgreen;
                 &:hover{
-                    //color: $lightgreen;
-                    //text-decoration: underline;
                 }  
             }
             &.orange {
-                border-left: 0.5rem solid $orange;
+                border-left: 0.4rem solid $orange;
                 &:hover{
-                    //color: $orange;
-                    //text-decoration: underline;
                 }  
             }
             &.red {
-                border-left: 0.5rem solid $red;
+                border-left: 0.4rem solid $red;
                 &:hover{
-                    //color: $red;
-                    //text-decoration: underline;
                 }  
             }
             &.lightblue {
-                border-left: 0.5rem solid $lightblue;
+                border-left: 0.4rem solid $lightblue;
                 &:hover{
-                    //color: $lightblue;
-                    //text-decoration: underline;
                 }  
             }
             &.darkblue {
-                border-left: 0.5rem solid $darkblue;
+                border-left: 0.4rem solid $darkblue;
                 &:hover{
-                    //color: $darkblue;
-                    //text-decoration: underline;
                 }  
             } 
             &.teal {
-                border-left: 0.5rem solid $teal;
+                border-left: 0.4rem solid $teal;
                 &:hover{
-                    //color: $teal;
-                    //text-decoration: underline;
+
                 }  
             } 
             &.yellow {
-                border-left: 0.5rem solid $yellow;
+                border-left: 0.4rem solid $yellow;
                 &:hover{
-                    //color: $yellow;
-                    //text-decoration: underline;
                 }  
             } 
             &.lightgray {
-                border-left: 0.5rem solid $lightgray;
+                border-left: 0.4rem solid $lightgray;
                 &:hover{
-                    //color: $lightgray;
-                    //text-decoration: underline;
                 }  
             } 
             &.pink {
-                border-left: 0.5rem solid $pink;
+                border-left: 0.4rem solid $pink;
                 &:hover{
-                    //color: $pink;
-                    //text-decoration: underline;
                 }  
             } 
             &:hover{
@@ -781,8 +763,13 @@ article {
         margin: 0;
         font-size: 1.5rem;
     }
+    h3{
+        margin-top: 2rem;
+        line-height: 0;
+    }
     p {
         text-align: justify;
+        font-size:1.1rem;
     }
 
     .breadcrumb {
@@ -818,50 +805,50 @@ article {
     text-decoration: none;
     color: $black;
     display: inline-block;
-    line-height: 1;
+    line-height: 1.1;
     //word-break: break-all;
         &.purple {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $purple;
         }
         &.darkgreen {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $darkgreen;
         }
         &.lightgreen {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $lightgreen;
         }
         &.orange {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $orange;
         }
         &.red {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $red;
         }
         &.lightblue {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $lightblue;
         }
         &.darkblue {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $darkblue;
         }
         &.teal {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $teal;
         } 
         &.yellow {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $yellow; 
         } 
         &.lightgray {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $lightgray;
         } 
         &.pink {
-            border-bottom: 3px solid;
+            border-bottom: 2px solid;
             border-bottom-color: $pink;
         } 
         &:hover {
@@ -1003,6 +990,9 @@ article {
 
 dl
 {
+    padding: 2rem 1rem 0.1rem 1rem;
+    border-left: 0.5rem solid;
+    margin: 2.5rem 0;
     dt
     {  
         font-weight: bold;
@@ -1017,8 +1007,8 @@ dl
     dd
     {
         width: 75%;
-        margin-bottom: 1rem;
-        -webkit-margin-start: 0;
+        margin-bottom: 2rem;
+        margin-top:0.5rem;
         margin-left: 0;
     }
 }
