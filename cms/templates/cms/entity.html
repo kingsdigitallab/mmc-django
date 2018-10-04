@@ -70,16 +70,18 @@
 		<dd>{{ self.comments }}</dd>
 		{% endif %}
 
+		{% if self.mozart_relevence %}
+		<dt>Mozart Relevance:</dt>
+		<dd>{% include "cms/includes/streamfield.html" with blocks=self.mozart_relevence %}</dd>
+		{% endif %}
+
 		{% if self.bibliog %}
 		<dt>Bibliographic Reference</dt>
 		<dd>{{ self.bibliog }}</dd>
 		{% endif %}
 	</dl>
 
-{% if self.mozart_relevence %}
-<h3>Mozart Relevance:</h3>
-{% include "cms/includes/streamfield.html" with blocks=self.mozart_relevence %}
-{% endif %}
+
 
 
 {% if self.get_entities %}
