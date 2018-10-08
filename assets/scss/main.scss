@@ -925,7 +925,7 @@ article {
         .caption .rich-text {
             width: 100%;
             p {
-                text-align: right;
+                text-align: center;
             }
         }
     }
@@ -936,6 +936,9 @@ article {
         width: 60%;
         .caption .rich-text {
             width: 100%;
+            p {
+                text-align: center;
+            }
         }
     }
     .mid .img-wrapper {
@@ -944,6 +947,9 @@ article {
         padding: 0 5% 0 0;
         .caption .rich-text {
             width: 100%;
+            p {
+                text-align: center;
+            }
         }
     }
 
@@ -1014,8 +1020,6 @@ article {
 
 dl
 {
-    padding: 2rem 1rem 0.1rem 1rem;
-    border-left: 0.5rem solid;
     margin: 2.5rem 0;
     dt
     {  
@@ -1023,6 +1027,10 @@ dl
         font-family: 'Libre Baskerville', serif;
         line-height: 1.5;
         margin-left: 0;
+        display: inline-block;
+        width: 15%;
+        min-width: 220px;
+        vertical-align: top;
         &:after{
             content: ":";
         }
@@ -1032,8 +1040,10 @@ dl
     {
         width: 75%;
         margin-bottom: 2rem;
-        margin-top:0.5rem;
         margin-left: 0;
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 0.15rem;
     }
 }
 
