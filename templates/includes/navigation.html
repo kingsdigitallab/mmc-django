@@ -10,6 +10,10 @@
 		<li>
 			<a href="/">Home</a>
 		</li>  
+
+		<li>
+			<a href="/entities/person/mozart-wolfgang-amadeus/">Mozart Biography</a>
+		</li>
 		<li>
 			{% get_menu_pages as menu_pages %}
 			<input id="chapters" type="checkbox" {% if self.get_verbose_name == 'Object page' %}checked{% endif %} hidden/>
