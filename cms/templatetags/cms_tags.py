@@ -1,6 +1,7 @@
 from django import template
 from django.conf import settings
 from cms.models import (HomePage, EntityType, ObjectIndexPage)
+import re
 
 register = template.Library()
 
@@ -10,6 +11,13 @@ def get_first_search_result_index(page):
     """ Calculates the start value for an OL containing
         search results based on the page number """
     return (int(settings.ITEMS_PER_PAGE) * (int(page) - 1)) + 1
+
+
+@register.filter
+def add_image_captions(block):
+    text = str(block)
+    return re.sub(r'<img .* alt="(.*?)">', r'\g<0> <p class="caption">\1</p>',
+                  text)
 
 
 @register.simple_tag
