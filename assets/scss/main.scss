@@ -545,6 +545,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
     //max-width: 1500px;
     min-width: 200px;
     margin: 0 auto;
+    max-width: 2000px;
 }
 
 
@@ -734,6 +735,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 .homepage{
     .item-wrapper{
         border-top:1px solid $black;
+        padding-top:3rem;
         .item{
             padding:0.5rem 0 2rem 0;
             display: inline-block; 
