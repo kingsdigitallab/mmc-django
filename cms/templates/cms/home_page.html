@@ -12,8 +12,10 @@
 	<div class="item-wrapper">
 		<div class="item">
 			<div class="image-crop">
+			<a href="/entities/person/mozart-wolfgang-amadeus/">
 			{% image self.specific.mozart_image width-800 %}
 			</div>
+			</a>
 			<h2><a href="/entities/person/mozart-wolfgang-amadeus/">Biography of Mozart</a></h2>
 		</div>
 		{% get_chapters as chapters %}
@@ -21,7 +23,9 @@
 		<div class="item">
 			
 			<div class="image-crop">
+			<a href="{{ c.url }}">
 			{% image c.specific.homepage_image width-800 %}
+			</a>
 			</div>
 			<h2><a href="{{ c.url }}">Chapter {{c.specific.get_numeral}}: {{ c.title }}</a></h2>
 			<!--<p>{{ c.specific.homepage_text }}</p>-->
