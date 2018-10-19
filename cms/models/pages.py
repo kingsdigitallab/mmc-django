@@ -42,6 +42,12 @@ def _paginate(request, items):
 
 
 class HomePage(Page, WithStreamField):
+
+    mozart_image = models.ForeignKey(
+        'wagtailimages.Image', null=True, blank=True,
+        on_delete=models.SET_NULL, related_name='+'
+    )
+
     search_fields = Page.search_fields + [
         index.SearchField('body'),
     ]
@@ -53,6 +59,7 @@ class HomePage(Page, WithStreamField):
 
 HomePage.content_panels = [
     FieldPanel('title', classname='full title'),
+    ImageChooserPanel('mozart_image'),
     StreamFieldPanel('body'),
 ]
 
