@@ -751,7 +751,6 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
                 overflow: hidden;
                 position: relative;
                 border:1px solid #f1f1f1;
-                min-height:100%;
                 img{
                   width: 100%;
                   height: auto;
@@ -761,6 +760,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
                   right: -100%;
                   bottom: -100%;
                   left: -100%;
+                  min-height:100%;
                 }
             }
             p{
