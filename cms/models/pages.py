@@ -255,7 +255,7 @@ class Entity(Page):
                                        Related to Mozart')
 
     mozart_relevence = StreamField(CMSStreamBlock(required=False),
-                                   verbose_name="Mozart Relevence",
+                                   verbose_name="Mozart Relevance",
                                    null=True, blank=True)
 
     location_purchase = models.CharField(max_length=256, null=True,
