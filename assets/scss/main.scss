@@ -785,6 +785,7 @@ article {
     //-width: 1500px;
     margin: 0 auto;
     padding-top: 2rem;
+    overflow: hidden;
     h2 {
         border-bottom: 0.05rem solid;
         margin: 0;
@@ -1459,7 +1460,22 @@ footer {
             &:last-child {
                 font-size: 1.2rem;
             }
+            }
+        }
+
     }
+    div.richtext-image {
+        &.right {
+            padding: 0;
+            width: 100%;
+        }
+        &.left {
+            padding: 0;
+            width: 100%;
+        }
+        &.full-width {
+            padding: 0;
+            width: 100%;
         }
     }
     footer{
