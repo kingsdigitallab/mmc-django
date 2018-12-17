@@ -780,6 +780,13 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 
 /** Content **/
 
+.rich-text
+{
+    a
+    {
+        border-bottom: 1px solid #000;
+    }
+}
 article {
     width: 80%;
     //-width: 1500px;
@@ -846,7 +853,7 @@ article {
     color: $black;
     display: inline-block;
     line-height: 1.1;
-    border-bottom: 1px solid #000;
+   
     //word-break: break-all;
         &.purple {
             border-bottom: 2px solid;
