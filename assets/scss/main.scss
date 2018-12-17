@@ -921,6 +921,7 @@ article {
             max-width: 100%;
             margin: 0 auto;
             display: block;
+            text-align: center;
         }
     }
      img.richtext-image {
@@ -934,7 +935,7 @@ article {
         }
         &.full-width {
             height: auto;
-            width: 100%;
+            max-width: 100%;
         }
     }
     .img-wrapper {
