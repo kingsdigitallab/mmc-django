@@ -62,9 +62,11 @@ $lightgray:#aab1b1;
 $pink: #dc909e;
 
 /***** General *****/
-.page-anchor
-{
-  display: none;
+.page-anchor {
+    display: inline-block;
+    height: 0;
+    overflow: hidden;
+    width: 0;
 }
 html,
 body {
