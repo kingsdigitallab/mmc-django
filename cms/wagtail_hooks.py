@@ -60,6 +60,10 @@ def editor_js():
     js_files = [
         'js/hallo_plugin_caption_image.js',
         'js/hallo_plugin_references.js',
+        'js/hallo_source_editor.js',
+        'js/hallo_bookmark_add.js',
+        'js/hallo_bookmark_link.js',
+        'js/hallo_link_new_window.js'
     ]
 
     js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
@@ -71,6 +75,10 @@ def editor_js():
         <script>
             registerHalloPlugin('imageCaptionButton');
             registerHalloPlugin('referenceButton');
+            registerHalloPlugin('bookmarkAddButton');
+            registerHalloPlugin('bookmarkLinkButton');
+            registerHalloPlugin('openLinkInNewWindow');
+            registerHalloPlugin('editHtmlButton');
         </script>
         """)
 
