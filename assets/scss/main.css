@@ -45,6 +45,11 @@ nav {
 
 }
 
+.page-anchor
+{
+  display: none;
+}
+
 .nav-content {
   height: 7rem;
   /* height + top/bottom paddding + top/bottom border must add up to footer height */
