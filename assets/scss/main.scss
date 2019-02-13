@@ -1075,7 +1075,7 @@ dl
         line-height: 1.5;
         margin-left: 0;
         display: inline-block;
-        width: 15%;
+        width: 100%;
         min-width: 220px;
         vertical-align: top;
         &:after{
@@ -1085,7 +1085,7 @@ dl
 
     dd
     {
-        width: 75%;
+        width: 100%;
         margin-bottom: 2rem;
         margin-left: 0;
         margin-top:0; 
@@ -1256,11 +1256,15 @@ dl
     }
     ul {
         padding: 0;
+        float:left;
+        width:100%;
         li {
             list-style-type: none;
             height: 1.3rem;
             padding-left: 0.2rem;
             border-left: 0.5rem solid;
+            float:left;
+            width:100%;
             &.purple {
                 color: $purple
             }
