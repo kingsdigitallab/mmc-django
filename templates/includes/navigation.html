@@ -44,9 +44,20 @@
 			</ul>
 		</li>
 		{% for page in menu_pages %}
+ 
 		<li>
+			{% if page.get_children.live %}
+			<input id="page_{{page.id}}" type="checkbox" hidden />
+			<label for="page_{{page.id}}" class="check"> {{ page.title }}</label>
+			<ol class="level1-list">
+				{% for child in page.get_children.live %}
+				<li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
+				{% endfor %}
+			</ol>
+			{% else %}
 			<a href="{{ page.get_url }}">{{ page.title }}</a>
-		</li>  
+			{% endif %}
+		</li>
 		{% endfor %}
 		<li>
 			<div class="search-box">
