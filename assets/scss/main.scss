@@ -817,10 +817,13 @@ article {
         }
     }
     p.footnote{
-        padding: 1.5rem 0;
         font-size: 0.9rem;
         float: left;
-        border-top: 1px dotted lighten($gray,30%);
+        width:100%;      
+        &:first-of-type{
+           padding: 1.5rem 0 0 0;
+           border-top: 1px dotted lighten($gray,30%); 
+        }
     }
     ol{
         margin: 1.5rem 0 1.5rem 20px;
@@ -1314,11 +1317,15 @@ ul.entities{
     padding: 0;
     margin-left:20px;
     list-style-type: square;
+    float:left;
+    width:100%;
     li{
         list-style-type: square;
         font-size: 1rem;
         margin-top: 1rem;
         line-height: 1.1;
+        float:left;
+        width:100%;
         a{
             display: block;
             line-height: 1.3;
