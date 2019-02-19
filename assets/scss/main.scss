@@ -813,14 +813,17 @@ article {
             color: lighten($black,40%);
             padding: 0;
             font-size: 0.8rem;
-            margin-bottom: 3rem;
+            margin:0 0 1rem 0;
         }
     }
     p.footnote{
-        font-size:0.8rem;
+        padding: 1.5rem 0;
+        font-size: 0.9rem;
+        float: left;
+        border-top: 1px dotted lighten($gray,30%);
     }
     ol{
-        margin: 2.5rem 0 2.5rem 20px;
+        margin: 1.5rem 0 1.5rem 20px;
         text-align: justify;
         border-left: 1px solid lighten($gray,30%);
         li{
@@ -862,7 +865,7 @@ article {
     color: $black;
     display: inline-block;
     line-height: 1.1;
-   
+    cursor: pointer;
     //word-break: break-all;
         &.purple {
             border-bottom: 2px solid;
@@ -1043,6 +1046,8 @@ article {
 
 .bottom-nav{
     padding: 20px 0 50px 0;
+    float: left;
+    width: 100%;
     a{
         display: inline-block;
         font-size: 0.8rem;
