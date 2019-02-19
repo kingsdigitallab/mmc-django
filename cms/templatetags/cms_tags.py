@@ -16,10 +16,8 @@ def get_first_search_result_index(page):
 @register.filter
 def add_image_captions(block):
     text = str(block)
-    return re.sub(r'<img class="(.*?)" .* alt="(.*?)">',
-                  #  r'<div class="\1">\g<0> <p class="caption">\2</p></div>',
-                  r'<div class="\1">\g<0></div>',
-
+    return re.sub(r'<img class="richtext-image (.*?) src="(.*?)" alt="(.*?)">((.|\n)*)<p class="caption">(.*)</p>',
+                  r'<div class="richtext-image \1"><img class="richtext-image \1" src="\2" alt="\3"><p class="caption">\6</p></div>',
                   text)
 
 
