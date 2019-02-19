@@ -8,9 +8,15 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- scss -->
   {% compress css %}
   {# SCSS compilation relies on django compressor #}
   <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}">
+
+  <!-- favicons -->
+  {% include 'includes/favicon.html' %}
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
   <!-- FontAwesome -->
   {#
   Copy _variable.scss and font-awesome.scss and change the @import paths
