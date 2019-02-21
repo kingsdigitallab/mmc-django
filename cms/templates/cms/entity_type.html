@@ -6,6 +6,7 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
   <a href="/"> Home</a> &gt;
+  {{ self.get_parent.title}} &gt;
   <a href="{{ self.get_url }}">Entity: {{ self.title }}</a>
 </div>
 {% endblock %}
