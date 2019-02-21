@@ -74,9 +74,17 @@
 
 
   <!-- define requirejs config settings. -->
-  <script type="text/javascript">
-    {% include 'includes/config.js' %}
-  </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67707155-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-67707155-8');
+</script>
+
+
   {% require_module 'config' %}
 
   <script src="{% static 'js/entity.js' %}"></script>
