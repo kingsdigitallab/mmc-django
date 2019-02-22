@@ -803,7 +803,6 @@ article {
     }
     h3{
         margin-top: 2rem;
-        line-height: 0;
     }
     p,span{
         text-align: justify;
@@ -1027,6 +1026,15 @@ article {
             color: $black;
             border-top: 0.05rem solid #8a8a8a;
         }
+    }
+    a#footnote-link-1, 
+    a#footnote-link-2,
+    a#footnote-link-3,
+    a#footnote-link-4,
+    a#footnote-link-5{
+        vertical-align: super;
+        font-size: 0.8rem;
+        border-bottom: none;
     }
     .pagination{
         text-align: center;
