@@ -7,6 +7,7 @@
   <title>{% block meta_title %}{% endblock %} | {{ self.get_site.site_name }}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="5m1vdgSyo6Qel01f8CgCBTodBUkW1WH7j6AsMRP40Rw" />
 
   <!-- scss -->
   {% compress css %}
@@ -74,9 +75,17 @@
 
 
   <!-- define requirejs config settings. -->
-  <script type="text/javascript">
-    {% include 'includes/config.js' %}
-  </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67707155-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-67707155-8');
+</script>
+
+
   {% require_module 'config' %}
 
   <script src="{% static 'js/entity.js' %}"></script>
