@@ -123,24 +123,26 @@ header {
     background: rgba(255, 255, 255, 0.95);
     z-index: 1;
     margin: 0 auto;
-    >h1 {
-        font-size: 2.1rem;
-        font-variant: small-caps;
-        margin: 0;
-        padding: 0;
-        line-height: 1.8rem;
-        display:inline-block;
-        span{
-            color: $red;
+    a{
+        >h1 {
+            font-size: 2.1rem;
+            font-variant: small-caps;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8rem;
+            display:inline-block;
+            span{
+                color: $red;
+            }
         }
-    }
-    >h2 {
-        font-size: 1.2rem;
-        line-height: 0.9rem;
-        color: #999;
-        margin: 0;
-        font-variant: small-caps;
-        font-family: 'Libre Baskerville', serif;
+        >h2 {
+            font-size: 1.2rem;
+            line-height: 0.9rem;
+            color: #999;
+            margin: 0;
+            font-variant: small-caps;
+            font-family: 'Libre Baskerville', serif;  
+        }
     }
 }
 
@@ -1092,11 +1094,11 @@ article {
 }
 
 
-dl
-{
-    margin: 2.5rem 0;
-    dt
-    {  
+dl{
+    margin: 1rem 0;
+    float:left;
+    width:100%;
+    dt{  
         font-weight: bold;
         font-family: 'Libre Baskerville', serif;
         line-height: 1.5;
@@ -1110,8 +1112,7 @@ dl
         }
     }
 
-    dd
-    {
+    dd{
         width: 100%;
         margin-bottom: 2rem;
         margin-left: 0;
@@ -1324,15 +1325,17 @@ footer {
         position: inherit;;
         width:90%;
         padding-top:1rem;
-        >h1 {
-            font-size: 1.6rem;
-            line-height: 1.4rem;
-            width:20rem;
-            display:block;
-        }
-        >h2 {
-            font-size: 1rem;
-            line-height:0.9;
+        a{
+            >h1 {
+                font-size: 1.6rem;
+                line-height: 1.4rem;
+                width:20rem;
+                display:block;
+            }
+            >h2 {
+                font-size: 1rem;
+                line-height:0.9;
+            }
         }
     }
     #menu>ul{
