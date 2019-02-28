@@ -542,9 +542,9 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
     transform: rotate(45deg);
     &:before,
     &:after {
-                //background-color: white;
-            }
-        }
+    //background-color: white;
+    }
+}
 /* CONTENT CONTAINER */
 .container {
     //max-width: 1500px;
@@ -1343,31 +1343,47 @@ footer {
             }
         }
     }
-    #menu>ul{
-        margin-top:1rem;
-    }
-    #menu-switch:checked ~ .push-wrapper{
-        margin-left:0;
-    }
 
-
-    #menu-toggle{
-        right: 5%;
-        &:before,
-        &:after {
+    #menu-switch ~ .push-wrapper #menu-toggle {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        margin-left: 15rem;
+        -webkit-transition: all .9s ease;
+        -moz-transition: all .9s ease;
+        -o-transition: all .9s ease;
+        transition: all .9s ease;
+        background: $red;
+        &:before, &:after {
+        background-color: $white;
         }
     }
 
     #menu-switch:checked ~ .push-wrapper #menu-toggle {
-        left: 15rem;
-        right:0;
-        background: $red;
-        &:before,
-        &:after {
-            background-color: $white;
+        right:5%;
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        background: $white;
+            &:before, &:after {
+        background-color: $black;
         }
     }
 
+    #menu-switch ~ #menu {
+        left: 0rem;
+        -webkit-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -o-transition: all .3s ease-in;
+        transition: all .3s ease-in;
+    }
+    #menu-switch:checked ~ #menu {
+        left: -20rem;
+    }
+
+    #menu-switch:checked ~ .push-wrapper {
+        margin-left: 0;
+    }
 
     article{
         padding-top:0;
@@ -1407,6 +1423,23 @@ footer {
     }
 }
 
+@media screen and (max-width: 450px) {
+        .homepage {
+        .item-wrapper {
+            .item {
+                width: 100%;
+                width: 100%;
+                &:nth-child(3n+3){
+                    margin-right: 0;
+                }
+                &:nth-child(even){
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+}
 @media screen and (max-width: 400px) {
 
     html,
