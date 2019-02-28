@@ -940,7 +940,7 @@ article {
     .rich-text{
         width:100%;
     }
-    div.richtext-image {
+    img.richtext-image {
         &.right {
             height: auto;
             float: right;
@@ -961,21 +961,14 @@ article {
             margin: 0 auto;
             display: block;
             text-align: center;
+            width: 100%;
         }
     }
-     img.richtext-image {
-        &.right {
-            height: auto;
-            width: 100%;
-        }
-        &.left {
-            height: auto;
-            width: 100%;
-        }
-        &.full-width {
-            height: auto;
-            max-width: 100%;
-        }
+
+    p.caption 
+    {
+        width: 100%;
+        text-align: center;
     }
     .img-wrapper {
         font-size: 0.8rem;
