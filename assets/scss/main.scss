@@ -47,7 +47,7 @@ MENU
 $black:#1a1a1a;
 $white:#fff;
 $gray:#888;
-$red:#c11609;
+$red:#b1160b;
 
 //Entity colours
 $purple:#670b8b;
@@ -103,8 +103,13 @@ strong.title
 a {
     text-decoration: none;
     color: $black;
-    &:hover{
+    &:hover, &:focus{
         opacity: 0.7;
+    }
+    .skip-link {
+        font-size: 1px; 
+        position: absolute;
+        top:-1px;
     }
 }
 
@@ -802,6 +807,9 @@ article {
     padding-top: 2rem;
     overflow: hidden;
     font-size:1.1rem;
+    [id^=footnote] {
+        font-weight: bold;
+    }
     h2 {
         border-bottom: 0.05rem solid;
         margin: 0;
@@ -819,7 +827,7 @@ article {
         text-align: justify;
         &.caption{
             text-align: center;
-            color: lighten($black,40%);
+            color: darken($gray,30%);
             padding: 0;
             font-size: 0.8rem;
             margin:0 0 1rem 0;
@@ -1355,7 +1363,7 @@ footer {
         transition: all .9s ease;
         background: $red;
         &:before, &:after {
-        background-color: $white;
+            background-color: $white;
         }
     }
 
@@ -1365,8 +1373,8 @@ footer {
         -ms-transform: rotate(0deg);
         transform: rotate(0deg);
         background: $white;
-            &:before, &:after {
-        background-color: $black;
+        &:before, &:after {
+            background-color: $black;
         }
     }
 
