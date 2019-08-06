@@ -4,7 +4,7 @@
 {% get_chapters as chapters %}
 
 <input id="menu-switch" type="checkbox" checked/>
-<nav id="menu" role="navigation">        
+<nav id="menu">        
 
 	<ul>
 		<li>
@@ -24,7 +24,7 @@
 					<input id="chapter-{{chapter.id}}" type="checkbox" {% if self.get_parent.title == chapter.title %} checked {% endif %} hidden />
 					<label for="chapter-{{chapter.id}}" class="check">{{ chapter.title }} </label>
 					<ol class="level2-list">
-						<li><a href="{{ chapter.get_url }}">Introduction</a></li>
+						<li><a href="{{ chapter.get_url }}" aria-label='{{chapter.get_url}}'>Introduction</a></li>
 						{% for child in chapter.get_children %}
 						<li><a href="{{ child.get_url }}">{{ child.title }}</a></li>
 						{% endfor %}
@@ -75,7 +75,7 @@
 			<div class="switch">
 				<input id="switch-1" type="checkbox"  checked class="switch__input">
 
-				<label for="switch-1" class="switch__label">
+				<label for="switch-1" class="switch__label" aria-label="entity type switcher">
 					
 				</label>
 			</div>

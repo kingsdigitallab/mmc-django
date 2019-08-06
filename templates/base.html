@@ -1,6 +1,6 @@
 {% load staticfiles compress require cms_tags %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +42,7 @@
     {% block entities %}{% endblock %}
 
     <div class="push-wrapper">
-      <label for="menu-switch" id="menu-toggle"></label>
+      <label for="menu-switch" id="menu-toggle" aria-label="menu toggle"></label>
       <div class="container" role="main">
       {% include 'includes/header.html' %}
        <article>
@@ -88,7 +88,7 @@
   <script src="{% static 'js/main.js' %}"></script>
 
   {% block footer_scripts %}{% endblock %}
-  <div id="privacy-alert">We use cookies to track usage and preferences in accordance with our <a href="/privacy-cookie-policy">Privacy & Cookie Policy</a>.
+  <div id="privacy-alert" role="complementary">We use cookies to track usage and preferences in accordance with our <a href="/privacy-cookie-policy">Privacy & Cookie Policy</a>.
 
     <a id="privacy-alert-agree">I Accept</a>
 </body>
