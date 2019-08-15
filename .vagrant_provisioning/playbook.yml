@@ -16,13 +16,6 @@
     tags:
       - system
 
-  - name: apt | add wheezy backports
-    apt_repository:
-      repo: deb http://http.debian.net/debian wheezy-backports main
-      state: present
-    tags:
-      - system
-
   - name: apt | install https transport for apt
     apt:
       pkg: apt-transport-https
@@ -273,6 +266,7 @@
 
   - name: git | flake8 pre-commit hook
     command: "{{ user_home }}/venv/bin/flake8 --install-hook=git"
+    ignore_errors: yes
     args:
       chdir: "{{ project_root }}"
   - command: "git config flake8.strict True"
