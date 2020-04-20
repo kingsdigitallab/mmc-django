@@ -9,7 +9,7 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
 <a href="/"> Home</a> &gt;
-  {{ self.get_parent.title}} &gt;
+  {% if self.get_parent.title != "Home" %}{{ self.get_parent.title}} &gt; {% endif %}
 <a href="{{ self.get_url }}"> {{ self.title }}</a>
 </div>
 {% endblock %}
