@@ -13,13 +13,12 @@
   {% compress css %}
   {# SCSS compilation relies on django compressor #}
   <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}">
+  <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
   {% endcompress  %}
   
   <!-- favicons -->
   {% include 'includes/favicon.html' %}
   <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
-
-  <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
   
 
   {% get_entity_types as et %}
@@ -35,15 +34,15 @@
 
 </head>
 <body ontouchstart="">
-
+  <a href="#maincontent" class="skip-link">Skip to main content</a>
   <div class="wrapper">
 
     {% include 'includes/navigation.html' %}
     {% block entities %}{% endblock %}
 
     <div class="push-wrapper">
-      <label for="menu-switch" id="menu-toggle" aria-label="menu toggle"></label>
-      <div class="container" role="main">
+      <label for="menu-switch" id="menu-toggle"><span hidden>Menu toggle</span></label>
+      <div class="container" role="main" id="maincontent">
       {% include 'includes/header.html' %}
        <article>
   
