@@ -412,7 +412,7 @@ body {
                 width: 3rem;
                 position: absolute;
                 right: -10px;
-                top: 0;
+                top: -5px;
                 cursor: pointer;
                 &:hover, &:focus{
                     color: $white;
@@ -817,6 +817,7 @@ input[type=checkbox]:checked + label.check{ /*** Minus icon ***/
 .rich-text{
     width:100%;
     float:left;
+    line-height: 1.4em;
     a{
         border-bottom: 1px solid #000;
         &:focus {
@@ -1294,6 +1295,7 @@ footer {
             list-style-type: none;
             width:100%;
             margin-left:-20px;
+            margin-bottom: 20px;
             .margin-10 {
                 margin: 0px 10px;
             }
