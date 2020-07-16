@@ -202,7 +202,7 @@ class EntityType(Page, WithStreamField):
 
     @property
     def entities(self):
-        return self.get_children().order_by('title')
+        return self.get_children()
 
 
 EntityType.content_panels = [
