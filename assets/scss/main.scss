@@ -987,21 +987,20 @@ article {
         width:100%;
     }
     img.richtext-image {
-        &.right {
-            height: auto;
-            padding: 1% 0;
-            max-width: 100%;
-            margin: 0 auto;
-            display: block;
+        &.right, &.left {
             text-align: center;
+            height: auto;
+            max-width: 500px;
+            min-width: 200px;
+            width: 46%;
         }
         &.left {
-            height: auto;
-            padding: 1% 0;
-            max-width: 100%;
-            margin: 0 auto;
-            display: block;
-            text-align: center;
+            float: left;
+            margin-right: 2%;
+        }
+        &.right {
+            float: right;
+            margin-left: 2%;
         }
         &.full-width {
             height: auto;
@@ -1012,7 +1011,6 @@ article {
             text-align: center;
         }
     }
-
     p.caption 
     {
         width: 100%;
@@ -1485,7 +1483,7 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-        .homepage {
+    .homepage {
         .item-wrapper {
             .item {
                 width: 100%;
@@ -1496,6 +1494,15 @@ footer {
                 &:nth-child(even){
                     margin-right: 0;
                 }
+            }
+        }
+    }
+    article {
+        img.richtext-image {
+            &.right, &.left {
+                display: block;
+                margin: auto;
+                float: none;
             }
         }
     }
