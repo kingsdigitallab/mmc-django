@@ -915,63 +915,52 @@ article {
         text-decoration: none;
         color: $black;
         display: inline-block;
-        line-height: 1.1;
+        line-height: 1;
         cursor: pointer;
         //word-break: break-all;
         &.purple {
             border-bottom: 2px solid;
-            border-bottom-color: $purple;
-            display: inline;
+            border-bottom-color: $purple;   
         }
         &.darkgreen {
             border-bottom: 2px solid;
             border-bottom-color: $darkgreen;
-            display: inline;
         }
         &.lightgreen {
             border-bottom: 2px solid;
             border-bottom-color: $lightgreen;
-            display: inline;
         }
         &.orange {
             border-bottom: 2px solid;
             border-bottom-color: $orange;
-            display: inline;
         }
         &.red {
             border-bottom: 2px solid;
             border-bottom-color: $red;
-            display: inline;
         }
         &.lightblue {
             border-bottom: 2px solid;
             border-bottom-color: $lightblue;
-            display: inline;
         }
         &.darkblue {
             border-bottom: 2px solid;
             border-bottom-color: $darkblue;
-            display: inline;
         }
         &.teal {
             border-bottom: 2px solid;
             border-bottom-color: $teal;
-            display: inline;
         } 
         &.yellow {
             border-bottom: 2px solid;
             border-bottom-color: $yellow; 
-            display: inline;
         } 
         &.lightgray {
             border-bottom: 2px solid;
             border-bottom-color: $lightgray;
-            display: inline;
         } 
         &.pink {
             border-bottom: 2px solid;
             border-bottom-color: $pink;
-            display: inline;
         } 
         &:hover {
             opacity: 0.5;
