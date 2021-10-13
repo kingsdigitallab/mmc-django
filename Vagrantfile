@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
-  config.vm.box = "bento/debian-8.10"
+  config.vm.box = "bento/ubuntu-18.04"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = ".vagrant_provisioning/playbook.yml"
@@ -23,16 +23,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |provider|
     provider.customize ["modifyvm", :id, "--memory", "1024"]
-  end
-
-  config.vm.provider "vmware" do |provider|
-    provider.customize ["modifyvm", :id, "--memory", "1024"]
-  end
-
-  # vagrant-hostupdater configuration
-  config.vm.define "mmc" do |machine|
-    machine.vm.box = "bento/debian-8.10"
-    machine.vm.hostname = "mmc.vagrant"
-    machine.vm.network "private_network", ip: "192.168.33.99"
   end
 end
