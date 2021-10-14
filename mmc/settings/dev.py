@@ -1,24 +1,24 @@
-from base import *  # noqa
+from .base import *  # noqa
 
 DEBUG = True
 
-INTERNAL_IPS = INTERNAL_IPS + ('', )
+INTERNAL_IPS = INTERNAL_IPS + ("",)
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'app_mmc_dev',
-        'USER': 'app_mmc',
-        'PASSWORD': '',
-        'HOST': ''
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "app_mmc_dev",
+        "USER": "app_mmc",
+        "PASSWORD": "",
+        "HOST": "",
     },
 }
 
 LOGGING_LEVEL = logging.DEBUG
 
-LOGGING['loggers']['mmc']['level'] = LOGGING_LEVEL
+LOGGING["loggers"]["mmc"]["level"] = LOGGING_LEVEL
 
-TEMPLATES[0]['OPTIONS']['debug'] = True
+TEMPLATES[0]["OPTIONS"]["debug"] = True
 
 # -----------------------------------------------------------------------------
 # Django Extensions
@@ -28,7 +28,7 @@ TEMPLATES[0]['OPTIONS']['debug'] = True
 try:
     import django_extensions  # noqa
 
-    INSTALLED_APPS = INSTALLED_APPS + ('django_extensions',)
+    INSTALLED_APPS = INSTALLED_APPS + ("django_extensions",)
 except ImportError:
     pass
 
@@ -40,9 +40,8 @@ except ImportError:
 try:
     import debug_toolbar  # noqa
 
-    INSTALLED_APPS = INSTALLED_APPS + ('debug_toolbar',)
-    MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
-        'debug_toolbar.middleware.DebugToolbarMiddleware',)
+    INSTALLED_APPS = INSTALLED_APPS + ("debug_toolbar",)
+    MIDDLEWARE = MIDDLEWARE + ("debug_toolbar.middleware.DebugToolbarMiddleware",)
     DEBUG_TOOLBAR_PATCH_SETTINGS = True
 except ImportError:
     pass
@@ -52,10 +51,11 @@ except ImportError:
 # -----------------------------------------------------------------------------
 
 try:
-    from local import *  # noqa
+    from .local import *  # noqa
 except ImportError:
-    print('failed to import local settings')
+    print("failed to import local settings")
 
-    from test import *  # noqa
-    print('the project is running with test settings')
-    print('please create a local settings file')
+    from .test import *  # noqa
+
+    print("the project is running with test settings")
+    print("please create a local settings file")
