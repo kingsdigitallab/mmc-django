@@ -46,8 +46,8 @@ def populate_entity_relationships(request, page):
                 e.entity = entity
                 e.save()
 
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
 
 
 hooks.register('after_create_page',
