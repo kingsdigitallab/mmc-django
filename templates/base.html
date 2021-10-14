@@ -1,95 +1,91 @@
-{% load staticfiles compress require cms_tags %}
+{% load staticfiles compress cms_tags %}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block meta_title %}{% endblock %} | {{ self.get_site.site_name }}</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="5m1vdgSyo6Qel01f8CgCBTodBUkW1WH7j6AsMRP40Rw" />
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block meta_title %}{% endblock %} | {{ self.get_site.site_name }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="5m1vdgSyo6Qel01f8CgCBTodBUkW1WH7j6AsMRP40Rw" />
 
-  <!-- scss -->
-  {% compress css %}
-  {# SCSS compilation relies on django compressor #}
-  <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}">
-  {% endcompress  %}
-  
-  <!-- favicons -->
-  {% include 'includes/favicon.html' %}
-  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <!-- scss -->
+    {% compress css %}
+    {# SCSS compilation relies on django compressor #}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}">
+    {% endcompress %}
 
-  <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
-  
+    <!-- favicons -->
+    {% include 'includes/favicon.html' %}
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 
-  {% get_entity_types as et %}
-  <script>
-    var CLASSES = {
-
-      {% for e in et %}
-      '{{ e.slug }}': '{{ e.colour }}'{% if not forloop.last %},{% endif %}
-      {% endfor %}
-    }
-  </script>
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
 
 
-</head>
-<body ontouchstart="">
+    {% get_entity_types as et %}
+    <script>
+      var CLASSES = {
 
-  <div class="wrapper">
+        {% for e in et %}
+        '{{ e.slug }}': '{{ e.colour }}'{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      }
+    </script>
 
-    {% include 'includes/navigation.html' %}
-    {% block entities %}{% endblock %}
 
-    <div class="push-wrapper">
-      <label for="menu-switch" id="menu-toggle"></label>
-      <div class="container" role="main">
-      {% include 'includes/header.html' %}
-       <article>
-  
-         {% block breadcrumb %}
-         <div class="breadcrumb">
-          <a href="/"> Home</a> &gt;
-          <a href="{{ self.get_url }}"> {{ self.title }}</a>
+  </head>
+  <body ontouchstart="">
+
+    <div class="wrapper">
+
+      {% include 'includes/navigation.html' %}
+      {% block entities %}{% endblock %}
+
+      <div class="push-wrapper">
+        <label for="menu-switch" id="menu-toggle"></label>
+        <div class="container" role="main">
+          {% include 'includes/header.html' %}
+          <article>
+
+            {% block breadcrumb %}
+            <div class="breadcrumb">
+              <a href="/"> Home</a> &gt;
+              <a href="{{ self.get_url }}"> {{ self.title }}</a>
+            </div>
+            {% endblock %}
+
+            {% block main %}
+            {% endblock %}
+          </article>
+          <footer>
+            {% block footer %}
+            {% include 'includes/footer.html' %}
+            {% endblock %}
+          </footer>
         </div>
-         {% endblock %}
 
-          {% block main %}
-          {% endblock %}
-        </article>
-        <footer>
-          {% block footer %}
-          {% include 'includes/footer.html' %}
-          {% endblock %}
-        </footer>
       </div>
-
     </div>
-    <!-- <div class="push"></div> -->
-  </div>
 
-
-
-  <!-- define requirejs config settings. -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67707155-8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-67707155-8');
-</script>
-
-
-  {% require_module 'config' %}
-
-  <script src="{% static 'js/entity.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
-
-  {% block footer_scripts %}{% endblock %}
-  <div id="privacy-alert">We use cookies to track usage and preferences in accordance with our <a href="/privacy-cookie-policy">Privacy & Cookie Policy</a>.
-
+    <div id="privacy-alert">We use cookies to track usage and preferences in accordance with our <a href="/privacy-cookie-policy">Privacy & Cookie Policy</a>.
     <a id="privacy-alert-agree">I Accept</a>
-</body>
+
+    {% compress js %}
+    <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/entity.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block footer_scripts %}{% endblock %}
+    {% endcompress %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67707155-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-67707155-8');
+    </script>
+  </body>
 </html>
