@@ -2,13 +2,11 @@
 django<2
 django-appconf<=1.0.2
 django-compressor
-django-grappelli
 django-libsass
 django-model-utils
 django-redis
-django-require
-psycopg2-binary
+psycopg2-binary<2.9
 redis
-elasticsearch>=2.0.0,<3.0.0
+elasticsearch>=7.0.0,<8
 wagtail<2
 django-activecollab-digger
