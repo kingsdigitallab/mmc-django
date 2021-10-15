@@ -61,4 +61,6 @@ target/
 .vagrant
 local.py
 logs/
+media/
+node_modules/
 static/

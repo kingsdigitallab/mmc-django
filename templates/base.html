@@ -1,4 +1,4 @@
-{% load staticfiles compress cms_tags %}
+{% load static compress cms_tags %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,16 +11,13 @@
 
     <!-- scss -->
     {% compress css %}
-    {# SCSS compilation relies on django compressor #}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
     <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}">
     {% endcompress %}
 
     <!-- favicons -->
     {% include 'includes/favicon.html' %}
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
-
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/font-awesome.scss' %}">
-
 
     {% get_entity_types as et %}
     <script>
@@ -31,8 +28,6 @@
         {% endfor %}
       }
     </script>
-
-
   </head>
   <body ontouchstart="">
 
@@ -46,7 +41,6 @@
         <div class="container" role="main">
           {% include 'includes/header.html' %}
           <article>
-
             {% block breadcrumb %}
             <div class="breadcrumb">
               <a href="/"> Home</a> &gt;
@@ -71,7 +65,7 @@
     <a id="privacy-alert-agree">I Accept</a>
 
     {% compress js %}
-    <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'js/entity.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
