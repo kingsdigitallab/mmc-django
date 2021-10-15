@@ -22,7 +22,6 @@ system_packages:
     ack-grep,
     autoconf,
     build-essential,
-    elasticsearch,
     git,
     git-core,
     libjpeg-dev,

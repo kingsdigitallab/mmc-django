@@ -1,0 +1,23 @@
+{
+  "name": "mmc-django",
+  "version": "1.0.0",
+  "description": "Repository for Mozart and Material Culture Project",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingsdigitallab/mmc-django.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kingsdigitallab/mmc-django/issues"
+  },
+  "homepage": "https://github.com/kingsdigitallab/mmc-django#readme",
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "font-awesome": "^4.7.0"
+  }
+}

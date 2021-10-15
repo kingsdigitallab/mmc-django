@@ -23,21 +23,6 @@
         # update_cache: yes
       tags: -system
 
-    - name: apt | add elasticsearch key
-      become: yes
-      apt_key:
-        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
-        state: present
-      tags:
-        - system
-
-    - name: apt | add elasticsearch sources
-      apt_repository:
-        repo: "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
-        state: present
-      tags:
-        - system
-
     - name: apt | install required system packages
       apt:
         pkg: "{{ item }}"

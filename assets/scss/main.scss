@@ -1263,19 +1263,8 @@ footer {
 /** Search Results  **/
 
 .search-results {
-  h2 {
-    font-variant: small-caps;
-    span {
-      font-variant: normal;
-      color: $gray;
-      font-weight: normal;
-    }
-  }
-  ol {
-    margin-left: -20px;
-    li {
-      list-style-type: square;
-    }
+  li {
+    list-style-type: decimal;
   }
   a:hover {
     opacity: 0.5;

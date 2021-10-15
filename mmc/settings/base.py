@@ -66,20 +66,19 @@ INSTALLED_APPS = (
     "rest_framework",
     "taggit",
     "compressor",
-    "wagtail.wagtailcore",
-    "wagtail.wagtailadmin",
-    "wagtail.wagtaildocs",
-    "wagtail.wagtailsnippets",
-    "wagtail.wagtailusers",
-    "wagtail.wagtailimages",
-    "wagtail.wagtailembeds",
-    "wagtail.wagtailsearch",
-    "wagtail.wagtailredirects",
-    "wagtail.wagtailforms",
-    "wagtail.wagtailsites",
-    "wagtail.contrib.wagtailapi",
-    "wagtail.contrib.wagtailroutablepage",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.contrib.routable_page",
     "wagtail.contrib.table_block",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
 )
 
 INSTALLED_APPS += (
@@ -139,26 +138,21 @@ LOGGING = {
             "propagate": True,
         },
         "mmc": {"handlers": ["file"], "level": LOGGING_LEVEL, "propagate": True},
-        "elasticsearch": {
-            "handlers": ["file"],
-            "level": LOGGING_LEVEL,
-            "propagate": True,
-        },
     },
 }
 
 
 MIDDLEWARE = (
+    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.auth.middleware.SessionAuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.security.SecurityMiddleware",
+    "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "wagtail.wagtailcore.middleware.SiteMiddleware",
-    "wagtail.wagtailredirects.middleware.RedirectMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 )
 
 ROOT_URLCONF = PROJECT_NAME + ".urls"
@@ -168,7 +162,7 @@ SECRET_KEY = ""
 
 WAGTAIL_SITE_NAME = PROJECT_TITLE
 
-ITEMS_PER_PAGE = 10
+ITEMS_PER_PAGE = 25
 
 
 TEMPLATES = [
@@ -225,7 +219,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL.strip("/"))
 if not os.path.exists(STATIC_ROOT):
     os.makedirs(STATIC_ROOT)
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "assets"),
+    os.path.join(BASE_DIR, "node_modules"),
+)
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -233,7 +230,7 @@ STATICFILES_FINDERS = (
     "compressor.finders.CompressorFinder",
 )
 
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL.strip("/"))
 
 if not os.path.exists(MEDIA_ROOT):

@@ -6,49 +6,47 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
   <a href="/"> Home</a> &gt;
-  
-  <a href="#">Search Results {% if request.GET.q %} for: <span>{{request.GET.q}}</span>  {% endif %}</a>
-
+  <a href="#">Search Results {% if q %} for: <span>{{ q }}</span>  {% endif %}</a>
 </div>
 {% endblock %}
 
 
 {% block main %}
 
-{% if search_results %}
+{% if results %}
 
-<p>{{search_results.paginator.count }} Results.</p>
+<p>{{ results.paginator.count }} Results.</p>
 
-<ol start="{{ search_results.number|get_first_search_result_index }}">
-   {% for result in search_results %}
-       <li>
-           <h4><a href="{% pageurl result.specific %}">{{ result.specific }}</a></h4>
-           {% if result.specific.search_description %}
-               {{ result.specific.search_description|safe }}
-           {% endif %}
-       </li>
-   {% endfor %}
+<ol class="search-results" start="{{ results.start_index }}">
+  {% for result in results_qs %}
+  <li>
+    <h4><a href="{{ result.url  }}">{{ result.title }}</a></h4>
+    {% if result.specific.search_description %}
+    {{ result.specific.search_description|safe }}
+    {% endif %}
+  </li>
+  {% endfor %}
 </ol>
 
 
 <div class="pagination">
-    <span class="step-links">
-        {% if search_results.has_previous %}
-            <a class="prev" href="?q={{ request.GET.q}}&page={{ search_results.previous_page_number }}">&laquo; Previous</a>
-        {% endif %}
+  <span class="step-links">
+    {% if results.has_previous %}
+    <a class="prev" href="?q={{ q }}&page={{ results.previous_page_number }}">&laquo; Previous</a>
+    {% endif %}
 
-        <span class="current">
-            Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}.
-        </span>
-
-        {% if search_results.has_next %}
-              <a class="next" href="?q={{ request.GET.q}}&page={{ search_results.next_page_number }}">Next &raquo;</a>
-        {% endif %}
+    <span class="current">
+      Page {{ results.number }} of {{ results.paginator.num_pages }}.
     </span>
+
+    {% if results.has_next %}
+    <a class="next" href="?q={{ q }}&page={{ results.next_page_number }}">Next &raquo;</a>
+    {% endif %}
+  </span>
 </div>
 
 {% else %}
-  <p>No results found.</p>
+<p>No results found.</p>
 {% endif %}
 </div>
 {% endblock %}
