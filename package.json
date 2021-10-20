@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/kingsdigitallab/mmc-django#readme",
   "dependencies": {
-    "jquery": "^2.2.4",
+    "jquery": "^3.5.0",
     "font-awesome": "^4.7.0"
   }
 }
