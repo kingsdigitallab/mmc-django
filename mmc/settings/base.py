@@ -302,3 +302,9 @@ AC_PROJECT_ID = 769
 AC_USER = 36
 
 LOGIN_URL = "/wagtail/login/"
+
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.HalloRichTextArea'
+    }
+}

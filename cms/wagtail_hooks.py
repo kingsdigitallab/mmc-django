@@ -55,35 +55,97 @@ hooks.register('after_create_page',
 hooks.register('after_edit_page',
                populate_entity_relationships)
 
+from wagtail.admin.rich_text import HalloPlugin
+from wagtail.core import hooks
+
+@hooks.register('register_rich_text_features')
+def register_embed_feature(features):
+
+
+    features.register_editor_plugin(
+        'hallo', 'bookmark-add',
+        HalloPlugin(
+            name='bookmarkAddButton',
+            js=['js/hallo_bookmark_add.js'],
+        )
+    )
+
+    features.register_editor_plugin(
+        'hallo', 'bookmark-link',
+        HalloPlugin(
+            name='bookmarkLinkButton',
+            js=['js/hallo_bookmark_link.js'],
+        )
+    )
+
+    features.register_editor_plugin(
+        'hallo', 'link-new',
+        HalloPlugin(
+            name='openLinkInNewWindow',
+            js=['js/hallo_link_new_window.js'],
+        )
+    )
+    features.register_editor_plugin(
+        'hallo', 'caption-button',
+        HalloPlugin(
+            name='imageCaptionButton',
+            js=['js/hallo_plugin_caption_image.js'],
+        )
+    )
+
+    features.register_editor_plugin(
+        'hallo', 'ref-button',
+        HalloPlugin(
+            name='referenceButton',
+            js=['js/hallo_plugin_references.js'],
+        )
+    )
+
+    features.register_editor_plugin(
+        'hallo', 'html-edit',
+        HalloPlugin(
+            name='editHtmlButton',
+            js=['js/hallo_source_editor.js'],
+        )
+    )
+    
+
+    features.default_features.append('bookmark-add')
+    features.default_features.append('bookmark-link')
+    features.default_features.append('link-new')
+    features.default_features.append('caption-button')
+    features.default_features.append('ref-button')
+    features.default_features.append('html-edit')
+    
 
 def editor_js():
     js_files = [
-        'js/hallo_plugin_caption_image.js',
-        'js/hallo_plugin_references.js',
-        'js/hallo_source_editor.js',
-        'js/hallo_bookmark_add.js',
-        'js/hallo_bookmark_link.js',
-        'js/hallo_link_new_window.js'
+       # 'js/hallo_plugin_caption_image.js',
+       # 'js/hallo_plugin_references.js',
+       # 'js/hallo_source_editor.js',
+       # 'js/hallo_bookmark_add.js',
+       # 'js/hallo_bookmark_link.js',
+       # 'js/hallo_link_new_window.js'
     ]
 
-    js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
-                                   ((settings.STATIC_URL, filename)
-                                    for filename in js_files)
-                                   )
+    #js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
+     #                              ((settings.STATIC_URL, filename)
+     #                               for filename in js_files)
+      #                             )
 
-    return js_includes + format_html("""
-        <script>
-            registerHalloPlugin('imageCaptionButton');
-            registerHalloPlugin('referenceButton');
-            registerHalloPlugin('bookmarkAddButton');
-            registerHalloPlugin('bookmarkLinkButton');
-            registerHalloPlugin('openLinkInNewWindow');
-            registerHalloPlugin('editHtmlButton');
-        </script>
-        """)
+    #return js_includes + format_html("""
+     #   <script>
+     ##       registerHalloPlugin('imageCaptionButton');
+      #      registerHalloPlugin('referenceButton');
+      #      registerHalloPlugin('bookmarkAddButton');
+      #      registerHalloPlugin('bookmarkLinkButton');
+      #      registerHalloPlugin('openLinkInNewWindow');
+      #      registerHalloPlugin('editHtmlButton');
+      #  </script>
+      #  """)
 
 
-hooks.register('insert_editor_js', editor_js)
+#hooks.register('insert_editor_js', editor_js)
 
 
 def whitelister_element_rules():
