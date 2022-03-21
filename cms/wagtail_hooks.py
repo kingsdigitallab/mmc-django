@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.utils.html import format_html, format_html_join
 from wagtail.core import hooks
-from wagtail.core.whitelist import attribute_rule, check_url
+from wagtail.admin.rich_text.converters.editor_html import WhitelistRule
+from wagtail.core.whitelist import attribute_rule,check_url
 from cms.models import EntityThrough
 import re
 
@@ -78,6 +79,11 @@ def register_embed_feature(features):
         )
     )
 
+    features.register_converter_rule('editorhtml', 'bookmark-link', [
+        WhitelistRule('a', attribute_rule({'href': check_url, 'id': True, 'class': True,
+                             'target': True})),
+    ])
+
     features.register_editor_plugin(
         'hallo', 'link-new',
         HalloPlugin(
@@ -147,10 +153,10 @@ def editor_js():
 
 #hooks.register('insert_editor_js', editor_js)
 
-
+'''
 def whitelister_element_rules():
     return {
-        'p': attribute_rule({'class': True}),
+        'p': ),
         'a': attribute_rule({'href': check_url, 'id': True, 'class': True,
                              'target': True}),
         'span': attribute_rule({'class': True}),
@@ -166,3 +172,5 @@ def whitelister_element_rules():
 
 hooks.register('construct_whitelister_element_rules',
                whitelister_element_rules)
+
+'''
