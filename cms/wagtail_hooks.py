@@ -80,8 +80,15 @@ def register_embed_feature(features):
     )
 
     features.register_converter_rule('editorhtml', 'bookmark-link', [
-        WhitelistRule('a', attribute_rule({'href': check_url, 'id': True, 'class': True,
-                             'target': True})),
+        WhitelistRule(
+            'a',
+            attribute_rule({
+                'href': check_url,
+                'id': True,
+                'class': True,
+                'target': True
+            })
+        ),
     ])
 
     features.register_editor_plugin(
@@ -91,6 +98,7 @@ def register_embed_feature(features):
             js=['js/hallo_link_new_window.js'],
         )
     )
+
     features.register_editor_plugin(
         'hallo', 'caption-button',
         HalloPlugin(
@@ -98,6 +106,12 @@ def register_embed_feature(features):
             js=['js/hallo_plugin_caption_image.js'],
         )
     )
+    # GN: AC-163 - restore the old whitelist using new format
+    features.register_converter_rule('editorhtml', 'caption-button', [
+        WhitelistRule(
+            'p', attribute_rule({'class': True})
+        ),
+    ])
 
     features.register_editor_plugin(
         'hallo', 'ref-button',
@@ -156,9 +170,12 @@ def editor_js():
 '''
 def whitelister_element_rules():
     return {
-        'p': ),
+        # restored above
+        'p': attribute_rule({'class': True}),
+        # restored above
         'a': attribute_rule({'href': check_url, 'id': True, 'class': True,
                              'target': True}),
+        # ?
         'span': attribute_rule({'class': True}),
         'i': attribute_rule({'class': True}),
         'iframe': attribute_rule(
