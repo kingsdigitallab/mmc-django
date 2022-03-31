@@ -2,6 +2,7 @@
 
 {% block main %}
   {% include "cms/includes/streamfield.html" with blocks=self.body %}
+  {% include "cms/includes/streamfield_footnotes.html" with blocks=self.body %}
 {% endblock %}
 
 {% block breadcrumb %}
